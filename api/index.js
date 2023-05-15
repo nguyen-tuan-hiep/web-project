@@ -25,7 +25,7 @@ const whiteList = [
   'http://localhost:5173',
 ];
 
-// CORS 
+// CORS
 app.use(
   cors({
     credentials: true,

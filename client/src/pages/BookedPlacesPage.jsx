@@ -21,8 +21,8 @@ const BookedPlacesPage = () => {
     if (id) {
       const getBookings = async () => {
         const { data } = await axios.get('/bookings');
-        if(data.error){
-          toast.error(data.error.message)
+        if (data.error) {
+          toast.error(data.error.message);
         }
         setBookings(data);
         setLoading(false);
@@ -50,10 +50,11 @@ const BookedPlacesPage = () => {
             Time to dust off your bags and start planning your next adventure
           </p>
           <div className="">
-              <button className="font-semibold border border-black px-4 py-2 rounded-lg bg-transparent hover:bg-slate-100 hover:transition-all"
-                onClick={handleStartPlanning}
-              >
-                Start planning
+            <button
+              className="font-semibold border border-black px-4 py-2 rounded-lg bg-transparent hover:bg-slate-100 hover:transition-all"
+              onClick={handleStartPlanning}
+            >
+              Start planning
             </button>
           </div>
         </div>

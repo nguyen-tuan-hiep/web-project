@@ -39,9 +39,8 @@ const PlacePage = () => {
       <h1 className="text-3xl">{place.title}</h1>
 
       <AddressLink placeAddress={place.address} />
-      <div className='relative z-30'>
-
-      <PlaceGallery place={place} />
+      <div className="relative z-30">
+        <PlaceGallery place={place} />
       </div>
 
       <div className="mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
