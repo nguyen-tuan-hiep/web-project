@@ -9,24 +9,27 @@ export const thingsToKnow = [
   {
     title: 'House rules',
     content: [
-      { name: 'Check-in: After 3:00 PM', icon: <AccessTimeFilledIcon/> },
+      { name: 'Check-in: After 3:00 PM', icon: <AccessTimeFilledIcon /> },
       {
         name: 'Checkout: 11:00 AM',
         icon: <AccessTimeFilledIcon />,
       },
       { name: 'No smoking', icon: <SmokeFreeIcon /> },
-      { name: 'No parties or events', icon: <CelebrationIcon/> },
+      { name: 'No parties or events', icon: <CelebrationIcon /> },
     ],
   },
   {
     title: 'Health & safety',
     content: [
-      { name: "Airbnb's COVID-19 safety practices apply", icon: <CoronavirusIcon/> },
+      {
+        name: "Airbnb's COVID-19 safety practices apply",
+        icon: <CoronavirusIcon />,
+      },
       {
         name: 'Carbon monoxide alarm not reported',
-        icon: <Co2Icon/>,
+        icon: <Co2Icon />,
       },
-      { name: 'Smoke alarm not reported', icon: <HelpIcon/> },
+      { name: 'Smoke alarm not reported', icon: <HelpIcon /> },
     ],
   },
   {
