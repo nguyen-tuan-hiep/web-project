@@ -15,6 +15,7 @@ import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UserProvider } from './providers/UserProvider';
 import { PlaceProvider } from './providers/PlaceProvider';
+import Footer from './components/Footer';
 
 const token = getItemFromLocalStorage('token');
 
@@ -45,6 +46,7 @@ function App() {
             />
           </Route>
         </Routes>
+        <Footer />
         <ToastContainer autoClose={2000} transition={Slide} />
         {/* </UserContextProvider> */}
       </PlaceProvider>
