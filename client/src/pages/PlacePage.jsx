@@ -5,8 +5,28 @@ import AddressLink from '../components/AddressLink';
 import BookingWidget from '../components/BookingWidget';
 import PlaceGallery from '../components/PlaceGallery';
 import Spinner from '../components/Spinner';
+import { thingsToKnow } from '../components/constants';
 
 const PlacePage = () => {
+  const thingsToKnowContent = (
+    <div className="grid grid-cols-3">
+      {thingsToKnow.map((item) => (
+        <div key={item.title}>
+          <h4 className="font-semibold text-lg pb-2">{item.title}</h4>
+          {item.content.map((itemContent) => (
+            <div
+              key={itemContent.name}
+              className="flex items-center gap-2 pb-3"
+            >
+              {itemContent?.icon}
+              <p>{itemContent.name}</p>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -35,33 +55,39 @@ const PlacePage = () => {
   }
 
   return (
-    <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
-      <h1 className="text-3xl">{place.title}</h1>
+    <div className="px-20">
+      <div className="mt-4 -mx-8 pt-8">
+        <h1 className="text-3xl">{place.title}</h1>
 
-      <AddressLink placeAddress={place.address} />
-      <div className="relative z-30">
-        <PlaceGallery place={place} />
-      </div>
+        <AddressLink placeAddress={place.address} />
+        <div className="relative z-30">
+          <PlaceGallery place={place} />
+        </div>
 
-      <div className="mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
-        <div>
-          <div className="my-4">
-            <h2 className="font-semibold text-2xl">Description</h2>
-            {place.description}
+        <div className="mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
+          <div>
+            <div className="my-4">
+              <h2 className="font-semibold text-2xl">Description</h2>
+              {place.description}
+            </div>
+            Check-in: {place.checkIn} <br /> Check-out: {place.checkOut} <br />
+            Max number of guests: {place.maxGuests}
+            <div>
+              <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
+            </div>
+            <div className="text-sm text-gray-700 leading-5 mb-4 mt-2">
+              {place.extraInfo}
+            </div>
           </div>
-          Check-in: {place.checkIn} <br /> Check-out: {place.checkOut} <br />
-          Max number of guests: {place.maxGuests}
+          <div>
+            <BookingWidget place={place} />
+          </div>
         </div>
-        <div>
-          <BookingWidget place={place} />
-        </div>
-      </div>
-      <div className="bg-white -mx-8 px-8 py-8 border-t">
-        <div>
-          <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
-        </div>
-        <div className="text-sm text-gray-700 leading-5 mb-4 mt-2">
-          {place.extraInfo}
+        <div className="bg-white -mx-8 px-8 py-8 border-t">
+          <div className='py-5 w-full border-b"'>
+            <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
+            {thingsToKnowContent}
+          </div>
         </div>
       </div>
     </div>
