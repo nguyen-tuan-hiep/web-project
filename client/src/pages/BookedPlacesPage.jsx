@@ -38,7 +38,6 @@ const BookedPlacesPage = () => {
   return (
     <div>
       <AccountNav />
-      {console.log(bookings)}
       {bookings.length > 0 ? (
         bookings.map((booking) => (
           <PlaceCard place={booking.place} key={booking._id} />

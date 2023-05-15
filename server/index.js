@@ -47,7 +47,7 @@ app.listen(process.env.PORT || 8000, (err) => {
   if (err) {
     console.log('Error in connecting to server: ', err);
   }
-  console.log(`Server is running on port no. ${process.env.PORT}`);
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
 
 module.exports = app;
