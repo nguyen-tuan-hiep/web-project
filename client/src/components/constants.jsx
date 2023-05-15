@@ -1,26 +1,32 @@
-// import { BsQuestionCircleFill, BsStars } from 'react-icons/bs';
-// import { MdOutlineAccessTimeFilled, MdSmokeFree } from 'react-icons/md';
-// import { TbBallonOff } from 'react-icons/tb';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+import CoronavirusIcon from '@mui/icons-material/Coronavirus';
+import Co2Icon from '@mui/icons-material/Co2';
+import HelpIcon from '@mui/icons-material/Help';
 
 export const thingsToKnow = [
   {
     title: 'House rules',
     content: [
-      { name: 'Check-in: After 3:00 PM' },
-      { name: 'Checkout: 11:00 AM', icon:  ""},
-      { name: 'No smoking', icon:  ""},
-      { name: 'No parties or events', icon:  ""},
+      { name: 'Check-in: After 3:00 PM', icon: <AccessTimeFilledIcon/> },
+      {
+        name: 'Checkout: 11:00 AM',
+        icon: <AccessTimeFilledIcon />,
+      },
+      { name: 'No smoking', icon: <SmokeFreeIcon /> },
+      { name: 'No parties or events', icon: <CelebrationIcon/> },
     ],
   },
   {
     title: 'Health & safety',
     content: [
-      { name: "Airbnb's COVID-19 safety practices apply", icon: ""},
+      { name: "Airbnb's COVID-19 safety practices apply", icon: <CoronavirusIcon/> },
       {
         name: 'Carbon monoxide alarm not reported',
-        icon: "",
+        icon: <Co2Icon/>,
       },
-      { name: 'Smoke alarm not reported', icon:  ""},
+      { name: 'Smoke alarm not reported', icon: <HelpIcon/> },
     ],
   },
   {
