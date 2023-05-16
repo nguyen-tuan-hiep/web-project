@@ -150,3 +150,35 @@ exports.searchPlaces = async (req, res) => {
     });
   }
 };
+
+exports.deletePlace = async (req, res) => {
+  try {
+    const userData = userFromToken(req);
+    const userId = userData.id;
+    const { id } = req.params;
+
+    const place = await Place.findById(id);
+    if (!place) {
+      return res.status(400).json({
+        message: 'Place not found',
+      });
+    }
+
+    if (userId === place.owner.toString()) {
+      await Place.findByIdAndDelete(id); // Delete the place from the database
+      res.status(200).json({
+        message: 'Place deleted!',
+      });
+    } else {
+      res.status(403).json({
+        message: 'You are not authorized to delete this place',
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Internal server error',
+      error: err,
+    });
+  }
+};
