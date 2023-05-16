@@ -1,25 +1,65 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import axios from 'axios';
+
+import { useNavigate } from 'react-router-dom';
 import PlaceImg from './PlaceImg';
 
 const PlaceCard = ({ place }) => {
-  if (!place) {
-    return null; // Return null instead of rendering the component
+  const [deleted, setDeleted] = useState(false); // Declare state variable and function
+  const navigate = useNavigate();
+  const deletePlace = async (id) => {
+    try {
+      const res = await axios.delete(`/places/${id}`);
+      console.log(res);
+      setDeleted(true); // Update state after succesful deletion
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDelete = (event) => {
+    event.stopPropagation();
+    deletePlace(place._id);
+    event.preventDefault();
+  };
+
+  const handleUpdate = () => {
+    navigate(`/account/places/${place._id}`);
+  };
+
+  if (!place || deleted) {
+    // Check if place is deleted before rendering
+    return null;
   }
+
   return (
-    <Link
-      to={`/account/places/${place._id}`}
-      className="flex flex-row gap-4 bg-gray-100 p-4 my-3 rounded-2xl cursor-pointer hover:bg-gray-300 transition-all"
-      key={place._id}
-    >
-      <div className="flex w-32 h-32 bg-gray-300 shrink-0">
-        <PlaceImg place={place} />
+    <>
+      <div className="m-4">
+        <div className="flex flex-col ml-2">
+          <h2 className="text-xl">{place.title}</h2>
+          <p className="text-sm my-3">{place.description}</p>
+        </div>
+        <div className="flex">
+          <PlaceImg place={place} />
+        </div>
+
+        <div className="flex mt-4 items-center justify-center">
+          <button
+            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+          <div className="mx-4"></div>
+          <button
+            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2"
+            onClick={handleUpdate}
+          >
+            Update
+          </button>
+        </div>
       </div>
-      <div className="">
-        <h2 className="text-xl">{place.title}</h2>
-        <p className="text-sm mt-2">{place.description}</p>
-      </div>
-    </Link>
+    </>
   );
 };
 
