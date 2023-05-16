@@ -172,7 +172,7 @@ const PlacesFormPage = () => {
             />
           </div>
         </div>
-        <button className="bg-primary hover:bg-red-700 my-4">Save</button>
+        <button className="primary hover:bg-red-700 transition my-4">Save</button>
       </form>
     </div>
   );

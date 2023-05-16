@@ -54,7 +54,7 @@ const PlaceGallery = ({ place }) => {
       <br />
 
       <button
-        className="rounded-md bg-gray-100 mt-4 py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-200 focus:ring-gray-500 transition transform duration-200 ease-out"
+        className="rounded-md bg-gray-100 mt-4 py-2 px-4 text-lg font-medium text-gray-700 hover:bg-gray-200 focus:ring-gray-500 transition transform duration-200 ease-out all-photo-button"
         onClick={() => setShowAllPhotos(true)}
       >
         View All photos ({place?.photos?.length ?? 0})

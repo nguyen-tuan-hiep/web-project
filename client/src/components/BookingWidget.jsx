@@ -50,8 +50,8 @@ const BookingWidget = ({ place }) => {
   }
 
   return (
-    <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl">
-      <div className="text-xl text-center">Price: ₹{place.price} per night</div>
+    <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form">
+      <div className="text-xl text-center price">Price: ₹{place.price} per night</div>
       <Stack spacing={2} mt={2} px={1}>
         <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">
           <DatePicker

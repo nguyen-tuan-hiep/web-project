@@ -27,8 +27,10 @@ const AccountNav = () => {
     <nav className="w-full flex flex-wrap justify-center mt-8 gap-2 mb-8">
       <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
         <Link className={linkClases('profile')} to={'/account'}>
+          <div className='icon'>
           <PersonIcon />
           My Profile
+          </div>
         </Link>
       </div>
       <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
@@ -36,14 +38,18 @@ const AccountNav = () => {
           className={linkClases('bookings')}
           to={`/account/bookings/${user?._id}`}
         >
+          <div className='icon'>
           <ListIcon />
           My bookings
+          </div>
         </Link>
       </div>
       <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
         <Link className={linkClases('places')} to={'/account/places'}>
-          <AddHomeIcon />
+          <div className='icon'>
+          <AddHomeIcon  />
           My accomodations
+          </div>
         </Link>
       </div>
     </nav>

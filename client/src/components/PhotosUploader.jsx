@@ -86,7 +86,7 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
               </button>
             </div>
           ))}
-        <label className="flex h-32 cursor-pointer justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
+        <label className="flex h-32 cursor-pointer justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 upload">
           <input
             type="file"
             multiple

@@ -5,8 +5,11 @@ import { UserContext } from '../providers/UserProvider';
 import SearchBar from './SearchBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import ReactSwitch from 'react-switch';
+import { ThemeContext } from '../App';
 
 export const Header = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   return (
     <header className="flex items-center justify-between">
@@ -24,6 +27,10 @@ export const Header = () => {
 
       <SearchBar />
 
+      <div className="switch">
+        <ReactSwitch onChange={toggleTheme} checked={theme === 'light'} />
+      </div>
+
       <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
         <Link
           to={user ? '/account' : '/login'}
@@ -33,7 +40,7 @@ export const Header = () => {
           <div className="overflow-hidden">
             <AccountCircleIcon />
           </div>
-          {user && <div>{user.name}</div>}
+          {user && <div className="username">{user.name}</div>}
         </Link>
       </div>
     </header>
