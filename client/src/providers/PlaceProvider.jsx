@@ -6,17 +6,19 @@ export const PlaceContext = createContext([]);
 export const PlaceProvider = ({ children }) => {
   const [places, setPlaces] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const getPlaces = async () => {
+    const { data } = await axios.get('/places');
+    setPlaces(data.places);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    const getPlaces = async () => {
-      const { data } = await axios.get('/places');
-      setPlaces(data.places);
-      setLoading(false);
-    };
     getPlaces();
   }, []);
 
   return (
-    <PlaceContext.Provider value={{ places, setPlaces, loading, setLoading }}>
+    <PlaceContext.Provider value={{ places, setPlaces, loading, setLoading, getPlaces }}>
       {children}
     </PlaceContext.Provider>
   );

@@ -1,11 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { PlaceContext } from '../providers/PlaceProvider';
 import { Link } from 'react-router-dom';
 import Image from '../components/Image';
 import Spinner from '../components/Spinner';
 
 const IndexPage = () => {
-  const { places, loading } = useContext(PlaceContext);
+  const { places, loading, getPlaces } = useContext(PlaceContext);
+
+  useEffect(() => {
+    getPlaces();
+  }, []);
 
   if (loading) {
     return <Spinner />;
