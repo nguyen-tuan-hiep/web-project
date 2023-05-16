@@ -14,6 +14,7 @@ const SearchBar = () => {
 
     const searching = () => {
       if (e.target.value === undefined || e.target.value === '') {
+        if (searchText !== '') return searchText;
         setSearchText('');
         return undefined;
       }
@@ -26,7 +27,6 @@ const SearchBar = () => {
     const { data } = await axios.get(`/places/search/${searching()}`);
     setPlaces(data);
     setLoading(false);
-    console.log(`searchText: ${searchText}`);
   };
 
   return (
