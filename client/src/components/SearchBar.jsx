@@ -14,7 +14,7 @@ const SearchBar = () => {
 
     const searching = () => {
       if (e.target.value === undefined || e.target.value === '') {
-        if (searchText !== '') return searchText;
+        // if (searchText !== '') return searchText;
         setSearchText('');
         return undefined;
       }
