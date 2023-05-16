@@ -8,8 +8,10 @@ const PlaceGallery = ({ place }) => {
     return (
       <div className="absolute inset-0 bg-white text-black min-h-full ">
         <div className="pt-10 pb-10 grid gap-4 backdrop-blur-lg">
-          <div className='mb-2'>
-            <h2 className="text-3xl text-center font-semibold">Photos of {place.title}</h2>
+          <div className="mb-2">
+            <h2 className="text-3xl text-center font-semibold">
+              Photos of {place.title}
+            </h2>
             <button
               className="fixed right-20 top-0 flex py-2 px-4 rounded-2xl bg-white text-black shadow-3xl hover:scale-105 transform transition-all duration-200"
               onClick={() => setShowAllPhotos(false)}

@@ -48,3 +48,35 @@ exports.getBookings = async (req, res) => {
     });
   }
 };
+
+exports.deleteBooking = async (req, res) => {
+  try {
+    const userData = await userFromToken(req);
+    if (!userData) {
+      return res
+        .status(401)
+        .json({ error: 'You are not authorized to access this page!' });
+    }
+    const booking = await Booking.findById(req.params.id);
+    if (!booking) {
+      return res.status(404).json({
+        message: 'Booking not found',
+      });
+    }
+    if (booking.user.toString() !== userData.id) {
+      return res.status(401).json({
+        message: 'You are not authorized to delete this booking',
+      });
+    }
+    await booking.remove();
+    res.status(200).json({
+      message: 'Booking deleted successfully',
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: 'Internal server error',
+      error: err,
+    });
+  }
+};

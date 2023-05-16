@@ -81,12 +81,8 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
                 onClick={(e) => selectAsMainPhoto(e, link)}
                 className="absolute cursor-pointer bottom-3 left-3 text-white bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-70"
               >
-                {link === addedPhotos[0] && (
-                  <FavoriteIcon />
-                  )}
-                {link !== addedPhotos[0] && (
-                  <FavoriteBorderIcon />
-                )}
+                {link === addedPhotos[0] && <FavoriteIcon />}
+                {link !== addedPhotos[0] && <FavoriteBorderIcon />}
               </button>
             </div>
           ))}

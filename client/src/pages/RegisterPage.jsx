@@ -53,7 +53,9 @@ const RegisterPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary">Register</button>
+          <button className="primary hover:bg-red-700 transition">
+            Register
+          </button>
           <div className="text-center py-2 text-gray-500">
             Already a member?{' '}
             <Link className="text-black underline" to={'/login'}>
