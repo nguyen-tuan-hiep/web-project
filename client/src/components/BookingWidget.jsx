@@ -9,7 +9,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { UserContext } from '../providers/UserProvider';
 
-
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
@@ -51,10 +50,8 @@ const BookingWidget = ({ place }) => {
   }
 
   return (
-    <div className="bg-white shadow p-4 rounded-2xl">
-      <div className="text-xl text-center">
-        Price: ₹{place.price} / per night
-      </div>
+    <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl">
+      <div className="text-xl text-center">Price: ₹{place.price} per night</div>
       <Stack spacing={2} mt={2} px={1}>
         <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">
           <DatePicker
@@ -116,10 +113,15 @@ const BookingWidget = ({ place }) => {
           </div>
         )}
       </Stack>
-      <button onClick={handleBooking} className="primary mt-4">
-        Book this place
-        {numberOfNights > 0 && <span> ₹{numberOfNights * place.price}</span>}
-      </button>
+      <div className='my-4 mx-20'>
+        <button
+          onClick={handleBooking}
+          className="primary hover:scale-110 transition transform duration-200 ease-out"
+        >
+          Book this place
+          {numberOfNights > 0 && <span> ₹{numberOfNights * place.price}</span>}
+        </button>
+      </div>
     </div>
   );
 };
