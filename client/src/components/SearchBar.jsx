@@ -9,12 +9,13 @@ const SearchBar = () => {
   const { setPlaces, setLoading } = useContext(PlaceContext);
   console.log(`search: ${searchText}`);
   const handleSearch = async (e) => {
+    console.log(`type: ${e.type}`);
     console.log(`target value: ${e.target.value}`);
     setLoading(true);
 
     const searching = () => {
       if (e.target.value === undefined || e.target.value === '') {
-        // if (searchText !== '') return searchText;
+        if (searchText !== '' && e.type === 'click') return searchText;
         setSearchText('');
         return undefined;
       }
