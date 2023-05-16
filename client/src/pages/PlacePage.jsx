@@ -9,7 +9,7 @@ import { thingsToKnow } from '../components/constants';
 
 const PlacePage = () => {
   const thingsToKnowContent = (
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-3 ">
       {thingsToKnow.map((item) => (
         <div key={item.title}>
           <h4 className="font-semibold text-lg pb-2">{item.title}</h4>
@@ -55,17 +55,20 @@ const PlacePage = () => {
   }
 
   return (
-    <div className="px-20">
+    // <div className="w-full">
       <div className="mt-4 -mx-8 pt-8">
-        <h1 className="text-3xl">{place.title}</h1>
+        <div className='px-20'>
+
+        <h1 className="text-3xl font-semibold">{place.title}</h1>
 
         <AddressLink placeAddress={place.address} />
+        </div>
         <div className="relative z-30">
           <PlaceGallery place={place} />
         </div>
 
-        <div className="mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
-          <div>
+        <div className="mt-8 mb-8 gap-0 grid grid-cols-1 md:grid-cols-[6fr_5fr]">
+          <div className='pl-20'>
             <div className="my-4">
               <h2 className="font-semibold text-2xl">Description</h2>
               {place.description}
@@ -83,14 +86,14 @@ const PlacePage = () => {
             <BookingWidget place={place} />
           </div>
         </div>
-        <div className="bg-white -mx-8 px-8 py-8 border-t">
-          <div className='py-5 w-full border-b"'>
+        <div className="bg-white px-8 py-8 border-t">
+          <div className='py-5 w-full border-b px-20'>
             <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
             {thingsToKnowContent}
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 
