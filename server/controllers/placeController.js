@@ -131,12 +131,15 @@ exports.userPlaces = async (req, res) => {
 
 exports.searchPlaces = async (req, res) => {
   try {
-    const searchword = req.params.key;
+    const searchWord = req.params.key;
 
-    if (searchword === '') return res.status(200).json(await Place.find());
+    if (searchWord === 'undefined') {
+      const result = await Place.find();
+      return res.status(200).json(result);
+    }
 
     const searchMatches = await Place.find({
-      address: { $regex: searchword, $options: 'i' },
+      address: { $regex: searchWord, $options: 'i' },
     });
 
     res.status(200).json(searchMatches);
