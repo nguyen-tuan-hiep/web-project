@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import AccountNav from '../components/AccountNav';
 import axios from 'axios';
-import AddressLink from '../components/AddressLink';
 import BookingDates from '../components/BookingDates';
-import PlaceGallery from '../components/PlaceGallery';
 import Spinner from '../components/Spinner';
-import PlaceCard from '../components/PlaceCard';
+import PlaceImg from '../components/PlaceImg';
+import PaymentIcon from '@mui/icons-material/Payment';
 
 const BookedPlacesPage = () => {
   const navigate = useNavigate();
@@ -40,7 +39,38 @@ const BookedPlacesPage = () => {
       <AccountNav />
       {bookings.length > 0 ? (
         bookings.map((booking) => (
-          <PlaceCard place={booking.place} key={booking._id} />
+          <div
+            key={booking._id}
+            className="flex flex-row mx-8 bg-gray-100 my-5 rounded-2xl cursor-pointer hover:bg-gray-300 hover:scale-105 transition transform duration-200 ease-out"
+          >
+            <Link
+              to={`/account/bookings/${booking._id}`}
+              className="flex gap-4 rounded-2xl overflow-hidden"
+            >
+              <div className="w-72">
+                <PlaceImg place={booking.place} />
+              </div>
+              <div className="py-3 pr-3 grow">
+                <h2 className="text-xl">{booking.place.title}</h2>
+                <div className="text-xl">
+                  <div className="flex gap-2 "></div>
+                  <div className="text-xl">
+                    <BookingDates
+                      booking={booking}
+                      className="items-center mb-2 mt-4  text-gray-600"
+                    />
+
+                    <div className="flex gap-1 items-center">
+                      <PaymentIcon />
+                      <span className="text-2xl">
+                        Total price: ₹{booking.price}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </div>
         ))
       ) : (
         <div className="flex flex-col gap-4">
@@ -60,28 +90,6 @@ const BookedPlacesPage = () => {
       )}
     </div>
   );
-
-  // return (
-  //   <div className="my-8">
-  //     <h1 className="text-3xl">{booking.place.title}</h1>
-
-  //     <AddressLink
-  //       className="my-2 block"
-  //       placeAddress={booking.place.address}
-  //     />
-  //     <div className="flex bg-gray-200 p-6 my-6 rounded-2xl justify-between items-center">
-  //       <div>
-  //         <h2 className="text-2xl mb-4">Your booking information</h2>
-  //         <BookingDates booking={booking} />
-  //       </div>
-  //       <div className="bg-primary p-6 text-white rounded-2xl">
-  //         <div className="">Total price</div>
-  //         <div className="text-3xl">₹{booking.price}</div>
-  //       </div>
-  //     </div>
-  //     <PlaceGallery place={booking.place} />
-  //   </div>
-  // );
 };
 
 export default BookedPlacesPage;

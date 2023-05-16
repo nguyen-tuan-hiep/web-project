@@ -9,6 +9,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { UserContext } from '../providers/UserProvider';
 
+
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
@@ -40,9 +41,9 @@ const BookingWidget = ({ place }) => {
       price: numberOfNights * place.price,
     });
 
-    const bookingId = response.data._id;
+    // const bookingId = response.data._id;
 
-    setRedirect(`/account/bookings/${bookingId}`);
+    setRedirect(`/account/bookings/${response.data.booking.user}`);
   };
 
   if (redirect) {
@@ -62,7 +63,7 @@ const BookingWidget = ({ place }) => {
             onChange={(newValue) => {
               setCheckIn(newValue);
             }}
-            renderInput={(params) => <TextField {...params} />}
+            textField={(params) => <TextField {...params} />}
             format="dd/MM/yyyy"
             minDate={new Date()}
           />
@@ -72,7 +73,7 @@ const BookingWidget = ({ place }) => {
             onChange={(newValue) => {
               setCheckOut(newValue);
             }}
-            renderInput={(params) => <TextField {...params} />}
+            textField={(params) => <TextField {...params} />}
             format="dd/MM/yyyy"
             minDate={checkIn ? new Date(checkIn) : new Date()}
           />

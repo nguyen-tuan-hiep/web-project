@@ -6,6 +6,7 @@ import AccountNav from '../components/AccountNav';
 import Spinner from '../components/Spinner';
 import { removeItemFromLocalStorage } from '../utils';
 import { toast } from 'react-toastify';
+import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 
 const ProfilePage = () => {
   const { loading, user, setUser } = useContext(UserContext);
@@ -42,7 +43,8 @@ const ProfilePage = () => {
         <div className="text-center max-w-lg mx-auto ">
           Logged in as {user.name} ({user.email})
           <br />
-          <button className="primary max-w-sm mt-2" onClick={logout}>
+          <button className="primary max-w-sm mt-4 hover:scale-110 transition transform duration-200 ease-out" onClick={logout}>
+            <LoginOutlinedIcon className='mr-2'/>
             Logout
           </button>
         </div>
