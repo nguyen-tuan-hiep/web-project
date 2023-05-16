@@ -18,7 +18,9 @@ export const PlaceProvider = ({ children }) => {
   }, []);
 
   return (
-    <PlaceContext.Provider value={{ places, setPlaces, loading, setLoading, getPlaces }}>
+    <PlaceContext.Provider
+      value={{ places, setPlaces, loading, setLoading, getPlaces }}
+    >
       {children}
     </PlaceContext.Provider>
   );

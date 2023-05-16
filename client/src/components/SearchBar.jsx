@@ -9,8 +9,6 @@ const SearchBar = () => {
   const { setPlaces, setLoading } = useContext(PlaceContext);
   console.log(`search: ${searchText}`);
   const handleSearch = async (e) => {
-    console.log(`type: ${e.type}`);
-    console.log(`target value: ${e.target.value}`);
     setLoading(true);
 
     const searching = () => {
@@ -32,24 +30,23 @@ const SearchBar = () => {
 
   return (
     <>
-      <div
-        className='flex w-3/5 md:w-1/2 bg-gray-300 border border-gray-400 rounded-full overflow-hidden shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-200 ease-out'>
-        <div className='grow'>
+      <div className="flex w-3/5 md:w-1/2 bg-gray-300 border border-gray-400 rounded-full overflow-hidden shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-200 ease-out">
+        <div className="grow">
           <input
-            type='search'
-            placeholder='Where you want to go?'
-            className='w-full py-2 px-6 border-none focus:outline-none  text-sm md:text-lg'
+            type="search"
+            placeholder="Where you want to go?"
+            className="w-full py-2 px-6 border-none focus:outline-none  text-sm md:text-lg"
             onChange={(e) => handleSearch(e)}
             value={searchText}
           />
         </div>
-        <div className='flex  bg-blue text-white cursor-pointer'>
+        <div className="flex  bg-blue text-white cursor-pointer">
           <button
-            className='flex py-2 px-4 md:p-2 bg-primary rounded-r-full'
+            className="flex py-2 px-4 md:p-2 bg-primary hover:bg-red-700 transition rounded-r-full"
             onClick={(e) => handleSearch(e)}
           >
             <SearchIcon />
-            <span className='hidden md:block ml-1'>Search</span>
+            <span className="hidden md:block ml-1">Search</span>
           </button>
         </div>
       </div>

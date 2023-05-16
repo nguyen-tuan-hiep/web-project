@@ -56,43 +56,42 @@ const PlacePage = () => {
 
   return (
     // <div className="w-full">
-      <div className="mt-4 -mx-8 pt-8">
-        <div className='px-20'>
-
+    <div className="mt-4 -mx-8 pt-8">
+      <div className="px-20">
         <h1 className="text-3xl font-semibold">{place.title}</h1>
 
         <AddressLink placeAddress={place.address} />
-        </div>
-        <div className="relative z-30">
-          <PlaceGallery place={place} />
-        </div>
+      </div>
+      <div className="relative z-30">
+        <PlaceGallery place={place} />
+      </div>
 
-        <div className="mt-8 mb-8 gap-0 grid grid-cols-1 md:grid-cols-[6fr_5fr]">
-          <div className='pl-20'>
-            <div className="my-4">
-              <h2 className="font-semibold text-2xl">Description</h2>
-              {place.description}
-            </div>
-            Check-in: {place.checkIn} <br /> Check-out: {place.checkOut} <br />
-            Max number of guests: {place.maxGuests}
-            <div>
-              <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
-            </div>
-            <div className="text-sm text-gray-700 leading-5 mb-4 mt-2">
-              {place.extraInfo}
-            </div>
+      <div className="mt-8 mb-8 gap-0 grid grid-cols-1 md:grid-cols-[6fr_5fr]">
+        <div className="pl-20">
+          <div className="my-4">
+            <h2 className="font-semibold text-2xl">Description</h2>
+            {place.description}
           </div>
+          Check-in: {place.checkIn} <br /> Check-out: {place.checkOut} <br />
+          Max number of guests: {place.maxGuests}
           <div>
-            <BookingWidget place={place} />
+            <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
+          </div>
+          <div className="text-sm text-gray-700 leading-5 mb-4 mt-2">
+            {place.extraInfo}
           </div>
         </div>
-        <div className="bg-white px-8 py-8 border-t">
-          <div className='py-5 w-full border-b px-20'>
-            <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
-            {thingsToKnowContent}
-          </div>
+        <div>
+          <BookingWidget place={place} />
         </div>
       </div>
+      <div className="bg-white px-8 py-8 border-t">
+        <div className="py-5 w-full border-b px-20">
+          <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
+          {thingsToKnowContent}
+        </div>
+      </div>
+    </div>
     // </div>
   );
 };

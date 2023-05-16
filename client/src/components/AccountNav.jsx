@@ -24,14 +24,14 @@ const AccountNav = () => {
     return classes;
   };
   return (
-    <nav className="w-full flex justify-center mt-8 gap-2 mb-8">
-      <div className='flex items-center m-2 mt-5 space-x-4  cursor-pointer hover:scale-110 transition transform duration-200 ease-out'>
+    <nav className="w-full flex flex-wrap justify-center mt-8 gap-2 mb-8">
+      <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
         <Link className={linkClases('profile')} to={'/account'}>
           <PersonIcon />
           My Profile
         </Link>
       </div>
-      <div className='flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out'>
+      <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
         <Link
           className={linkClases('bookings')}
           to={`/account/bookings/${user?._id}`}
@@ -40,7 +40,7 @@ const AccountNav = () => {
           My bookings
         </Link>
       </div>
-      <div className='flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out'>
+      <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
         <Link className={linkClases('places')} to={'/account/places'}>
           <AddHomeIcon />
           My accomodations

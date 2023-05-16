@@ -22,23 +22,20 @@ export const Header = () => {
         </span>
       </Link>
 
-
       <SearchBar />
 
-
-      <div className='flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out'>
-
-      <Link
-        to={user ? '/account' : '/login'}
-        className="flex gap-2 items-center border border-gray-300 rounded-3xl py-2 px-4"
+      <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
+        <Link
+          to={user ? '/account' : '/login'}
+          className="flex gap-2 items-center border border-gray-300 rounded-3xl py-2 px-4  hover:shadow-3xl"
         >
-        <MenuIcon/>
-        <div className="overflow-hidden">
-          <AccountCircleIcon />
-        </div>
-        {user && <div>{user.name}</div>}
-      </Link>
-        </div>
+          <MenuIcon />
+          <div className="overflow-hidden">
+            <AccountCircleIcon />
+          </div>
+          {user && <div>{user.name}</div>}
+        </Link>
+      </div>
     </header>
   );
 };
