@@ -91,7 +91,7 @@ const PlacesFormPage = () => {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={savePlace}>
+      <form onSubmit={savePlace} className="mx-8">
         {preInput(
           'Title',
           'title for your place. Should be short and catchy as in advertisement'
@@ -131,7 +131,7 @@ const PlacesFormPage = () => {
         />
 
         {preInput(
-          'Check in&out times',
+          'Check in & Check out times',
           'add check in and out times, remember to have some time window forcleaning the room between guests. '
         )}
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
@@ -154,7 +154,7 @@ const PlacesFormPage = () => {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Max no. of guests</h3>
+            <h3 className="mt-2 -mb-1">Max number of guests</h3>
             <input
               type="text"
               value={maxGuests}
