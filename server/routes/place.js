@@ -17,4 +17,5 @@ router.route('/user-places').get(userPlaces);
 router.route('/:id').get(singlePlace);
 router.route('/search/:key').get(searchPlaces);
 
+
 module.exports = router;
