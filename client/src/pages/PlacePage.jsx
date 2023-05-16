@@ -85,7 +85,7 @@ const PlacePage = () => {
           <BookingWidget place={place} />
         </div>
       </div>
-      <div className="bg-white px-8 py-8 border-t">
+      <div className="bg-white px-8 py-8 border-t things">
         <div className="py-5 w-full border-b px-20">
           <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
           {thingsToKnowContent}

@@ -41,7 +41,7 @@ const BookedPlacesPage = () => {
         bookings.map((booking) => (
           <div
             key={booking._id}
-            className="flex flex-row mx-8 bg-gray-100 my-5 rounded-2xl cursor-pointer hover:bg-gray-300 hover:scale-105 transition transform duration-200 ease-out"
+            className="flex flex-row mx-8 bg-gray-100 my-5 rounded-2xl cursor-pointer hover:bg-gray-300 hover:scale-105 transition transform duration-200 ease-out place-card"
           >
             <Link
               to={`/account/bookings/${booking._id}`}
