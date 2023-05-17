@@ -27,7 +27,7 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 export const ThemeContext = createContext(null);
 
 function App() {
-  const [theme, setTheme] = React.useState('dark');
+  const [theme, setTheme] = React.useState('light');
   const toggleTheme = () => {
     setTheme((curr) => (curr === 'light' ? 'dark' : 'light'))
   }

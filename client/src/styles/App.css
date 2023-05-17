@@ -78,17 +78,60 @@
 }
 
 #dark input{
-  background-color: #d9d9d9;
+  background-color: #a2a2a2;
 }
 
 #dark textarea{
-  background-color: #d9d9d9;
+  background-color: #a2a2a2;
 }
 
 #dark .form{
-  background-color: #d9d9d9;
+  background-color: #a2a2a2;
 }
 
 #dark .upload {
   color: white;
+}
+
+#dark #search::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #title::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #address::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #checkIn::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #checkOut::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #maxGuests::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #price::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #photoLink::placeholder {
+  color: #4c4c4c;
+}
+
+#dark #email::placeholder {
+  color: #4c4c4c;
+}
+
+#dark .checkbox {
+  color: white;
+}
+#dark .checkbox.Mui-checked {
+  color: pink;
 }

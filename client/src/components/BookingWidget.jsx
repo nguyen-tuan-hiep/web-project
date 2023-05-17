@@ -75,7 +75,7 @@ const BookingWidget = ({ place }) => {
             minDate={checkIn ? new Date(checkIn) : new Date()}
           />
         </LocalizationProvider>
-        <div className="pt-3 pb-1 border-t">
+        <div className="pt-3 pb-1;">
           <TextField
             label="Number or guest"
             variant="outlined"
@@ -90,7 +90,7 @@ const BookingWidget = ({ place }) => {
         </div>
         {numberOfNights > 0 && (
           <div>
-            <div className="pt-4 pb-4 border-t">
+            <div className="pt-4 pb-4">
               <TextField
                 label="Your full name"
                 variant="outlined"

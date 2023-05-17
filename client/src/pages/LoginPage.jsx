@@ -48,12 +48,14 @@ const LoginPage = () => {
         <h1 className="text-4xl text-center mb-4">Login</h1>
         <form className="max-w-md mx-auto" onSubmit={handleFormSubmit}>
           <input
+            id='email'
             type="email"
             placeholder="your@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
+            id='password'
             type="password"
             placeholder="password"
             value={password}
