@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import axios from 'axios';
 import Perks from '../components/Perks';
 import PhotosUploader from '../components/PhotosUploader';
@@ -6,6 +6,9 @@ import AccountNav from '../components/AccountNav';
 import { Navigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
+import MapWidget from '../components/MapWidget.jsx';
+import {MapContext} from '../components/MapWidget.jsx';
+import Select from 'react-select-country-list';
 
 const PlacesFormPage = () => {
   const { id } = useParams();
@@ -24,6 +27,11 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
+
+  const [country, setCountry] = useState([]);
+  const [province, setProvince] = useState([]);
+  const [district, setDistrict] = useState([]);
+  const [commune, setCommune] = useState([]);
 
   useEffect(() => {
     if (!id) {
@@ -86,6 +94,7 @@ const PlacesFormPage = () => {
       maxGuests,
       price,
     };
+    console.log(placeData);
     if (id) {
       // update existing place
       const { data } = await axios.put('/places/update-place', {
@@ -98,7 +107,6 @@ const PlacesFormPage = () => {
       const { data } = await axios.post('/places/add-places', placeData);
       toast.success(data.message)
     }
-
     setRedirect(true);
   };
 
@@ -126,14 +134,48 @@ const PlacesFormPage = () => {
           placeholder="title, for example: My lovely apt"
         />
 
-        {preInput('Address', 'Address to this place')}
-        <input
-          id='address'
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          type="text"
-          placeholder="address"
-        />
+        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-2">
+          {preInput('Address', 'Address to this place')}
+          <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
+            {/*<Select value={country} onChange={(e) => setCountry(e.target.value)} />*/}
+            {/*<Select value={province} onChange={(e) => setProvince(e.target.value)} />*/}
+            {/*<Select value={district} onChange={(e) => setDistrict(e.target.value)} />*/}
+            {/*<Select value={commune} onChange={(e) => setCommune(e.target.value)} />*/}
+          </div>
+          <MapWidget id={id}/>
+        </div>
+
+        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-1">
+          <div>
+            <h3 className="mt-2 -mb-1">Lat</h3>
+            <input
+              id='lat'
+              type="number"
+              value={lat}
+              onChange={(e) => setLat(e.target.value)}
+              placeholder="0"
+            />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Long</h3>
+            <input
+              id='long'
+              type="number"
+              value={long}
+              onChange={(e) => setLong(e.target.value)}
+              placeholder="0"
+            />
+          </div>
+        </div>
+        {/*<input*/}
+        {/*  id='address'*/}
+        {/*  value={address}*/}
+        {/*  onChange={(e) => setAddress(e.target.value)}*/}
+        {/*  type="text"*/}
+        {/*  placeholder="address"*/}
+        {/*/>*/}
+
+
 
         {preInput('Photos', 'more = better')}
 
