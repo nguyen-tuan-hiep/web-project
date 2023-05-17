@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../providers/UserProvider';
@@ -41,9 +41,9 @@ export const Header = () => {
             <Brightness4Icon style={{ color: 'black' }} />
           )}
         </IconButton>
-        <span style={{ color: theme === 'dark' ? 'white' : 'black', fontWeight: 600 }}>
-          Switch to {theme === 'light' ? 'dark' : 'light'} mode
-        </span>
+        {/*<span style={{ color: theme === 'dark' ? 'white' : 'black', fontWeight: 600 }}>*/}
+        {/*  Switch to {theme === 'light' ? 'dark' : 'light'} mode*/}
+        {/*</span>*/}
       </div>
 
       <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
