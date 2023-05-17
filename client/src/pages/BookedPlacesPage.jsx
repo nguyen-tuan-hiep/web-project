@@ -8,6 +8,7 @@ import PlaceImg from '../components/PlaceImg';
 import PaymentIcon from '@mui/icons-material/Payment';
 import AI from '../components/AI';
 import { getItemFromLocalStorage } from '../utils/index.js';
+import { toast } from 'react-toastify';
 
 const BookedPlacesPage = () => {
   const navigate = useNavigate();
@@ -29,9 +30,12 @@ const BookedPlacesPage = () => {
         if (data.error) {
           toast.error(data.error.message);
         }
-        setBookings(data);
+        await setBookings(data);
+        console.log(data);
+        console.log(`book: ${bookings}`);
         setLoading(false);
       };
+
       getBookings();
 
   }, []);
