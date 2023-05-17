@@ -31,6 +31,7 @@ exports.addPlace = async (req, res) => {
     });
     res.status(200).json({
       place,
+      message: 'Add new place successfully'
     });
   } catch (err) {
     res.status(500).json({
@@ -87,7 +88,7 @@ exports.updatePlace = async (req, res) => {
       });
       await place.save();
       res.status(200).json({
-        message: 'place updated!',
+        message: 'Place updated!',
       });
     }
   } catch (err) {
