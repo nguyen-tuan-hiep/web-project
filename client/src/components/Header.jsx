@@ -31,8 +31,6 @@ export const Header = () => {
       <SearchBar />
 
       <div className="switch">
-        {/* <Switch onChange={toggleTheme} checked={theme === 'light'} />
-         */}
 
         <IconButton onClick={toggleTheme} className='flex hover:scale-110 transition transform duration-200 ease-out'>
           {theme === 'dark' ? (
@@ -41,9 +39,6 @@ export const Header = () => {
             <Brightness4Icon style={{ color: 'black' }} />
           )}
         </IconButton>
-        {/*<span style={{ color: theme === 'dark' ? 'white' : 'black', fontWeight: 600 }}>*/}
-        {/*  Switch to {theme === 'light' ? 'dark' : 'light'} mode*/}
-        {/*</span>*/}
       </div>
 
       <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">

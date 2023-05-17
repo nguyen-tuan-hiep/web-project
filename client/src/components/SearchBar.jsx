@@ -7,7 +7,6 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
   const [searchTimeout, setSearchTimeout] = useState(null);
   const { setPlaces, setLoading } = useContext(PlaceContext);
-  console.log(`search: ${searchText}`);
   const handleSearch = async (e) => {
     setLoading(true);
 
