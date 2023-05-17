@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import Perks from '../components/Perks';
 import PhotosUploader from '../components/PhotosUploader';
@@ -7,16 +7,12 @@ import { Navigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
 import MapWidget from '../components/MapWidget.jsx';
-import {MapContext} from '../components/MapWidget.jsx';
-import Select from 'react-select-country-list';
+import { MapContext } from '../providers/MapProvider.jsx';
 
 const PlacesFormPage = () => {
   const { id } = useParams();
 
   const [title, setTitle] = useState('');
-  const [address, setAddress] = useState('');
-  const [lat, setLat] = useState(0);
-  const [long, setLong] = useState(0);
   const [desc, setDesc] = useState('');
   const [addedPhotos, setAddedPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
@@ -27,11 +23,9 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
-
-  const [country, setCountry] = useState([]);
-  const [province, setProvince] = useState([]);
-  const [district, setDistrict] = useState([]);
-  const [commune, setCommune] = useState([]);
+  const {lat, setLat} = useContext(MapContext);
+  const {lng, setLng} = useContext(MapContext);
+  const {address, setAddress} = useContext(MapContext);
 
   useEffect(() => {
     if (!id) {
@@ -43,7 +37,7 @@ const PlacesFormPage = () => {
       setTitle(place.title);
       setAddress(place.address);
       setLat(place.lat);
-      setLong(place.long);
+      setLng(place.long);
       setAddedPhotos(place.photos);
       setDesc(place.description);
       setPerks(place.perks);
@@ -59,24 +53,24 @@ const PlacesFormPage = () => {
   const preInput = (header, description) => {
     return (
       <>
-        <h2 className="text-2xl mt-4">{header}</h2>
-        <p className="text-gray-500 text-sm">{description}</p>
+        <h2 className='text-2xl mt-4'>{header}</h2>
+        <p className='text-gray-500 text-sm'>{description}</p>
       </>
     );
   };
 
   const isEmptyOrSpaces = (str) => {
     return str === null || str.match(/^ *$/) !== null;
-  }
+  };
 
   const savePlace = async (e) => {
     e.preventDefault();
     if (isEmptyOrSpaces(title)) {
-      toast.error("Title is required");
+      toast.error('Title is required');
       return;
     }
     if (isEmptyOrSpaces(address)) {
-      toast.error("Address is required");
+      toast.error('Address is required');
       return;
     }
 
@@ -84,7 +78,7 @@ const PlacesFormPage = () => {
       title,
       address,
       lat,
-      long,
+      long: lng,
       addedPhotos,
       desc,
       perks,
@@ -101,11 +95,11 @@ const PlacesFormPage = () => {
         id,
         ...placeData,
       });
-      toast.success(data.message)
+      toast.success(data.message);
     } else {
       // new place
       const { data } = await axios.post('/places/add-places', placeData);
-      toast.success(data.message)
+      toast.success(data.message);
     }
     setRedirect(true);
   };
@@ -121,68 +115,62 @@ const PlacesFormPage = () => {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={savePlace} className="mx-8">
+      <form onSubmit={savePlace} className='mx-8'>
         {preInput(
           'Title',
-          'Title for your place. Should be short and catchy as in advertisement'
+          'Title for your place. Should be short and catchy as in advertisement',
         )}
         <input
           id='title'
-          type="text"
+          type='text'
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="title, for example: My lovely apt"
+          placeholder='title, for example: My lovely apt'
         />
 
-        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-2">
-          {preInput('Address', 'Address to this place')}
-          <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
-            {/*<Select value={country} onChange={(e) => setCountry(e.target.value)} />*/}
-            {/*<Select value={province} onChange={(e) => setProvince(e.target.value)} />*/}
-            {/*<Select value={district} onChange={(e) => setDistrict(e.target.value)} />*/}
-            {/*<Select value={commune} onChange={(e) => setCommune(e.target.value)} />*/}
-          </div>
-          <MapWidget id={id}/>
-        </div>
-
-        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-1">
-          <div>
-            <h3 className="mt-2 -mb-1">Lat</h3>
+        <div className='grid gap-10 sm:grid-cols-2 md:grid-cols-2'>
+          <div className='grid gap-2 sm:grid-cols-3 md:grid-cols-1'>
+            {preInput('Address', 'Address to this place')}
             <input
-              id='lat'
-              type="number"
-              value={lat}
-              onChange={(e) => setLat(e.target.value)}
-              placeholder="0"
+              id='address'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              type="text"
+              placeholder="address"
+            />
+            <div>
+              <h3 className='mt-2 -mb-1'>Lat</h3>
+              <input
+                id='lat'
+                type='number'
+                value={lat}
+                onChange={(e) => setLat(e.target.value)}
+                placeholder='0'
+              />
+            </div>
+            <div>
+              <h3 className='mt-2 -mb-1'>Long</h3>
+              <input
+                id='long'
+                type='number'
+                value={lng}
+                onChange={(e) => setLng(e.target.value)}
+                placeholder='0'
+              />
+            </div>
+            {preInput('Photos', 'more = better')}
+
+            <PhotosUploader
+              addedPhotos={addedPhotos}
+              setAddedPhotos={setAddedPhotos}
             />
           </div>
-          <div>
-            <h3 className="mt-2 -mb-1">Long</h3>
-            <input
-              id='long'
-              type="number"
-              value={long}
-              onChange={(e) => setLong(e.target.value)}
-              placeholder="0"
-            />
-          </div>
+          <MapWidget id={id} />
         </div>
-        {/*<input*/}
-        {/*  id='address'*/}
-        {/*  value={address}*/}
-        {/*  onChange={(e) => setAddress(e.target.value)}*/}
-        {/*  type="text"*/}
-        {/*  placeholder="address"*/}
-        {/*/>*/}
 
 
 
-        {preInput('Photos', 'more = better')}
 
-        <PhotosUploader
-          addedPhotos={addedPhotos}
-          setAddedPhotos={setAddedPhotos}
-        />
 
         {preInput('Description', 'description of the place')}
         <textarea
@@ -200,51 +188,51 @@ const PlacesFormPage = () => {
 
         {preInput(
           'Check in & Check out times',
-          'add check in and out times, remember to have some time window for cleaning the room between guests. '
+          'add check in and out times, remember to have some time window for cleaning the room between guests. ',
         )}
-        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
+        <div className='grid gap-2 sm:grid-cols-2 md:grid-cols-4'>
           <div>
-            <h3 className="mt-2 -mb-1">Check in time</h3>
+            <h3 className='mt-2 -mb-1'>Check in time</h3>
             <input
               id='checkIn'
-              type="number"
+              type='number'
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              placeholder="14"
+              placeholder='14'
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Check out time</h3>
+            <h3 className='mt-2 -mb-1'>Check out time</h3>
             <input
               id='checkOut'
-              type="number"
+              type='number'
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              placeholder="11"
+              placeholder='11'
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Max number of guests</h3>
+            <h3 className='mt-2 -mb-1'>Max number of guests</h3>
             <input
               id='maxGuests'
-              type="number"
+              type='number'
               value={maxGuests}
               onChange={(e) => setMaxGuests(e.target.value)}
-              placeholder="1"
+              placeholder='1'
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Price per night</h3>
+            <h3 className='mt-2 -mb-1'>Price per night</h3>
             <input
               id='price'
-              type="number"
+              type='number'
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="1"
+              placeholder='1'
             />
           </div>
         </div>
-        <button className="primary hover:bg-red-700 transition my-4">Save</button>
+        <button className='primary hover:bg-red-700 transition my-4'>Save</button>
       </form>
     </div>
   );

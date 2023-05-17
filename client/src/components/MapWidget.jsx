@@ -1,14 +1,13 @@
-import React, { useState  } from 'react';
+import React, { useState, useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
-
-export const MapContext = React.createContext({});
+import { MapContext } from '../providers/MapProvider.jsx';
 
 const MapWidget = (id) => {
-  const [lat, setLat] = useState(0);
-  const [lng, setLng] = useState(0);
-  const [address, setAddress] = useState("");
-  if (id) {console.log(id)}
+  const {lat, setLat} = useContext(MapContext);
+  const {lng, setLng} = useContext(MapContext);
+  const {address, setAddress} = useContext(MapContext);
+  // if (id) {console.log(id)}
   const handleMapClick = async (event) => {
 
     const lat = event.lat;
@@ -25,11 +24,11 @@ const MapWidget = (id) => {
   };
 
   return (
-    <div style={{position: 'relative', height: '100vh', width: '100%' }}>
+    <div style={{marginTop: '20%',position: 'relative', height: '50vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8' }}
-        defaultCenter={{ lat: 59.95, lng: 30.33 }}
-        defaultZoom={11}
+        defaultCenter={{ lat: 21.09, lng: 105.80 }}
+        defaultZoom={9}
         onClick={handleMapClick}
       ></GoogleMapReact>
       <div>
