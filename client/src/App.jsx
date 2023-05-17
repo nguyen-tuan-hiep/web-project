@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import React, { createContext } from 'react';
 const token = getItemFromLocalStorage('token');
 import './styles/App.css'
+import { MapProvider } from './providers/MapProvider.jsx';
 
 // axios.defaults.baseURL = 'https://airbnb-clone-production.up.railway.app';
 axios.defaults.baseURL = 'http://localhost:8001';
@@ -36,24 +37,26 @@ function App() {
     <div className="App" id={theme}>
       <UserProvider>
         <PlaceProvider>
-          <Routes>
-            <Route path="/" element={<Layout toggleTheme={toggleTheme}/>}>
-              <Route index element={<IndexPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/account" element={<ProfilePage />} />
-              <Route path="/account/places" element={<PlacesPage />} />
-              <Route path="/account/places/new" element={<PlacesFormPage />} />
-              <Route path="/account/places/:id" element={<PlacesFormPage />} />
-              <Route path="/place/:id" element={<PlacePage />} />
-              <Route
-                path="/account/bookings"
-                element={<BookedPlacesPage />}
-              />
-            </Route>
-          </Routes>
-          <Footer />
-          <ToastContainer autoClose={2000} transition={Slide} />
+          <MapProvider>
+            <Routes>
+              <Route path="/" element={<Layout toggleTheme={toggleTheme}/>}>
+                <Route index element={<IndexPage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/account" element={<ProfilePage />} />
+                <Route path="/account/places" element={<PlacesPage />} />
+                <Route path="/account/places/new" element={<PlacesFormPage />} />
+                <Route path="/account/places/:id" element={<PlacesFormPage />} />
+                <Route path="/place/:id" element={<PlacePage />} />
+                <Route
+                  path="/account/bookings"
+                  element={<BookedPlacesPage />}
+                />
+              </Route>
+            </Routes>
+            <Footer />
+            <ToastContainer autoClose={2000} transition={Slide} />
+          </MapProvider>
         </PlaceProvider>
       </UserProvider>
       </div>
