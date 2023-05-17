@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Image from './Image';
+import { ThemeContext } from '../App.jsx';
 
 const PlaceGallery = ({ place }) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
+  const { theme } = useContext(ThemeContext);
 
   if (showAllPhotos) {
     return (
-      <div className="absolute inset-0 bg-white text-black min-h-full ">
+      <div className="relative inset-0 text-black min-h-full "
+        style={{backgroundColor: theme === 'dark' ? '#373737' : 'white'}}>
         <div className="pt-10 pb-10 grid gap-4 backdrop-blur-lg">
           <div className="mb-2">
             <h2 className="text-3xl text-center font-semibold">
