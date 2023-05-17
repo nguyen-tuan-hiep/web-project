@@ -8,11 +8,12 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { UserContext } from '../providers/UserProvider';
+import { toast } from 'react-toastify';
 
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
-  const [noOfGuests, setNoOfGuests] = useState(1);
+  const [noOfGuests, setNoOfGuests] = useState(0);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [redirect, setRedirect] = useState('');
@@ -30,6 +31,18 @@ const BookingWidget = ({ place }) => {
   }
 
   const handleBooking = async () => {
+    if (checkIn === null || checkOut === null) {
+      toast.error('Check in and out must be required');
+      return;
+    }
+    if (name === null || name.match(/^ *$/) !== null) {
+      toast.error('Name must be required');
+      return;
+    }
+    if (phone === null || phone === "" || phone.match(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/) === null) {
+      toast.error('Phone must be required');
+      return;
+    }
     const response = await axios.post('/bookings', {
       checkIn,
       checkOut,
