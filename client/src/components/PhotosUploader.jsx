@@ -50,13 +50,14 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
     <>
       <div className="flex gap-2">
         <input
+          id='photoLink'
           value={photoLink}
           onChange={(e) => setphotoLink(e.target.value)}
           type="text"
           placeholder="Add using a link ...jpg"
         />
         <button
-          className="bg-gray-200 px-4 rounded-2xl"
+          className="bg-primary hover:bg-red-700 hover:scale-105 transition text-white px-4 my-2 rounded-2xl"
           onClick={addPhotoByLink}
         >
           Add&nbsp;photo
@@ -86,7 +87,7 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
               </button>
             </div>
           ))}
-        <label className="flex h-32 cursor-pointer justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 upload">
+        <label className="flex h-24 w-52 cursor-pointer justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 upload hover:scale-105 transition">
           <input
             type="file"
             multiple

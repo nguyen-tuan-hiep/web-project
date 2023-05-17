@@ -7,6 +7,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ReactSwitch from 'react-switch';
 import { ThemeContext } from '../App';
+import { IconButton } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 export const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -28,7 +31,19 @@ export const Header = () => {
       <SearchBar />
 
       <div className="switch">
-        <ReactSwitch onChange={toggleTheme} checked={theme === 'light'} />
+        {/* <Switch onChange={toggleTheme} checked={theme === 'light'} />
+         */}
+
+        <IconButton onClick={toggleTheme} className='flex hover:scale-110 transition transform duration-200 ease-out'>
+          {theme === 'dark' ? (
+            <Brightness7Icon style={{ color: 'white' }} />
+          ) : (
+            <Brightness4Icon style={{ color: 'black' }} />
+          )}
+        </IconButton>
+        <span style={{ color: theme === 'dark' ? 'white' : 'black', fontWeight: 600 }}>
+          Switch to {theme === 'light' ? 'dark' : 'light'} mode
+        </span>
       </div>
 
       <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">

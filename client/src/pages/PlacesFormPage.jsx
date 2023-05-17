@@ -94,9 +94,10 @@ const PlacesFormPage = () => {
       <form onSubmit={savePlace} className="mx-8">
         {preInput(
           'Title',
-          'title for your place. Should be short and catchy as in advertisement'
+          'Title for your place. Should be short and catchy as in advertisement'
         )}
         <input
+          id='title'
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -105,6 +106,7 @@ const PlacesFormPage = () => {
 
         {preInput('Address', 'Address to this place')}
         <input
+          id='address'
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           type="text"
@@ -119,7 +121,9 @@ const PlacesFormPage = () => {
         />
 
         {preInput('Description', 'description of the place')}
-        <textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
+        <textarea
+          id='desc'
+          value={desc} onChange={(e) => setDesc(e.target.value)} />
 
         {preInput('Perks', ' select all the perks of your place')}
         <Perks selected={perks} onChange={setPerks} />
@@ -138,7 +142,8 @@ const PlacesFormPage = () => {
           <div>
             <h3 className="mt-2 -mb-1">Check in time</h3>
             <input
-              type="text"
+              id='checkIn'
+              type="number"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
               placeholder="14"
@@ -147,7 +152,8 @@ const PlacesFormPage = () => {
           <div>
             <h3 className="mt-2 -mb-1">Check out time</h3>
             <input
-              type="text"
+              id='checkOut'
+              type="number"
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
               placeholder="11"
@@ -156,7 +162,8 @@ const PlacesFormPage = () => {
           <div>
             <h3 className="mt-2 -mb-1">Max number of guests</h3>
             <input
-              type="text"
+              id='maxGuests'
+              type="number"
               value={maxGuests}
               onChange={(e) => setMaxGuests(e.target.value)}
               placeholder="1"
@@ -165,7 +172,8 @@ const PlacesFormPage = () => {
           <div>
             <h3 className="mt-2 -mb-1">Price per night</h3>
             <input
-              type="text"
+              id='price'
+              type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="1"

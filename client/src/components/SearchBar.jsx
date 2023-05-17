@@ -33,6 +33,7 @@ const SearchBar = () => {
       <div className="flex w-3/5 md:w-1/2 bg-gray-300 border border-gray-400 rounded-full overflow-hidden shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-200 ease-out">
         <div className="grow">
           <input
+            id='search'
             type="search"
             placeholder="Where you want to go?"
             className="w-full py-2 px-6 border-none focus:outline-none  text-sm md:text-lg"

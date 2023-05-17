@@ -5,6 +5,9 @@ import TvOutlinedIcon from '@mui/icons-material/TvOutlined';
 import RadioOutlinedIcon from '@mui/icons-material/RadioOutlined';
 import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import BreakfastDiningOutlinedIcon from '@mui/icons-material/BreakfastDiningOutlined';
+import PoolOutlinedIcon from '@mui/icons-material/PoolOutlined';
+import { Checkbox, FormControlLabel } from '@mui/material';
 
 const Perks = ({ selected, onChange }) => {
   const handleCbClick = (e) => {
@@ -17,73 +20,198 @@ const Perks = ({ selected, onChange }) => {
   };
 
   return (
-    <div className="grid mt-3 gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-      <label className="border p-4 flex rounded-2xl gap-4 items-center cursor-pointer">
-        <input
-          type="checkbox"
-          checked={selected.includes('wifi')}
-          name="wifi"
-          onChange={handleCbClick}
+    <div className="grid mt-3 gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('wifi')}
+                name="wifi"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <WifiIcon className="mr-2" />
+            </div>
+          }
+          label="Free Wifi"
+          labelPlacement="end"
         />
-        <WifiIcon />
+      </div>
 
-        <span>Wifi</span>
-      </label>
-      <label className="border p-4 flex rounded-2xl gap-4 items-center cursor-pointer">
-        <input
-          type="checkbox"
-          checked={selected.includes('parking')}
-          name="parking"
-          onChange={handleCbClick}
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('parking')}
+                name="parking"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <LocalShippingOutlinedIcon className="mr-2" />
+            </div>
+          }
+          label="Free parking"
+          labelPlacement="end"
         />
-        <LocalShippingOutlinedIcon />
+      </div>
 
-        <span>Free parking spot</span>
-      </label>
-      <label className="border p-4 flex rounded-2xl gap-4 items-center cursor-pointer">
-        <input
-          type="checkbox"
-          checked={selected.includes('tv')}
-          name="tv"
-          onChange={handleCbClick}
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('breakfast')}
+                name="breakfast"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <BreakfastDiningOutlinedIcon className="mr-2" />
+            </div>
+          }
+          label="Free breakfast"
+          labelPlacement="end"
         />
-        <TvOutlinedIcon />
+      </div>
 
-        <span>TV</span>
-      </label>
-      <label className="border p-4 flex rounded-2xl gap-4 items-center cursor-pointer">
-        <input
-          type="checkbox"
-          checked={selected.includes('radio')}
-          name="radio"
-          onChange={handleCbClick}
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('pool')}
+                name="pool"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <PoolOutlinedIcon className="mr-2" />
+            </div>
+          }
+          label="Private pool"
+          labelPlacement="end"
         />
-        <RadioOutlinedIcon />
+      </div>
 
-        <span>Radio</span>
-      </label>
-      <label className="border p-4 flex rounded-2xl gap-4 items-center cursor-pointer">
-        <input
-          type="checkbox"
-          checked={selected.includes('pets')}
-          name="pets"
-          onChange={handleCbClick}
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('tv')}
+                name="tv"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <TvOutlinedIcon className="mr-3" />
+            </div>
+          }
+          label="TV"
+          labelPlacement="end"
         />
-        <PetsOutlinedIcon />
+      </div>
 
-        <span>Pets</span>
-      </label>
-      <label className="border p-4 flex rounded-2xl gap-4 items-center cursor-pointer">
-        <input
-          type="checkbox"
-          checked={selected.includes('enterence')}
-          name="enterence"
-          onChange={handleCbClick}
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('radio')}
+                name="radio"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <RadioOutlinedIcon className="mr-3" />
+            </div>
+          }
+          label="Radio"
+          labelPlacement="end"
         />
-        <LoginOutlinedIcon />
+      </div>
 
-        <span>Private Entrance</span>
-      </label>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('pets')}
+                name="pets"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <PetsOutlinedIcon className="mr-3" />
+            </div>
+          }
+          label="Pets"
+          labelPlacement="end"
+        />
+      </div>
+
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
+        <FormControlLabel
+          control={
+            <div>
+              <Checkbox
+                className="checkbox"
+                checked={selected.includes('enterence')}
+                name="enterence"
+                onChange={handleCbClick}
+                sx={{
+                  color: 'black',
+                  '&.Mui-checked': {
+                    color: 'pink',
+                  },
+                }}
+              />
+              <LoginOutlinedIcon className="mr-3" />
+            </div>
+          }
+          label="Private Entrance"
+          labelPlacement="end"
+        />
+      </div>
     </div>
   );
 };
