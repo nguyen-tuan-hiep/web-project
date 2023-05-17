@@ -5,6 +5,7 @@ import PhotosUploader from '../components/PhotosUploader';
 import AccountNav from '../components/AccountNav';
 import { Navigate, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
+import { toast } from 'react-toastify';
 
 const PlacesFormPage = () => {
   const { id } = useParams();
@@ -15,8 +16,8 @@ const PlacesFormPage = () => {
   const [addedPhotos, setAddedPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
   const [extraInfo, setExtraInfo] = useState('');
-  const [checkIn, setCheckIn] = useState('');
-  const [checkOut, setCheckOut] = useState('');
+  const [checkIn, setCheckIn] = useState(0);
+  const [checkOut, setCheckOut] = useState(24);
   const [maxGuests, setMaxGuests] = useState(1);
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
@@ -52,8 +53,21 @@ const PlacesFormPage = () => {
     );
   };
 
+  const isEmptyOrSpaces = (str) => {
+    return str === null || str.match(/^ *$/) !== null;
+  }
+
   const savePlace = async (e) => {
     e.preventDefault();
+    if (isEmptyOrSpaces(title)) {
+      toast.error("Title is required");
+      return;
+    }
+    if (isEmptyOrSpaces(address)) {
+      toast.error("Address is required");
+      return;
+    }
+
     const placeData = {
       title,
       address,
@@ -72,9 +86,11 @@ const PlacesFormPage = () => {
         id,
         ...placeData,
       });
+      toast.success(data.message)
     } else {
       // new place
       const { data } = await axios.post('/places/add-places', placeData);
+      toast.success(data.message)
     }
 
     setRedirect(true);
@@ -136,7 +152,7 @@ const PlacesFormPage = () => {
 
         {preInput(
           'Check in & Check out times',
-          'add check in and out times, remember to have some time window forcleaning the room between guests. '
+          'add check in and out times, remember to have some time window for cleaning the room between guests. '
         )}
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
           <div>

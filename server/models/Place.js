@@ -24,15 +24,19 @@ const placeSchema = new mongoose.Schema({
   },
   checkIn: {
     type: Number,
+    required: true,
   },
   checkOut: {
     type: Number,
+    required: true,
   },
   maxGuests: {
     type: Number,
+    required: true,
   },
   price: {
     type: Number,
+    required: true,
   },
 });
 

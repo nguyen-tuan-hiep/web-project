@@ -20,7 +20,7 @@ const LoginPage = () => {
       setItemsInLocalStorage('token', data.token);
       setUser(data.user);
 
-      toast.success('Login successfull!');
+      toast.success('Login successfully!');
       setRedirect(true);
     } catch (err) {
       if (err.response) {
