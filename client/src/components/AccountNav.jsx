@@ -48,7 +48,7 @@ const AccountNav = () => {
         <Link className={linkClases('places')} to={'/account/places'}>
           <div className='icon'>
           <AddHomeIcon  />
-          My accomodations
+          My accommodations
           </div>
         </Link>
       </div>
