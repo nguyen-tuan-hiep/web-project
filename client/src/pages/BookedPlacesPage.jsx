@@ -6,10 +6,11 @@ import BookingDates from '../components/BookingDates';
 import Spinner from '../components/Spinner';
 import PlaceImg from '../components/PlaceImg';
 import PaymentIcon from '@mui/icons-material/Payment';
+import { getItemFromLocalStorage } from '../utils/index.js';
 
 const BookedPlacesPage = () => {
   const navigate = useNavigate();
-
+  const token = getItemFromLocalStorage('token');
   const handleStartPlanning = () => {
     navigate('/'); // Call navigate when button is clicked
   };
@@ -19,7 +20,11 @@ const BookedPlacesPage = () => {
   useEffect(() => {
     if (id) {
       const getBookings = async () => {
-        const { data } = await axios.get('/bookings');
+        const { data } = await axios.get('/bookings', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         if (data.error) {
           toast.error(data.error.message);
         }
