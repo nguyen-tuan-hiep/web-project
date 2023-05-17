@@ -12,6 +12,8 @@ const PlacesFormPage = () => {
 
   const [title, setTitle] = useState('');
   const [address, setAddress] = useState('');
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
   const [desc, setDesc] = useState('');
   const [addedPhotos, setAddedPhotos] = useState([]);
   const [perks, setPerks] = useState([]);
@@ -32,6 +34,8 @@ const PlacesFormPage = () => {
       const { place } = response.data;
       setTitle(place.title);
       setAddress(place.address);
+      setLat(place.lat);
+      setLong(place.long);
       setAddedPhotos(place.photos);
       setDesc(place.description);
       setPerks(place.perks);
@@ -71,6 +75,8 @@ const PlacesFormPage = () => {
     const placeData = {
       title,
       address,
+      lat,
+      long,
       addedPhotos,
       desc,
       perks,

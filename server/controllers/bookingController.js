@@ -37,9 +37,10 @@ exports.getBookings = async (req, res) => {
         .status(401)
         .json({ error: 'You are not authorized to access this page!' });
     }
+    const data = await Booking.find({ user: userData.id }).populate('place');
     res
       .status(200)
-      .json(await Booking.find({ user: userData.id }).populate('place'));
+      .json(data);
   } catch (err) {
     console.log(err);
     res.status(500).json({
