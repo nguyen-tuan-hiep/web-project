@@ -14,11 +14,11 @@ const BookedPlacesPage = () => {
   const handleStartPlanning = () => {
     navigate('/'); // Call navigate when button is clicked
   };
-  const { id } = useParams();
+  // const { id } = useParams();
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    if (id) {
+
       const getBookings = async () => {
         const { data } = await axios.get('/bookings', {
           headers: {
@@ -32,8 +32,8 @@ const BookedPlacesPage = () => {
         setLoading(false);
       };
       getBookings();
-    }
-  }, [id]);
+
+  }, []);
 
   if (loading) {
     return <Spinner />;
