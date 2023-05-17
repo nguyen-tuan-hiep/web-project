@@ -5,7 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
-  const [searchTimeout, setSearchTimeout] = useState(null);
   const { setPlaces, setLoading } = useContext(PlaceContext);
   const handleSearch = async (e) => {
     setLoading(true);
