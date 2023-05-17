@@ -113,6 +113,13 @@ const AI = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div id="app" className="mx-8">
       <div id="chat_container"></div>
@@ -122,6 +129,7 @@ const AI = () => {
           placeholder="Ask Something..."
           cols="1"
           rows="1"
+          onKeyDown={handleKeyDown} 
         ></textarea>
         <button
           type="submit"
