@@ -44,7 +44,7 @@ app.use(
 // use express router
 app.use('/', require('./routes'));
 
-app.listen(process.env.PORT || 8000, (err) => {
+app.listen(process.env.PORT || 8001, (err) => {
   if (err) {
     console.log('Error in connecting to server: ', err);
   }
