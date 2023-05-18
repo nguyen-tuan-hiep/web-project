@@ -1,11 +1,10 @@
-  import React from 'react';
+import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../providers/UserProvider';
 import SearchBar from './SearchBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ReactSwitch from 'react-switch';
 import { ThemeContext } from '../App';
 import { IconButton } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -31,8 +30,10 @@ export const Header = () => {
       <SearchBar />
 
       <div className="switch">
-
-        <IconButton onClick={toggleTheme} className='flex hover:scale-110 transition transform duration-200 ease-out'>
+        <IconButton
+          onClick={toggleTheme}
+          className="flex hover:scale-110 transition transform duration-200 ease-out"
+        >
           {theme === 'dark' ? (
             <Brightness7Icon style={{ color: 'white' }} />
           ) : (
