@@ -62,8 +62,6 @@ const PlacesFormPage = () => {
 
   const savePlace = async (e) => {
     const token = getItemFromLocalStorage('token');
-    console.log('Get token from local: ', token);
-    console.log("ưefwe");
     e.preventDefault();
     if (isEmptyOrSpaces(title)) {
       toast.error('Title is required');

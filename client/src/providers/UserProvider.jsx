@@ -12,8 +12,11 @@ export const UserProvider = ({ children }) => {
     if (!user) {
       const token = getItemFromLocalStorage('token');
       if (token) {
-        axios.get('/user/profile').then(({ data }) => {
-          console.log('Get token from local storage');
+        axios.get('/user/profile',{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }).then(({ data }) => {
           setUser(data);
           setLoading(false);
         });
