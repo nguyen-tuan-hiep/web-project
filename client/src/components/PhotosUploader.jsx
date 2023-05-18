@@ -87,15 +87,14 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
               </button>
             </div>
           ))}
-        <label className="flex h-24 w-52 cursor-pointer justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600 upload hover:scale-105 transition">
+        <label className="flex h-24 w-35 cursor-pointer justify-center items-center gap-1 border bg-transparent rounded-2xl p-2 text-xl text-gray-600 upload hover:scale-105 transition">
           <input
             type="file"
             multiple
             className="hidden"
             onChange={uploadPhoto}
           />
-          <DriveFolderUploadIcon />
-          Upload
+          <div style={{textAlign: 'center'}}><DriveFolderUploadIcon />{'\nUpload'}</div>
         </label>
       </div>
     </>
