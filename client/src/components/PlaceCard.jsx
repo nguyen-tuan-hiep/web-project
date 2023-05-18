@@ -3,13 +3,18 @@ import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
 import PlaceImg from './PlaceImg';
+import { getItemFromLocalStorage } from '../utils/index.js';
 
 const PlaceCard = ({ place }) => {
   const [deleted, setDeleted] = useState(false); // Declare state variable and function
   const navigate = useNavigate();
   const deletePlace = async (id) => {
     try {
-      const res = await axios.delete(`/places/${id}`);
+      const res = await axios.delete(`/places/${id}`, {
+        headers: {
+          Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
+        },
+      });
       setDeleted(true); // Update state after succesful deletion
     } catch (err) {
       console.error(err);
