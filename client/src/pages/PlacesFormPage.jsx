@@ -23,8 +23,6 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
-  const {lat, setLat} = useContext(MapContext);
-  const {lng, setLng} = useContext(MapContext);
   const {address, setAddress} = useContext(MapContext);
 
   useEffect(() => {
@@ -36,8 +34,6 @@ const PlacesFormPage = () => {
       const { place } = response.data;
       setTitle(place.title);
       setAddress(place.address);
-      setLat(place.lat);
-      setLng(place.long);
       setAddedPhotos(place.photos);
       setDesc(place.description);
       setPerks(place.perks);
@@ -77,8 +73,6 @@ const PlacesFormPage = () => {
     const placeData = {
       title,
       address,
-      lat,
-      long: lng,
       addedPhotos,
       desc,
       perks,
@@ -138,26 +132,6 @@ const PlacesFormPage = () => {
               type="text"
               placeholder="address"
             />
-            <div>
-              <h3 className='mt-2 -mb-1'>Lat</h3>
-              <input
-                id='lat'
-                type='number'
-                value={lat}
-                onChange={(e) => setLat(e.target.value)}
-                placeholder='0'
-              />
-            </div>
-            <div>
-              <h3 className='mt-2 -mb-1'>Long</h3>
-              <input
-                id='long'
-                type='number'
-                value={lng}
-                onChange={(e) => setLng(e.target.value)}
-                placeholder='0'
-              />
-            </div>
             {preInput('Photos', 'more = better')}
 
             <PhotosUploader
