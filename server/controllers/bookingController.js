@@ -4,18 +4,16 @@ const userFromToken = require('../utils/userFromToken');
 exports.createBookings = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const { place, checkIn, checkOut, numOfGuests, name, phone, price } =
-      req.body;
-
+    const infoData = req.body.infoData;
     const booking = await Booking.create({
       user: userData.id,
-      place,
-      checkIn,
-      checkOut,
-      numOfGuests,
-      name,
-      phone,
-      price,
+      place: infoData.place,
+      checkIn: infoData.checkIn,
+      checkOut: infoData.checkOut,
+      numOfGuests: infoData.numOfGuests,
+      name: infoData.name,
+      phone: infoData.phone,
+      price: infoData.price,
     });
 
     res.status(200).json({
