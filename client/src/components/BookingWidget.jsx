@@ -83,6 +83,7 @@ const BookingWidget = ({ place }) => {
             textField={(params) => <TextField {...params} />}
             format="dd/MM/yyyy"
             minDate={new Date()}
+            maxDate={checkOut ? new Date(checkOut) : new Date('2099-12-31')}
           />
           <DatePicker
             label="Check out"
@@ -106,6 +107,7 @@ const BookingWidget = ({ place }) => {
             InputProps={{
               inputProps: {
                 min: 0, // Set min value to 0 to prevent negative numbers
+                max: place.maxGuests
               },
             }}
 
