@@ -14,7 +14,7 @@ import { getItemFromLocalStorage } from '../utils/index.js';
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);
   const [checkOut, setCheckOut] = useState(null);
-  const [noOfGuests, setNoOfGuests] = useState(0);
+  const [numOfGuests, setNumOfGuests] = useState(0);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [redirect, setRedirect] = useState('');
@@ -44,20 +44,21 @@ const BookingWidget = ({ place }) => {
       toast.error('Phone is required (10 numbers)');
       return;
     }
-    const response = await axios.post('/bookings', {
+    const infoData = {
       checkIn,
       checkOut,
-      noOfGuests,
+      numOfGuests,
       name,
       phone,
       place: place._id,
-      price: numberOfNights * place.price,
-    }, {
+      price: numberOfNights * place.price,}
+    await axios.post('/bookings',
+      {infoData},
+      {
       headers: {
         Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
       },
     });
-    console.log(response.data);
 
     // const bookingId = response.data._id;
 
@@ -99,12 +100,15 @@ const BookingWidget = ({ place }) => {
             label="Number or guest"
             variant="outlined"
             type="number"
+            value={numOfGuests}
+            onChange={(e) => {setNumOfGuests(e.target.value)}}
             style={{ width: '100%', padding: '0px' }}
             InputProps={{
               inputProps: {
                 min: 0, // Set min value to 0 to prevent negative numbers
               },
             }}
+
           />
         </div>
         {numberOfNights > 0 && (
