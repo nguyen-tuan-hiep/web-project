@@ -13,6 +13,7 @@ export const UserProvider = ({ children }) => {
       const token = getItemFromLocalStorage('token');
       if (token) {
         axios.get('/user/profile').then(({ data }) => {
+          console.log('Get token from local storage');
           setUser(data);
           setLoading(false);
         });
