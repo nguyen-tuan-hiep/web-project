@@ -5,30 +5,19 @@ const userFromToken = require('../utils/userFromToken');
 exports.addPlace = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const {
-      title,
-      address,
-      addedPhotos,
-      desc,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-      price,
-    } = req.body;
+    const infoData = req.body.placeData;
     const place = await Place.create({
       owner: userData.id,
-      title,
-      address,
-      photos: addedPhotos,
-      description: desc,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-      price,
+      title: infoData.title,
+      address: infoData.address,
+      photos: infoData.addedPhotos,
+      description: infoData.desc,
+      perks: infoData.perks,
+      extraInfo: infoData.extraInfo,
+      checkIn: infoData.checkIn,
+      checkOut: infoData.checkOut,
+      maxGuests: infoData.maxGuests,
+      price: infoData.price,
     });
     res.status(200).json({
       place,
@@ -58,40 +47,24 @@ exports.getPlaces = async (req, res) => {
 exports.updatePlace = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    const userId = userData.id;
-    const {
-      id,
-      title,
-      address,
-      addedPhotos,
-      desc,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-      price,
-    } = req.body;
-
-    const place = await Place.findById(id);
-    if (userId === place.owner.toString()) {
-      place.set({
-        title,
-        address,
-        photos: addedPhotos,
-        description: desc,
-        perks,
-        extraInfo,
-        checkIn,
-        checkOut,
-        maxGuests,
-        price,
-      });
-      await place.save();
-      res.status(200).json({
-        message: 'Place updated!',
-      });
-    }
+    const infoData = req.body.placeData;
+    const place = await Place.create({
+      owner: userData.id,
+      title: infoData.title,
+      address: infoData.address,
+      photos: infoData.addedPhotos,
+      description: infoData.desc,
+      perks: infoData.perks,
+      extraInfo: infoData.extraInfo,
+      checkIn: infoData.checkIn,
+      checkOut: infoData.checkOut,
+      maxGuests: infoData.maxGuests,
+      price: infoData.price,
+    });
+    await place.save();
+    res.status(200).json({
+      message: 'Place updated!',
+    });
   } catch (err) {
     res.status(500).json({
       message: 'Internal server error',
