@@ -4,12 +4,13 @@ import axios from 'axios';
 import MicIcon from '@mui/icons-material/Mic';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
+import { ThemeContext } from '../App.jsx';
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
   const { setPlaces, setLoading } = useContext(PlaceContext);
   const [isListening, setIsListening] = useState(false);
-
+  const {theme} = useContext(ThemeContext);
   let speech;
   if (window.webkitSpeechRecognition) {
     const SpeechRecognition = webkitSpeechRecognition;
@@ -74,7 +75,11 @@ const SearchBar = () => {
             value={searchText}
           />
         </div>
-        <IconButton className="right-0" onClick={listen}>
+        <IconButton variant="contained"
+                    sx={{":hover": {
+                        backgroundColor: theme === 'dark' ? '#8a8a8a' : '#eeeeee'
+                      }, borderRadius: '0', backgroundColor: theme === 'dark' ? '#a2a2a2' : 'white'}}
+                    className=" right-0" onClick={listen}>
           <MicIcon className={`microphone ${isListening && 'isListening'}`} />
         </IconButton>
 
