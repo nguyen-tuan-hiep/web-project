@@ -20,11 +20,11 @@ const SearchBar = () => {
 
   const listen = () => {
     setIsListening(!isListening);
-    if (isListening) {
-      speech.stop();
-    } else {
-      speech.start();
-    }
+    // if (isListening) {
+    //   speech.stop();
+    // } else {
+    speech.start();
+    // }
   };
 
   if (speech === null) {
@@ -50,7 +50,6 @@ const SearchBar = () => {
       return e.target.value;
     };
     // debounce method
-    console.log(`/places/search/${searching()}`);
     const { data } = await axios.get(`/places/search/${searching()}`);
     setPlaces(data);
     setLoading(false);
@@ -70,17 +69,15 @@ const SearchBar = () => {
             id="search"
             type="search"
             placeholder="Search for a place"
-            className="w-full py-2 px-6 border-none focus:outline-none  text-sm md:text-lg"
+            className="w-full py-2 px-6 border-none focus:outline-none"
             onChange={(e) => handleSearch(e)}
             value={searchText}
           />
         </div>
-        <IconButton>
-          <MicIcon
-            className={`microphone ${isListening && 'isListening'}`}
-            onClick={listen}
-          />
+        <IconButton className="right-0" onClick={listen}>
+          <MicIcon className={`microphone ${isListening && 'isListening'}`} />
         </IconButton>
+
         <div className="flex  bg-blue text-white cursor-pointer">
           <button
             className="flex py-2 px-4 md:p-2 bg-primary hover:bg-red-700 transition rounded-r-full"

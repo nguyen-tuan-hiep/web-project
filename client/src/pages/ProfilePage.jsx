@@ -22,6 +22,7 @@ const ProfilePage = () => {
     removeItemFromLocalStorage('token');
     toast.success('Logged out');
     setRedirect('/');
+    window.location.reload();
   };
 
   if (loading) {

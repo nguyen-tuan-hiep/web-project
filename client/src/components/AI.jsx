@@ -80,8 +80,6 @@ const AI = () => {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
 
-    console.log(places);
-
     const response = await fetch('http://localhost:8001/chatbot', {
       method: 'POST',
       headers: {
@@ -129,15 +127,15 @@ const AI = () => {
           placeholder="Ask Something..."
           cols="1"
           rows="1"
-          onKeyDown={handleKeyDown} 
+          onKeyDown={handleKeyDown}
         ></textarea>
-        <button
+        {/* <button
           type="submit"
           onClick={handleSubmit}
           className="font-semibold border border-black px-4 py-2 rounded-lg bg-transparent hover:bg-slate-100 hover:transition-all"
         >
           Click
-        </button>
+        </button> */}
       </form>
     </div>
   );
