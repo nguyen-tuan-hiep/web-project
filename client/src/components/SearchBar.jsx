@@ -64,7 +64,7 @@ const SearchBar = () => {
   return (
     <>
       <div className="flex w-3/5 md:w-1/2 border border-gray-400 rounded-full overflow-hidden shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-200 ease-out">
-        <div className="grow">
+        <div className="grow flex search-icon">
           <input
             id="search"
             type="search"
@@ -73,10 +73,10 @@ const SearchBar = () => {
             onChange={(e) => handleSearch(e)}
             value={searchText}
           />
+          <IconButton className="right-2" onClick={listen}>
+            <MicIcon className={`microphone ${isListening && 'isListening'}`} />
+          </IconButton>
         </div>
-        <IconButton className="right-0" onClick={listen}>
-          <MicIcon className={`microphone ${isListening && 'isListening'}`} />
-        </IconButton>
 
         <div className="flex  bg-blue text-white cursor-pointer">
           <button
@@ -84,7 +84,7 @@ const SearchBar = () => {
             onClick={(e) => handleSearch(e)}
           >
             <SearchIcon />
-            <span className="hidden md:block ml-1">Search</span>
+            <span className="hidden md:block mx-2">Search</span>
           </button>
         </div>
       </div>

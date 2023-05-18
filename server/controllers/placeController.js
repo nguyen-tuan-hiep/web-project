@@ -168,7 +168,7 @@ exports.deletePlace = async (req, res) => {
 
     if (userId === place.owner.toString()) {
       await Booking.deleteMany({ place: id }); // Delete all bookings related to the place from the database
-      await Place.findByIdAndDelete(id); // Delete the place from the database
+      await Place.findByIdAndDelete(id);
       res.status(200).json({
         message: 'Place and its bookings deleted!',
       });
