@@ -4,7 +4,6 @@ const userFromToken = require('../utils/userFromToken');
 exports.createBookings = async (req, res) => {
   try {
     const userData = userFromToken(req);
-    await Booking.deleteMany({ user: userData.id });
     const { place, checkIn, checkOut, numOfGuests, name, phone, price } =
       req.body;
 
