@@ -5,6 +5,7 @@ const Image = ({ src, ...rest }) => {
   function handleClick(event) {
     event.preventDefault();
     console.log('Button clicked');
+    // Function to handle new bookmark
   }
 
   return (
