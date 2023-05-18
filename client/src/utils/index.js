@@ -6,8 +6,6 @@ export const setItemsInLocalStorage = (key, value) => {
   const valueToStore =
     typeof value !== 'string' ? JSON.stringify(value) : value;
   localStorage.setItem(key, valueToStore);
-  console.log(`Key "${key}" has setted value = ${valueToStore}`);
-  console.log('localStorage: ', localStorage);
 };
 
 export const getItemFromLocalStorage = (key) => {
