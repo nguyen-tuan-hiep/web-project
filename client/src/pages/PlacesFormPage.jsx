@@ -8,6 +8,7 @@ import Spinner from '../components/Spinner';
 import { toast } from 'react-toastify';
 import MapWidget from '../components/MapWidget.jsx';
 import { MapContext } from '../providers/MapProvider.jsx';
+import { getItemFromLocalStorage } from '../utils/index.js';
 
 const PlacesFormPage = () => {
   const { id } = useParams();
@@ -60,6 +61,8 @@ const PlacesFormPage = () => {
   };
 
   const savePlace = async (e) => {
+    const token = getItemFromLocalStorage('token');
+    console.log('Get token from local: ', token);
     console.log("ưefwe");
     e.preventDefault();
     if (isEmptyOrSpaces(title)) {
@@ -86,14 +89,19 @@ const PlacesFormPage = () => {
     console.log(placeData);
     if (id) {
       // update existing place
-      const { data } = await axios.put('/places/update-place', {
-        id,
-        ...placeData,
-      });
+      const { data } = await axios.put('/places/update-place',
+        {id, ...placeData},
+        {headers: {
+          Authorization: `Bearer ${token}`,
+        },});
       toast.success(data.message);
     } else {
       // new place
-      const { data } = await axios.post('/places/add-places', placeData);
+      const { data } = await axios.post('/places/add-places',
+        { placeData },
+        {headers: {
+            Authorization: `Bearer ${token}`,
+          },});
       toast.success(data.message);
     }
     setRedirect(true);

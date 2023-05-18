@@ -9,6 +9,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { UserContext } from '../providers/UserProvider';
 import { toast } from 'react-toastify';
+import { getItemFromLocalStorage } from '../utils/index.js';
 
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);
@@ -51,6 +52,10 @@ const BookingWidget = ({ place }) => {
       phone,
       place: place._id,
       price: numberOfNights * place.price,
+    }, {
+      headers: {
+        Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
+      },
     });
     console.log(response.data);
 
