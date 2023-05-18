@@ -24,7 +24,7 @@ const MapWidget = (id) => {
   };
 
   return (
-    <div style={{marginTop: '20%',position: 'relative', height: '50vh', width: '100%' }}>
+    <div style={{marginTop: '5%',position: 'relative', height: '50vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8' }}
         defaultCenter={{ lat: 21.09, lng: 105.80 }}
