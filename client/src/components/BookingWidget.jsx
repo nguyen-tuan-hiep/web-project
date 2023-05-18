@@ -32,15 +32,15 @@ const BookingWidget = ({ place }) => {
 
   const handleBooking = async () => {
     if (checkIn === null || checkOut === null) {
-      toast.error('Check in and out must be required');
+      toast.error('Check-in & check-out time is required');
       return;
     }
     if (name === null || name.match(/^ *$/) !== null) {
-      toast.error('Name must be required');
+      toast.error('Name is required');
       return;
     }
     if (phone === null || phone === "" || phone.match(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/) === null) {
-      toast.error('Phone must be required');
+      toast.error('Phone is required (10 numbers)');
       return;
     }
     const response = await axios.post('/bookings', {
@@ -52,10 +52,11 @@ const BookingWidget = ({ place }) => {
       place: place._id,
       price: numberOfNights * place.price,
     });
+    console.log(response.data);
 
     // const bookingId = response.data._id;
 
-    setRedirect(`/account/bookings/${response.data.booking.user}`);
+    setRedirect(`/account/bookings/`);
   };
 
   if (redirect) {

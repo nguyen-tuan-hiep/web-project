@@ -1,4 +1,5 @@
 const Place = require('../models/Place');
+const Booking = require('../models/Booking');
 const userFromToken = require('../utils/userFromToken');
 
 exports.addPlace = async (req, res) => {
@@ -31,7 +32,7 @@ exports.addPlace = async (req, res) => {
     });
     res.status(200).json({
       place,
-      message: 'Add new accommodation successfully'
+      message: 'Add new accommodation successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -166,9 +167,10 @@ exports.deletePlace = async (req, res) => {
     }
 
     if (userId === place.owner.toString()) {
+      await Booking.deleteMany({ place: id }); // Delete all bookings related to the place from the database
       await Place.findByIdAndDelete(id); // Delete the place from the database
       res.status(200).json({
-        message: 'Place deleted!',
+        message: 'Place and its bookings deleted!',
       });
     } else {
       res.status(403).json({

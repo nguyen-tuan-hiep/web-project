@@ -60,6 +60,7 @@ const PlacesFormPage = () => {
   };
 
   const savePlace = async (e) => {
+    console.log("ưefwe");
     e.preventDefault();
     if (isEmptyOrSpaces(title)) {
       toast.error('Title is required');

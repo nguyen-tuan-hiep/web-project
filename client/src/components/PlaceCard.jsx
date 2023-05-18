@@ -10,17 +10,21 @@ const PlaceCard = ({ place }) => {
   const deletePlace = async (id) => {
     try {
       const res = await axios.delete(`/places/${id}`);
-      console.log(res);
       setDeleted(true); // Update state after succesful deletion
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
-  const handleDelete = (event) => {
-    event.stopPropagation();
-    deletePlace(place._id);
-    event.preventDefault();
+  const handleDelete = async (event) => {
+    try {
+      event.stopPropagation();
+      await deletePlace(place._id);
+      event.preventDefault();
+    } catch (err) {
+      console.error(err);
+      alert('Failed to delete place'); // Display an error message to the user
+    }
   };
 
   const handleUpdate = () => {

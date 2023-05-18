@@ -17,7 +17,7 @@ export const Header = () => {
     <header className="flex items-center justify-between">
       <Link to={'/'} className="flex items-center gap-1">
         <img
-          className="h-8 w-8 md:h-10 md:w-10"
+          className="h-8 w-8 md:h-10 md:w-10 min-w-[36px]"
           src="https://cdn-icons-png.flaticon.com/512/2111/2111320.png"
           alt=""
         />
@@ -26,7 +26,6 @@ export const Header = () => {
           airbnb
         </span>
       </Link>
-
       <SearchBar />
 
       <div className="switch">
@@ -51,7 +50,7 @@ export const Header = () => {
           <div className="overflow-hidden">
             <AccountCircleIcon />
           </div>
-          {user && <div className="username">{user.name}</div>}
+          {user && <div className="hidden sm:block username">{user.name}</div>}
         </Link>
       </div>
     </header>

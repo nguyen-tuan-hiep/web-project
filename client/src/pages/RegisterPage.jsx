@@ -25,7 +25,7 @@ const RegisterPage = () => {
       } else if (err.request) {
         toast.error(err.request);
       } else {
-        console.log('Error: ', err.message);
+        console.error('Error: ', err.message);
       }
     }
   };

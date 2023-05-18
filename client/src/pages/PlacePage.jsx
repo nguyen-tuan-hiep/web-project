@@ -66,7 +66,7 @@ const PlacePage = () => {
         <PlaceGallery place={place} />
       </div>
 
-      <div className="mt-8 mb-8 gap-0 grid grid-cols-1 md:grid-cols-[6fr_5fr]">
+      <div className="mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[6fr_5fr]">
         <div className="pl-20">
           <div className="my-4">
             <h2 className="font-semibold text-2xl">Description</h2>

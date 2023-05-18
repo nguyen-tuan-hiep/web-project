@@ -31,8 +31,6 @@ const BookedPlacesPage = () => {
           toast.error(data.error.message);
         }
         await setBookings(data);
-        console.log(data);
-        console.log(`book: ${bookings}`);
         setLoading(false);
       };
 
