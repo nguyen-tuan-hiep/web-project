@@ -139,7 +139,7 @@ const PlacesFormPage = () => {
               setAddedPhotos={setAddedPhotos}
             />
           </div>
-          <MapWidget id={id} />
+          <MapWidget />
         </div>
 
 
