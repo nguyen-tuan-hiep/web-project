@@ -5,8 +5,8 @@ import Header from './Header';
 const Layout = () => {
   return (
     <div className="py-4 px-8 flex flex-col">
-      {/* <Header /> */}
-      {/* <Outlet /> */}
+       <Header />
+       <Outlet />
     </div>
   );
 };
