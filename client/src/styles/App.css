@@ -170,3 +170,10 @@
 #dark .input-bookings {
   background-color: #d9d9d9;
 }
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}

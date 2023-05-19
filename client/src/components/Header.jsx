@@ -11,7 +11,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { HeartIcon } from '@heroicons/react/solid';
 
-export const Header = () => {
+const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   return (
@@ -67,3 +67,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;
