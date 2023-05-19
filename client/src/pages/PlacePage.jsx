@@ -5,29 +5,9 @@ import AddressLink from '../components/AddressLink';
 import BookingWidget from '../components/BookingWidget';
 import PlaceGallery from '../components/PlaceGallery';
 import Spinner from '../components/Spinner';
-import { thingsToKnow } from '../components/constants';
 import ThingsToKnow from '../components/ThingsToKnow';
 
 const PlacePage = () => {
-  // const thingsToKnowContent = (
-  //   <div className="grid grid-cols-3 ">
-  //     {thingsToKnow.map((item) => (
-  //       <div key={item.title}>
-  //         <h4 className="font-semibold text-lg pb-2">{item.title}</h4>
-  //         {item.content.map((itemContent) => (
-  //           <div
-  //             key={itemContent.name}
-  //             className="flex items-center gap-2 pb-3"
-  //           >
-  //             {itemContent?.icon}
-  //             <p>{itemContent.name}</p>
-  //           </div>
-  //         ))}
-  //       </div>
-  //     ))}
-  //   </div>
-  // );
-
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -79,6 +59,18 @@ const PlacePage = () => {
             <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
           </div>
           <div className="text-sm leading-5 mb-4 mt-2">{place.extraInfo}</div>
+          <div>
+            <h2 className="font-semibold text-2xl mt-4">Perks</h2>
+          </div>
+          <div>
+          <div className="text-sm leading-5 mb-4 mt-2">
+            {place.perks.map((item) => (
+              <div className="mx-auto" key={item}>
+                {item}
+              </div>
+            ))}
+          </div>
+          </div>
         </div>
         <div>
           <BookingWidget place={place} />
