@@ -5,6 +5,7 @@ import AddressLink from '../components/AddressLink';
 import PlaceGallery from '../components/PlaceGallery';
 import BookingDates from '../components/BookingDates';
 import PaymentIcon from '@mui/icons-material/Payment';
+import ThingsToKnow from '../components/ThingsToKnow';
 
 export default function BookedCancelPage() {
   const { id } = useParams();
@@ -73,6 +74,9 @@ export default function BookedCancelPage() {
       </div>
       <div className="relative z-30">
         <PlaceGallery place={booking.place} />
+      </div>
+      <div className='border-t mt-10'>
+        <ThingsToKnow/>
       </div>
     </div>
   );
