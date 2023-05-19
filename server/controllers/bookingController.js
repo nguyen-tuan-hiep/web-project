@@ -54,18 +54,20 @@ exports.deleteBooking = async (req, res) => {
         .status(401)
         .json({ error: 'You are not authorized to access this page!' });
     }
-    await Booking.deleteMany({ user: userData.id });
+
     const booking = await Booking.findById(req.params.id);
     if (!booking) {
       return res.status(404).json({
         message: 'Booking not found',
       });
     }
+
     if (booking.user.toString() !== userData.id) {
       return res.status(401).json({
         message: 'You are not authorized to delete this booking',
       });
     }
+
     await booking.remove();
     res.status(200).json({
       message: 'Booking deleted successfully',
