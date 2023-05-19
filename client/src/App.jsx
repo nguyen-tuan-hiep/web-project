@@ -8,6 +8,7 @@ import axios from 'axios';
 import PlacesPage from './pages/PlacesPage';
 import PlacesFormPage from './pages/PlacesFormPage';
 import PlacePage from './pages/PlacePage';
+import BookedCancelPage from './pages/BookedCancelPage';
 import { getItemFromLocalStorage } from './utils';
 import BookedPlacesPage from './pages/BookedPlacesPage';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -61,6 +62,10 @@ function App() {
                   <Route
                     path="/account/bookings"
                     element={<BookedPlacesPage />}
+                  />
+                  <Route
+                    path="/account/bookings/:id"
+                    element={<BookedCancelPage />}
                   />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
