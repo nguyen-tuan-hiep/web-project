@@ -48,13 +48,13 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
 
   return (
     <>
-      <div className="flex gap-2">
+      <div className="flex gap-3">
         <input
-          id='photoLink'
+          id="photoLink"
           value={photoLink}
           onChange={(e) => setphotoLink(e.target.value)}
           type="text"
-          placeholder="Add using a link ...jpg"
+          placeholder="Add image link here or upload from your device"
         />
         <button
           className="bg-primary hover:bg-red-700 hover:scale-105 transition text-white px-4 my-2 rounded-2xl"
@@ -94,7 +94,10 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
             className="hidden"
             onChange={uploadPhoto}
           />
-          <div style={{textAlign: 'center'}}><DriveFolderUploadIcon />{'\nUpload'}</div>
+          <div style={{ textAlign: 'center' }}>
+            <DriveFolderUploadIcon />
+            {'\nUpload'}
+          </div>
         </label>
       </div>
     </>

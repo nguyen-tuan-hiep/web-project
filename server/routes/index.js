@@ -14,34 +14,33 @@ router.get('/', (req, res) => {
 });
 
 router.get('/reverse-geocode', (req, res) => {
-    try {
-      const lat = req.query.lat;
-      const lng = req.query.lng;
-      opencage
-        .geocode({ q: `${lat}, ${lng}`, language: 'en' })
-        .then((data) => {
-          // console.log(JSON.stringify(data));
-          if (data.status.code === 200 && data.results.length > 0) {
-            const place = data.results[0];
-            const address = place.formatted;
-            res.status(200).json({ address });
-          } else {
-            res.status(400).json({ error: 'Unable to get address' });
-          }
-        })
-        .catch((error) => {
-          console.log('error', error.message);
-          if (error.status.code === 402) {
-            console.log('hit free trial daily limit');
-            console.log('become a customer: https://opencagedata.com/pricing');
-          }
-          res.status(500).json({ error: 'Internal server error' });
-        });
-    } catch (err) {
-      res.status(500).json({ error: 'Internal server error' });
-    }
+  try {
+    const lat = req.query.lat;
+    const lng = req.query.lng;
+    opencage
+      .geocode({ q: `${lat}, ${lng}`, language: 'en' })
+      .then((data) => {
+        // console.log(JSON.stringify(data));
+        if (data.status.code === 200 && data.results.length > 0) {
+          const place = data.results[0];
+          const address = place.formatted;
+          res.status(200).json({ address });
+        } else {
+          res.status(400).json({ error: 'Unable to get address' });
+        }
+      })
+      .catch((error) => {
+        console.log('error', error.message);
+        if (error.status.code === 402) {
+          console.log('hit free trial daily limit');
+          console.log('become a customer: https://opencagedata.com/pricing');
+        }
+        res.status(500).json({ error: 'Internal server error' });
+      });
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
   }
-);
+});
 
 // upload photo using image url
 router.post('/upload-by-link', async (req, res) => {

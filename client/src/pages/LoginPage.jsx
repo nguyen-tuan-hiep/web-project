@@ -48,20 +48,22 @@ const LoginPage = () => {
         <h1 className="text-4xl text-center mb-4">Login</h1>
         <form className="max-w-md mx-auto" onSubmit={handleFormSubmit}>
           <input
-            id='email'
+            id="email"
             type="email"
             placeholder="your@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            id='password'
+            id="password"
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary hover:bg-red-700 transition mt-2">Login</button>
+          <button className="primary hover:bg-red-700 transition mt-2">
+            Login
+          </button>
           <div className="text-center py-2 text-gray-500">
             Don't have an account yet?{' '}
             <Link className="text-black underline" to={'/register'}>
