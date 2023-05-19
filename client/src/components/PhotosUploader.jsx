@@ -50,7 +50,7 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
     <>
       <div className="flex gap-3">
         <input
-          id='photoLink'
+          id="photoLink"
           value={photoLink}
           onChange={(e) => setphotoLink(e.target.value)}
           type="text"
@@ -94,7 +94,10 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
             className="hidden"
             onChange={uploadPhoto}
           />
-          <div style={{textAlign: 'center'}}><DriveFolderUploadIcon />{'\nUpload'}</div>
+          <div style={{ textAlign: 'center' }}>
+            <DriveFolderUploadIcon />
+            {'\nUpload'}
+          </div>
         </label>
       </div>
     </>

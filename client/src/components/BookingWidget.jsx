@@ -40,7 +40,11 @@ const BookingWidget = ({ place }) => {
       toast.error('Name is required');
       return;
     }
-    if (phone === null || phone === "" || phone.match(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/) === null) {
+    if (
+      phone === null ||
+      phone === '' ||
+      phone.match(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/) === null
+    ) {
       toast.error('Phone is required (10 numbers)');
       return;
     }
@@ -51,14 +55,17 @@ const BookingWidget = ({ place }) => {
       name,
       phone,
       place: place._id,
-      price: numberOfNights * place.price,}
-    await axios.post('/bookings',
-      {infoData},
+      price: numberOfNights * place.price,
+    };
+    await axios.post(
+      '/bookings',
+      { infoData },
       {
-      headers: {
-        Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
-      },
-    });
+        headers: {
+          Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
+        },
+      }
+    );
 
     // const bookingId = response.data._id;
 
@@ -70,8 +77,10 @@ const BookingWidget = ({ place }) => {
   }
 
   return (
-    <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form">
-      <div className="text-xl text-center price">Price: ₹{place.price} per night</div>
+    <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form input-bookings">
+      <div className="text-xl text-center price">
+        Price: ₹{place.price} per night
+      </div>
       <Stack spacing={2} mt={2} px={1}>
         <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">
           <DatePicker
@@ -98,19 +107,20 @@ const BookingWidget = ({ place }) => {
         </LocalizationProvider>
         <div className="pt-3 pb-1;">
           <TextField
-            label="Number or guest"
+            label="Number of guest"
             variant="outlined"
             type="number"
             value={numOfGuests}
-            onChange={(e) => {setNumOfGuests(e.target.value)}}
+            onChange={(e) => {
+              setNumOfGuests(e.target.value);
+            }}
             style={{ width: '100%', padding: '0px' }}
             InputProps={{
               inputProps: {
                 min: 0, // Set min value to 0 to prevent negative numbers
-                max: place.maxGuests
+                max: place.maxGuests,
               },
             }}
-
           />
         </div>
         {numberOfNights > 0 && (

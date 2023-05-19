@@ -15,7 +15,9 @@ const Image = ({ src, ...rest }) => {
         <HeartIcon
           className="z-0 hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2
                   cursor-pointer absolute top-4 right-4  hover:bg-gray-300 duration-200 ease-out"
-          onClick={(e) => {handleClick(e)}}
+          onClick={(e) => {
+            handleClick(e);
+          }}
         />
       </button>
     </div>

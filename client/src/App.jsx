@@ -46,10 +46,19 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/account" element={<ProfilePage />} />
                   <Route path="/account/places" element={<PlacesPage />} />
-                  <Route path="/account/places/new" element={<PlacesFormPage />} />
-                  <Route path="/account/places/:id" element={<PlacesFormPage />} />
+                  <Route
+                    path="/account/places/new"
+                    element={<PlacesFormPage />}
+                  />
+                  <Route
+                    path="/account/places/:id"
+                    element={<PlacesFormPage />}
+                  />
                   <Route path="/place/:id" element={<PlacePage />} />
-                  <Route path="/account/bookings" element={<BookedPlacesPage />} />
+                  <Route
+                    path="/account/bookings"
+                    element={<BookedPlacesPage />}
+                  />
                   <Route path="*" element={<NotFound />} />
                 </Route>
               </Routes>

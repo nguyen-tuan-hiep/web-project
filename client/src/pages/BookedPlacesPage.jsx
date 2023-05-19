@@ -20,38 +20,37 @@ const BookedPlacesPage = () => {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
+    const getBookings = async () => {
+      const { data } = await axios.get('/bookings', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (data.error) {
+        toast.error(data.error.message);
+      }
+      await setBookings(data);
+      setLoading(false);
+    };
 
-      const getBookings = async () => {
-        const { data } = await axios.get('/bookings', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        if (data.error) {
-          toast.error(data.error.message);
-        }
-        await setBookings(data);
-        setLoading(false);
-      };
-
-      getBookings();
-
+    getBookings();
   }, []);
 
   if (loading) {
     return <Spinner />;
   }
 
-return (
+  return (
     <div>
       <AccountNav />
-      <h1 className="text-3xl font-semibold my-5 mx-8">Your bookings</h1>
+
       {bookings.length > 0 ? (
         <>
           <h1 className="text-3xl font-semibold mb-5 mx-8">
             Want to find a place that suits you best? Let's chat to find out!
           </h1>
           <AI />
+          <h1 className="text-3xl font-semibold my-5 mx-8">Your bookings</h1>
           {bookings.map((booking) => (
             <div
               key={booking._id}
@@ -94,7 +93,7 @@ return (
             to find out!
           </h1>
           <AI />
-          <div className='mx-8'>
+          <div className="mx-8">
             <p className="text-3xl font-semibold my-5">
               Time to dust off your bag!
             </p>
@@ -109,7 +108,6 @@ return (
       )}
     </div>
   );
-
 };
 
 export default BookedPlacesPage;
