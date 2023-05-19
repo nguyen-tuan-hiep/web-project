@@ -1,6 +1,6 @@
 # Airbnb clone
 
-This is a clone of the Airbnb web application built using MERN stack. It is a full-stack web application that allows users to book accommodations in various locations. This application supports user registration, login and authentication. It also features my accommodations for adding and managing places.
+This is a clone of the Airbnb web application built using MERN stack. It is a full-stack web application that allows users to book places in various locations. This application supports user registration, login and authentication. It also features my places for adding and managing places.
 
 ## Installation
 
@@ -28,13 +28,13 @@ To install and run the application, please follow these steps:
 
 ## Features
 
-The application has following features:
+The application has the following features:
 
 - User authentication and autherization
-- View accommodation details, amenities, and pricing
-- Book an accommodation by selecting check-in and check-out dates
+- View places details, amenities, and pricing
+- Book a place by selecting check-in and check-out dates
 - View and manage bookings as a registered user
-- Add and manage accommodations as a registered user
+- Add and manage places as a registered user
 
 ## Dependencies
 

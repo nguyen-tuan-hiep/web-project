@@ -29,15 +29,15 @@ const whiteList = [
 app.use(
   cors({
     credentials: true,
-    origin: function (origin, callback) {
-      if (whiteList.indexOf(origin !== -1)) {
+    exposedHeaders: ['set-cookie'],
+    'origin'(origin, callback) {
+      if (whiteList.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by cors'));
       }
     },
-    exposedHeaders: ['set-cookie'],
-  })
+  }),
 );
 
 // use express router
