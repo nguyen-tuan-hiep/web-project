@@ -39,9 +39,9 @@ function App() {
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       <div className="App" id={theme}>
         <div className="my-6 px-8 flex flex-col">
-          <Header />
           <UserProvider>
             <PlaceProvider>
+              <Header />
               <MapProvider>
                 <Routes>
                   {/* <Route path="/" element={<Layout />}> */}
