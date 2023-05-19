@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import Perks from '../components/Perks';
-import PhotosUploader from '../components/PhotosUploader';
-import AccountNav from '../components/AccountNav';
+import Perks from '../../components/Perks.jsx';
+import PhotosUploader from '../../components/PhotosUploader.jsx';
+import AccountNav from '../../components/AccountNav.jsx';
 import { Navigate, useParams } from 'react-router-dom';
-import Spinner from '../components/Spinner';
+import Spinner from '../../components/Spinner.jsx';
 import { toast } from 'react-toastify';
-import MapWidget from '../components/MapWidget.jsx';
-import { MapContext } from '../providers/MapProvider.jsx';
-import { getItemFromLocalStorage } from '../utils/index.js';
+import MapWidget from '../../components/MapWidget.jsx';
+import { MapContext } from '../../providers/MapProvider.jsx';
+import { getItemFromLocalStorage } from '../../utils/index.js';
 
 const PlacesFormPage = () => {
   const { id } = useParams();
@@ -24,10 +24,11 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
-  const {address, setAddress} = useContext(MapContext);
+  const { address, setAddress } = useContext(MapContext);
 
   useEffect(() => {
     if (!id) {
+      setAddress('');
       return;
     }
     setLoading(true);
@@ -86,21 +87,25 @@ const PlacesFormPage = () => {
     };
     console.log(placeData);
     if (id) {
-      placeData = {id, ...placeData};
+      placeData = { id, ...placeData };
       // update existing place
       const { data } = await axios.put('/places/update-place',
-        {placeData},
-        {headers: {
-          Authorization: `Bearer ${token}`,
-        },});
+        { placeData },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
       toast.success(data.message);
     } else {
       // new place
       const { data } = await axios.post('/places/add-places',
         { placeData },
-        {headers: {
+        {
+          headers: {
             Authorization: `Bearer ${token}`,
-          },});
+          },
+        });
       toast.success(data.message);
     }
     setRedirect(true);
@@ -137,8 +142,8 @@ const PlacesFormPage = () => {
               id='address'
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              type="text"
-              placeholder="address"
+              type='text'
+              placeholder='address'
             />
             {preInput('Photos', 'more = better')}
 
@@ -149,9 +154,6 @@ const PlacesFormPage = () => {
           </div>
           <MapWidget />
         </div>
-
-
-
 
 
         {preInput('Description', 'description of the place')}
@@ -179,7 +181,7 @@ const PlacesFormPage = () => {
               id='checkIn'
               type='number'
               value={checkIn}
-              onChange={(e) => setCheckIn(e.target.value)}
+              onChange={(e) => setCheckIn(Number(e.target.value))}
               placeholder='14'
             />
           </div>
@@ -189,7 +191,7 @@ const PlacesFormPage = () => {
               id='checkOut'
               type='number'
               value={checkOut}
-              onChange={(e) => setCheckOut(e.target.value)}
+              onChange={(e) => setCheckOut(Number(e.target.value))}
               placeholder='11'
             />
           </div>
@@ -199,7 +201,7 @@ const PlacesFormPage = () => {
               id='maxGuests'
               type='number'
               value={maxGuests}
-              onChange={(e) => setMaxGuests(e.target.value)}
+              onChange={(e) => setMaxGuests(Number(e.target.value))}
               placeholder='1'
             />
           </div>
@@ -209,7 +211,7 @@ const PlacesFormPage = () => {
               id='price'
               type='number'
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={(e) => setPrice(Number(e.target.value))}
               placeholder='1'
             />
           </div>

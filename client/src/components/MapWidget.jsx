@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
 import { MapContext } from '../providers/MapProvider.jsx';
 
 const MapWidget = () => {
-  const { address, setAddress } = useContext(MapContext);
+  const { setAddress } = useContext(MapContext);
   const handleMapClick = async (event) => {
     const response = await axios.get('/reverse-geocode', {
       params: { lat: event.lat, lng: event.lng },

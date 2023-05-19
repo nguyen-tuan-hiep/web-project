@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -31,34 +30,34 @@ const RegisterPage = () => {
   };
 
   return (
-    <div className="mt-4 grow flex justify-around items-center">
-      <div className="mb-40">
-        <h1 className="text-4xl text-center mb-4">Register</h1>
-        <form className="max-w-md mx-auto" onSubmit={handleRegisterForm}>
+    <div className='mt-4 grow flex justify-around items-center'>
+      <div className='mb-40'>
+        <h1 className='text-4xl text-center mb-4'>Register</h1>
+        <form className='max-w-md mx-auto' onSubmit={handleRegisterForm}>
           <input
-            type="text"
-            placeholder="John Doe"
+            type='text'
+            placeholder='John Doe'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            type="email"
-            placeholder="your@email.com"
+            type='email'
+            placeholder='your@email.com'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type="password"
-            placeholder="password"
+            type='password'
+            placeholder='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary hover:bg-red-700 transition">
+          <button className='primary hover:bg-red-700 transition'>
             Register
           </button>
-          <div className="text-center py-2 text-gray-500">
+          <div className='text-center py-2 text-gray-500'>
             Already a member?{' '}
-            <Link className="text-black underline" to={'/login'}>
+            <Link className='text-black underline' to={'/login'}>
               Login
             </Link>
           </div>

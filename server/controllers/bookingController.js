@@ -62,7 +62,7 @@ exports.deleteBooking = async (req, res) => {
       });
     }
 
-    if (booking.user.toString() !== userData.id) {
+    if (booking['user'].toString() !== userData.id) {
       return res.status(401).json({
         message: 'You are not authorized to delete this booking',
       });

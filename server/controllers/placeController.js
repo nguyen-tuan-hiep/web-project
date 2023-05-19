@@ -21,7 +21,7 @@ exports.addPlace = async (req, res) => {
     });
     res.status(200).json({
       place,
-      message: 'Add new accommodation successfully',
+      message: 'Add new place successfully',
     });
   } catch (err) {
     res.status(500).json({
@@ -50,7 +50,7 @@ exports.updatePlace = async (req, res) => {
     const userId = userData.id;
     const infoData = req.body.placeData;
     const place = await Place.findById(infoData.id);
-    if (userId === place.owner.toString()) {
+    if (userId === place['owner'].toString()) {
       place.set({
         title: infoData.title,
         address: infoData.address,
@@ -142,7 +142,7 @@ exports.deletePlace = async (req, res) => {
       });
     }
 
-    if (userId === place.owner.toString()) {
+    if (userId === place['owner'].toString()) {
       await Booking.deleteMany({ place: id }); // Delete all bookings related to the place from the database
       await Place.findByIdAndDelete(id);
       res.status(200).json({

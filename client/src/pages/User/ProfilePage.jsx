@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { UserContext } from '../providers/UserProvider';
-import PlacesPage from './PlacesPage';
-import AccountNav from '../components/AccountNav';
-import Spinner from '../components/Spinner';
-import { removeItemFromLocalStorage } from '../utils';
+import { UserContext } from '../../providers/UserProvider.jsx';
+import PlacesPage from '../Place/PlacesPage.jsx';
+import AccountNav from '../../components/AccountNav.jsx';
+import Spinner from '../../components/Spinner.jsx';
+import { removeItemFromLocalStorage } from '../../utils/index.js';
 import { toast } from 'react-toastify';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 
@@ -35,21 +35,21 @@ const ProfilePage = () => {
   }
 
   if (redirect) {
-    return <Navigate to={redirect} />;
+    return <Navigate to={String(redirect)} />;
   }
 
   return (
     <div>
       <AccountNav />
       {subpage === 'profile' && (
-        <div className="text-center max-w-lg mx-auto ">
+        <div className='text-center max-w-lg mx-auto '>
           Logged in as {user.name} ({user.email})
           <br />
           <button
-            className="primary max-w-sm mt-4 hover:bg-red-700 hover:scale-110 transition transform duration-200 ease-out"
+            className='primary max-w-sm mt-4 hover:bg-red-700 hover:scale-110 transition transform duration-200 ease-out'
             onClick={logout}
           >
-            <LoginOutlinedIcon className="mr-2" />
+            <LoginOutlinedIcon className='mr-2' />
             Logout
           </button>
         </div>
