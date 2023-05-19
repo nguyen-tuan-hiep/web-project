@@ -24,7 +24,7 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
-  const {address, setAddress} = useContext(MapContext);
+  const { address, setAddress } = useContext(MapContext);
 
   useEffect(() => {
     if (!id) {
@@ -50,8 +50,8 @@ const PlacesFormPage = () => {
   const preInput = (header, description) => {
     return (
       <>
-        <h2 className='text-2xl mt-4'>{header}</h2>
-        <p className='text-gray-500 text-sm'>{description}</p>
+        <h2 className="text-2xl mt-4">{header}</h2>
+        <p className="text-gray-500 text-sm">{description}</p>
       </>
     );
   };
@@ -87,19 +87,27 @@ const PlacesFormPage = () => {
     console.log(placeData);
     if (id) {
       // update existing place
-      const { data } = await axios.put('/places/update-place',
-        {id, ...placeData},
-        {headers: {
-          Authorization: `Bearer ${token}`,
-        },});
+      const { data } = await axios.put(
+        '/places/update-place',
+        { id, ...placeData },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       toast.success(data.message);
     } else {
       // new place
-      const { data } = await axios.post('/places/add-places',
+      const { data } = await axios.post(
+        '/places/add-places',
         { placeData },
-        {headers: {
+        {
+          headers: {
             Authorization: `Bearer ${token}`,
-          },});
+          },
+        }
+      );
       toast.success(data.message);
     }
     setRedirect(true);
@@ -116,30 +124,30 @@ const PlacesFormPage = () => {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={savePlace} className='mx-8'>
+      <form onSubmit={savePlace} className="mx-8">
         {preInput(
           'Title',
-          'Title for your place. Should be short and catchy as in advertisement',
+          'Title for your place. Should be short and catchy as in advertisement'
         )}
         <input
-          id='title'
-          type='text'
+          id="title"
+          type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder='title, for example: My lovely apt'
+          placeholder="My lovely apt"
         />
 
-        <div className='grid gap-10 sm:grid-cols-2 md:grid-cols-2'>
-          <div className='grid gap-2 sm:grid-cols-3 md:grid-cols-1'>
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-2">
+          <div className="grid  sm:grid-cols-3 md:grid-cols-1">
             {preInput('Address', 'Address to this place')}
             <input
-              id='address'
+              id="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               type="text"
-              placeholder="address"
+              placeholder="Add your address here or select on the map"
             />
-            {preInput('Photos', 'more = better')}
+            {preInput('Photos', 'The more the better')}
 
             <PhotosUploader
               addedPhotos={addedPhotos}
@@ -149,71 +157,73 @@ const PlacesFormPage = () => {
           <MapWidget />
         </div>
 
-
-
-
-
         {preInput('Description', 'description of the place')}
         <textarea
-          id='desc'
-          value={desc} onChange={(e) => setDesc(e.target.value)} />
+          placeholder="Add your description here"
+          id="desc"
+          value={desc}
+          onChange={(e) => setDesc(e.target.value)}
+        />
 
-        {preInput('Perks', ' select all the perks of your place')}
+        {preInput('Perks', ' Select all the perks of your place')}
         <Perks selected={perks} onChange={setPerks} />
 
-        {preInput('Extra info', 'house rules, etc ')}
+        {preInput('Extra info', 'House rules, etc ')}
         <textarea
+          placeholder="Add your extra info here"
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
         />
 
         {preInput(
           'Check in & Check out times',
-          'add check in and out times, remember to have some time window for cleaning the room between guests. ',
+          'add check in and out times, remember to have some time window for cleaning the room between guests. '
         )}
-        <div className='grid gap-2 sm:grid-cols-2 md:grid-cols-4'>
+        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <h3 className='mt-2 -mb-1'>Check in time</h3>
+            <h3 className="mt-2 -mb-1">Check in time</h3>
             <input
-              id='checkIn'
-              type='number'
+              id="checkIn"
+              type="number"
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              placeholder='14'
+              placeholder="14"
             />
           </div>
           <div>
-            <h3 className='mt-2 -mb-1'>Check out time</h3>
+            <h3 className="mt-2 -mb-1">Check out time</h3>
             <input
-              id='checkOut'
-              type='number'
+              id="checkOut"
+              type="number"
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              placeholder='11'
+              placeholder="11"
             />
           </div>
           <div>
-            <h3 className='mt-2 -mb-1'>Max number of guests</h3>
+            <h3 className="mt-2 -mb-1">Max number of guests</h3>
             <input
-              id='maxGuests'
-              type='number'
+              id="maxGuests"
+              type="number"
               value={maxGuests}
               onChange={(e) => setMaxGuests(e.target.value)}
-              placeholder='1'
+              placeholder="1"
             />
           </div>
           <div>
-            <h3 className='mt-2 -mb-1'>Price per night</h3>
+            <h3 className="mt-2 -mb-1">Price per night</h3>
             <input
-              id='price'
-              type='number'
+              id="price"
+              type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder='1'
+              placeholder="1"
             />
           </div>
         </div>
-        <button className='primary hover:bg-red-700 transition my-4'>Save</button>
+        <button className="primary hover:bg-red-700 transition my-4">
+          Save
+        </button>
       </form>
     </div>
   );

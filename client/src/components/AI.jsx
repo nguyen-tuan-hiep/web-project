@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 const AI = () => {
   const [placeArray, setPlaces] = useState([]);
 
