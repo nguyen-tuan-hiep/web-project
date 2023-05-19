@@ -75,12 +75,17 @@
 }
 
 #dark input {
-  background-color: #a2a2a2;
+  background-color: #d9d9d9;
 }
 
 #dark textarea {
-  background-color: #a2a2a2;
+  background-color: #d9d9d9;
 }
+
+#dark textarea::placeholder {
+  color: #4c4c4c;
+}
+
 
 #dark .form {
   background-color: #a2a2a2;
@@ -155,6 +160,10 @@
 }
 
 #dark .search-icon {
-  background-color: #a2a2a2;
+  background-color: #d9d9d9;
   border: none;
+}
+
+#dark .acc-nav {
+  background-color: #d9d9d9;
 }
