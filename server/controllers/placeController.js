@@ -47,20 +47,23 @@ exports.getPlaces = async (req, res) => {
 exports.updatePlace = async (req, res) => {
   try {
     const userData = userFromToken(req);
+    const userId = userData.id;
     const infoData = req.body.placeData;
-    const place = await Place.create({
-      owner: userData.id,
-      title: infoData.title,
-      address: infoData.address,
-      photos: infoData.addedPhotos,
-      description: infoData.desc,
-      perks: infoData.perks,
-      extraInfo: infoData.extraInfo,
-      checkIn: infoData.checkIn,
-      checkOut: infoData.checkOut,
-      maxGuests: infoData.maxGuests,
-      price: infoData.price,
-    });
+    const place = await Place.findById(infoData.id);
+    if (userId === place.owner.toString()) {
+      place.set({
+        title: infoData.title,
+        address: infoData.address,
+        photos: infoData.addedPhotos,
+        description: infoData.desc,
+        perks: infoData.perks,
+        extraInfo: infoData.extraInfo,
+        checkIn: infoData.checkIn,
+        checkOut: infoData.checkOut,
+        maxGuests: infoData.maxGuests,
+        price: infoData.price,
+      });
+    }
     await place.save();
     res.status(200).json({
       message: 'Place updated!',

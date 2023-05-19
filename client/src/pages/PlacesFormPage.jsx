@@ -72,7 +72,7 @@ const PlacesFormPage = () => {
       return;
     }
 
-    const placeData = {
+    let placeData = {
       title,
       address,
       addedPhotos,
@@ -86,6 +86,7 @@ const PlacesFormPage = () => {
     };
     console.log(placeData);
     if (id) {
+      placeData = {id, ...placeData};
       // update existing place
       const { data } = await axios.put('/places/update-place',
         {placeData},
