@@ -21,7 +21,7 @@ const ProfilePage = () => {
     setUser(null);
     removeItemFromLocalStorage('token');
     toast.success('Logged out');
-    setRedirect('/');
+    await setRedirect('/');
     window.location.reload();
   };
 
@@ -30,6 +30,7 @@ const ProfilePage = () => {
   }
 
   if (!loading && !user && !redirect) {
+    console.log(`loading: ${loading}, user: ${user}, redirect: ${redirect}`);
     return <Navigate to={'/login'} />;
   }
 

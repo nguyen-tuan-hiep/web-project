@@ -27,7 +27,7 @@ const PlacesPage = () => {
       }
     };
     getPlaces();
-  }, []);
+  }, [places]);
 
   if (loading) {
     return <Spinner />;
