@@ -157,7 +157,7 @@ const PlacesFormPage = () => {
           <MapWidget />
         </div>
 
-        {preInput('Description', 'description of the place')}
+        {preInput('Description', 'Description of the place')}
         <textarea
           placeholder="Add your description here"
           id="desc"

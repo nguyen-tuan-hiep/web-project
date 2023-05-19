@@ -20,6 +20,7 @@ import React, { createContext } from 'react';
 const token = getItemFromLocalStorage('token');
 import './styles/App.css';
 import { MapProvider } from './providers/MapProvider.jsx';
+import Header from './components/Header';
 
 // axios.defaults.baseURL = 'https://airbnb-clone-production.up.railway.app';
 axios.defaults.baseURL = 'http://localhost:8001';
@@ -36,11 +37,13 @@ function App() {
   return (
     <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       <div className="App" id={theme}>
-        <UserProvider>
-          <PlaceProvider>
-            <MapProvider>
-              <Routes>
-                <Route path="/" element={<Layout />}>
+        <div className="my-6 px-8 flex flex-col">
+          <Header />
+          <UserProvider>
+            <PlaceProvider>
+              <MapProvider>
+                <Routes>
+                  {/* <Route path="/" element={<Layout />}> */}
                   <Route index element={<IndexPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
@@ -60,13 +63,13 @@ function App() {
                     element={<BookedPlacesPage />}
                   />
                   <Route path="*" element={<NotFound />} />
-                </Route>
-              </Routes>
-              <Footer />
-              <ToastContainer autoClose={2000} transition={Slide} />
-            </MapProvider>
-          </PlaceProvider>
-        </UserProvider>
+                </Routes>
+                <ToastContainer autoClose={2000} transition={Slide} />
+              </MapProvider>
+            </PlaceProvider>
+          </UserProvider>
+        </div>
+        <Footer />
       </div>
     </ThemeContext.Provider>
   );
