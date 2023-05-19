@@ -88,7 +88,7 @@ const PlacesFormPage = () => {
     if (id) {
       // update existing place
       const { data } = await axios.put('/places/update-place',
-        {id, ...placeData},
+        {placeData},
         {headers: {
           Authorization: `Bearer ${token}`,
         },});
