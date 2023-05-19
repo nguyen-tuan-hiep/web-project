@@ -6,26 +6,27 @@ import BookingWidget from '../components/BookingWidget';
 import PlaceGallery from '../components/PlaceGallery';
 import Spinner from '../components/Spinner';
 import { thingsToKnow } from '../components/constants';
+import ThingsToKnow from '../components/ThingsToKnow';
 
 const PlacePage = () => {
-  const thingsToKnowContent = (
-    <div className="grid grid-cols-3 ">
-      {thingsToKnow.map((item) => (
-        <div key={item.title}>
-          <h4 className="font-semibold text-lg pb-2">{item.title}</h4>
-          {item.content.map((itemContent) => (
-            <div
-              key={itemContent.name}
-              className="flex items-center gap-2 pb-3"
-            >
-              {itemContent?.icon}
-              <p>{itemContent.name}</p>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  );
+  // const thingsToKnowContent = (
+  //   <div className="grid grid-cols-3 ">
+  //     {thingsToKnow.map((item) => (
+  //       <div key={item.title}>
+  //         <h4 className="font-semibold text-lg pb-2">{item.title}</h4>
+  //         {item.content.map((itemContent) => (
+  //           <div
+  //             key={itemContent.name}
+  //             className="flex items-center gap-2 pb-3"
+  //           >
+  //             {itemContent?.icon}
+  //             <p>{itemContent.name}</p>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     ))}
+  //   </div>
+  // );
 
   const { id } = useParams();
   const [place, setPlace] = useState(null);
@@ -84,13 +85,11 @@ const PlacePage = () => {
         </div>
       </div>
       <div className="bg-white px-8 py-8 border-t things">
-        <div className="py-5 w-full px-20">
-          <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
-          {thingsToKnowContent}
+        <div>
+          <ThingsToKnow/>
         </div>
       </div>
     </div>
-    // </div>
   );
 };
 

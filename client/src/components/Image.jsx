@@ -9,7 +9,7 @@ const Image = ({ src, ...rest }) => {
   }
 
   return (
-    <div className='h-72'>
+    <div className='h-full'>
       <img src={src} {...rest} alt={''} className="rounded-xl" />
       <button>
         <HeartIcon
