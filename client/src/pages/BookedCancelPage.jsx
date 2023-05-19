@@ -6,14 +6,20 @@ import PlaceGallery from '../components/PlaceGallery';
 import BookingDates from '../components/BookingDates';
 import PaymentIcon from '@mui/icons-material/Payment';
 import ThingsToKnow from '../components/ThingsToKnow';
+import { getItemFromLocalStorage } from '../utils/index.js';
 
 export default function BookedCancelPage() {
+  const token = getItemFromLocalStorage('token');
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     if (id) {
-      axios.get('./bookings').then((response) => {
+      axios.get('./bookings', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => {
         const foundBooking = response.data.find(({ _id }) => _id === id);
         if (foundBooking) {
           setBooking(foundBooking);
@@ -25,7 +31,11 @@ export default function BookedCancelPage() {
   const handleCancelReservation = () => {
     if (booking) {
       axios
-        .delete(`./bookings/${booking._id}`)
+        .delete(`./bookings/${booking._id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then(() => {
           // Reservation canceled successfully
           // You can perform additional actions here if needed

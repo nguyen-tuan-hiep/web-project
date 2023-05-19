@@ -21,8 +21,8 @@ const ProfilePage = () => {
     setUser(null);
     removeItemFromLocalStorage('token');
     toast.success('Logged out');
-    await setRedirect('/');
-    window.location.reload();
+    setRedirect('/');
+    // window.location.reload();
   };
 
   if (loading) {
