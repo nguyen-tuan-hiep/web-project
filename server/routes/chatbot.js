@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Configuration, OpenAIApi } = require("openai");
+const { Configuration, OpenAIApi } = require('openai');
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -8,19 +8,18 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-router.get("/", async (req, res) => {
+router.get('/', async (req, res) => {
   res.status(200).send({
-    message: "Hello",
+    message: 'Hello',
   });
 });
 
-
-router.post("/", async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
 
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: 'text-davinci-003',
       prompt: `${prompt}`,
       temperature: 0,
       max_tokens: 3000,
@@ -36,7 +35,7 @@ router.post("/", async (req, res) => {
     console.log(response.data.choices[0].text);
   } catch (error) {
     console.error(error);
-    res.status(500).send(error || "Something went wrong");
+    res.status(500).send(error || 'Something went wrong');
   }
 });
 

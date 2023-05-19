@@ -10,7 +10,7 @@ const SearchBar = () => {
   const [searchText, setSearchText] = useState('');
   const { setPlaces, setLoading } = useContext(PlaceContext);
   const [isListening, setIsListening] = useState(false);
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   let speech;
   if (window.webkitSpeechRecognition) {
     const SpeechRecognition = webkitSpeechRecognition;
@@ -74,14 +74,10 @@ const SearchBar = () => {
             onChange={(e) => handleSearch(e)}
             value={searchText}
           />
+          <IconButton variant="contained" className=" right-2" onClick={listen}>
+            <MicIcon className={`microphone ${isListening && 'isListening'}`} />
+          </IconButton>
         </div>
-        <IconButton variant="contained"
-                    sx={{":hover": {
-                        backgroundColor: theme === 'dark' ? '#8a8a8a' : '#eeeeee'
-                      }, borderRadius: '0', backgroundColor: theme === 'dark' ? '#a2a2a2' : 'white'}}
-                    className=" right-0" onClick={listen}>
-          <MicIcon className={`microphone ${isListening && 'isListening'}`} />
-        </IconButton>
 
         <div className="flex  bg-blue text-white cursor-pointer">
           <button

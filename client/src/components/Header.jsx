@@ -11,7 +11,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { HeartIcon } from '@heroicons/react/solid';
 
-export const Header = () => {
+const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
   return (
@@ -43,9 +43,13 @@ export const Header = () => {
       </div>
 
       <div className="bookmart">
-          <HeartIcon className="z-0 hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2
+        <HeartIcon
+          className="z-0 hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2
                   cursor-pointer hover:bg-red-700 duration-200 ease-out"
-                     onClick={() => {console.log("Open bookmark")}}/>
+          onClick={() => {
+            console.log('Open bookmark');
+          }}
+        />
       </div>
 
       <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
@@ -63,3 +67,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

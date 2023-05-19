@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 const AI = () => {
   const [placeArray, setPlaces] = useState([]);
 
@@ -56,7 +57,7 @@ const AI = () => {
 
   function chatStripe(isAi, value, uniqueId) {
     return `
-  <div id=${uniqueId} class = "border w-full p-5">${value}</div>
+  <div id=${uniqueId} class = "border w-full p-5 chatbox">${value}</div>
   `;
   }
 
@@ -67,13 +68,13 @@ const AI = () => {
 
     const data = new FormData(form);
     chatContainer.innerHTML +=
-      '<b>You: </b>' + chatStripe(false, data.get('prompt'));
+      '<p><b>You: </b></p>' + chatStripe(false, data.get('prompt'));
 
     form.reset();
 
     const uniqueId = generateId();
     chatContainer.innerHTML +=
-      '<b>Chatbot: </b>' + chatStripe(true, ' ', uniqueId);
+      '<p><b>Chatbot: </b></p>' + chatStripe(true, ' ', uniqueId);
 
     chatContainer.scrollTop = chatContainer.scrollHeight;
 

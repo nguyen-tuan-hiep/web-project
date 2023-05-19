@@ -35,7 +35,7 @@ export const thingsToKnow = [
   {
     title: 'Cancellation policy',
     content: [
-      { name: 'Free cancellation before Oct 22.' },
+      { name: 'Free cancellation before checkin 2 days.' },
       {
         name: 'Review the Hosts full cancellation policy which applies even if you cancel for illness or disruptions caused by COVID-19.',
       },
