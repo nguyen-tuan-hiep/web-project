@@ -77,9 +77,7 @@ const PlacePage = () => {
           <div>
             <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
           </div>
-          <div className="text-sm text-gray-700 leading-5 mb-4 mt-2">
-            {place.extraInfo}
-          </div>
+          <div className="text-sm leading-5 mb-4 mt-2">{place.extraInfo}</div>
         </div>
         <div>
           <BookingWidget place={place} />

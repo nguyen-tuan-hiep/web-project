@@ -8,8 +8,10 @@ const PlaceGallery = ({ place }) => {
 
   if (showAllPhotos) {
     return (
-      <div className="relative inset-0 text-black min-h-full "
-        style={{backgroundColor: theme === 'dark' ? '#373737' : 'white'}}>
+      <div
+        className="relative inset-0 text-black min-h-full "
+        style={{ backgroundColor: theme === 'dark' ? '#373737' : 'white' }}
+      >
         <div className="pt-10 pb-10 grid gap-4 backdrop-blur-lg">
           <div className="mb-2">
             <h2 className="text-3xl text-center font-semibold">
