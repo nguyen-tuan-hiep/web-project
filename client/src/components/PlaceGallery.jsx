@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ThemeContext } from '../App.jsx';
+import { ThemeContext } from '../providers/ThemeProvider';
 
 const PlaceGallery = ({ place }) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
