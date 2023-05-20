@@ -4,7 +4,7 @@ import { UserContext } from '../providers/UserProvider';
 import SearchBar from './SearchBar';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { ThemeContext } from '../App';
+import { ThemeContext } from '../providers/ThemeProvider';
 import { IconButton } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
