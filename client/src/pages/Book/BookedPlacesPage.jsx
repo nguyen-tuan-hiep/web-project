@@ -1,32 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {AccountNav, BookingDates, Spinner, PlaceImg, AI } from '../../components/AllComponents.jsx';
 import axios from 'axios';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 import { toast } from 'react-toastify';
+import { ThemeContext } from '../../providers/ThemeProvider';
 
 const BookedPlacesPage = () => {
   const navigate = useNavigate();
   const token = getItemFromLocalStorage('token');
   const handleStartPlanning = () => {
-    navigate('/'); // Call navigate when button is clicked
+    navigate('/');
   };
-  // const { id } = useParams();
+  const { theme } = useContext(ThemeContext);
+
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getBookings = async () => {
-      const { data } = await axios.get('/bookings', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      if (data.error) {
-        toast.error(data.error.message);
+      try {
+        const { data } = await axios.get('/bookings', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setBookings(data);
+      } catch (error) {
+        toast.error('Failed to fetch bookings');
+      } finally {
+        setLoading(false);
       }
-      await setBookings(data);
-      setLoading(false);
     };
 
     getBookings().then(() => {});
@@ -94,7 +98,11 @@ const BookedPlacesPage = () => {
               Time to dust off your bag!
             </p>
             <button
-              className='font-semibold border border-black px-4 py-2 rounded-lg bg-transparent hover:bg-slate-100 hover:transition-all'
+              className={`font-semibold border px-4 py-2 rounded-lg hover:transition-all ${
+                theme === 'dark' ? 'border-white text-white' : 'border-black'
+              } ${
+                theme === 'dark' ? 'bg-transparent' : 'bg-slate-100'
+              } hover:bg-slate-100 hover:text-black`}
               onClick={handleStartPlanning}
             >
               Start planning
