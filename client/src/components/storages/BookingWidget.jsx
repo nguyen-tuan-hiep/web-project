@@ -28,7 +28,10 @@ const BookingWidget = ({ place }) => {
 
   let numberOfNights = 0;
   if (checkIn && checkOut) {
-    numberOfNights = differenceInDays(new Date(String(checkOut)), new Date(String(checkIn)));
+    numberOfNights = differenceInDays(
+      new Date(String(checkOut)),
+      new Date(String(checkIn))
+    );
   }
 
   const handleBooking = async () => {
@@ -64,7 +67,7 @@ const BookingWidget = ({ place }) => {
         headers: {
           Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
         },
-      },
+      }
     );
 
     // const bookingId = response.data._id;
@@ -77,39 +80,41 @@ const BookingWidget = ({ place }) => {
   }
 
   return (
-    <div className='bg-white p-4 rounded-2xl mr-20 shadow-3xl form input-bookings'>
-      <div className='text-xl text-center price'>
+    <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form input-bookings">
+      <div className="text-xl text-center price">
         Price: ₹{place.price} per night
       </div>
       <Stack spacing={2} mt={2} px={1}>
-        <LocalizationProvider dateAdapter={AdapterDateFns} className='px-2'>
+        <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">
           <DatePicker
-            label='Check In'
+            label="Check In"
             value={checkIn}
             onChange={(newValue) => {
               setCheckIn(newValue);
             }}
             textField={(params) => <TextField {...params} />}
-            format='dd/MM/yyyy'
+            format="dd/MM/yyyy"
             minDate={new Date()}
-            maxDate={checkOut ? new Date(String(checkOut)) : new Date('2099-12-31')}
+            maxDate={
+              checkOut ? new Date(String(checkOut)) : new Date('2099-12-31')
+            }
           />
           <DatePicker
-            label='Check out'
+            label="Check out"
             value={checkOut}
             onChange={(newValue) => {
               setCheckOut(newValue);
             }}
             textField={(params) => <TextField {...params} />}
-            format='dd/MM/yyyy'
+            format="dd/MM/yyyy"
             minDate={checkIn ? new Date(String(checkIn)) : new Date()}
           />
         </LocalizationProvider>
-        <div className='pt-3 pb-1;'>
+        <div className="pt-3 pb-1;">
           <TextField
-            label='Number of guest'
-            variant='outlined'
-            type='number'
+            label="Number of guest"
+            variant="outlined"
+            type="number"
             value={numOfGuests}
             onChange={(e) => {
               setNumOfGuests(Number(e.target.value));
@@ -125,11 +130,11 @@ const BookingWidget = ({ place }) => {
         </div>
         {numberOfNights > 0 && (
           <div>
-            <div className='pt-4 pb-4'>
+            <div className="pt-4 pb-4">
               <TextField
-                label='Your full name'
-                variant='outlined'
-                type='text'
+                label="Your full name"
+                variant="outlined"
+                type="text"
                 style={{ width: '100%', padding: '0px' }}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -137,9 +142,9 @@ const BookingWidget = ({ place }) => {
             </div>
             <div>
               <TextField
-                label='Phone number'
-                variant='outlined'
-                type='tel'
+                label="Phone number"
+                variant="outlined"
+                type="tel"
                 style={{ width: '100%', padding: '0px' }}
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
@@ -148,10 +153,10 @@ const BookingWidget = ({ place }) => {
           </div>
         )}
       </Stack>
-      <div className='my-4 mx-20'>
+      <div className="my-4 mx-20">
         <button
           onClick={handleBooking}
-          className='primary hover:bg-red-700 transition hover:scale-110 transform duration-200 ease-out'
+          className="primary hover:bg-red-700 transition hover:scale-110 transform duration-200 ease-out"
         >
           Book this place
           {numberOfNights > 0 && <span> ₹{numberOfNights * place.price}</span>}

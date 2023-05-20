@@ -22,7 +22,7 @@ export const thingsToKnow = [
     title: 'Health & safety',
     content: [
       {
-        name: 'Airbnb\'s COVID-19 safety practices apply',
+        name: "Airbnb's COVID-19 safety practices apply",
         icon: <CoronavirusIcon />,
       },
       {

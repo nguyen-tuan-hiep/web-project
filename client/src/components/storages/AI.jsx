@@ -10,8 +10,7 @@ const AI = () => {
   };
 
   useEffect(() => {
-    getPlaces().then(() => {
-    });
+    getPlaces().then(() => {});
   }, []);
   const places = placeArray.map(
     ({ title, address, price, description, perks }) => ({
@@ -20,7 +19,7 @@ const AI = () => {
       price,
       description,
       perks,
-    }),
+    })
   );
   let loadingInterval;
 
@@ -117,20 +116,19 @@ const AI = () => {
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
-      handleSubmit(e).then(() => {
-      });
+      handleSubmit(e).then(() => {});
     }
   };
 
   return (
-    <div id='app' className='mx-8'>
-      <div id='chat_container'></div>
-      <form id='form'>
+    <div id="app" className="mx-8">
+      <div id="chat_container"></div>
+      <form id="form">
         <textarea
-          name='prompt'
-          placeholder='Ask Something...'
-          cols='1'
-          rows='1'
+          name="prompt"
+          placeholder="Ask Something..."
+          cols="1"
+          rows="1"
           onKeyDown={handleKeyDown}
         ></textarea>
         {/* <button

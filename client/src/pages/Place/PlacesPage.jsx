@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { AccountNav, PlaceCard, Spinner } from '../../components/AllComponents.jsx';
+import {
+  AccountNav,
+  PlaceCard,
+  Spinner,
+} from '../../components/AllComponents.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 import { Add } from '@mui/icons-material';
 
@@ -24,8 +28,7 @@ const PlacesPage = () => {
         console.error(error);
       }
     };
-    getPlaces().then(() => {
-    });
+    getPlaces().then(() => {});
   }, [places]);
 
   if (loading) {
@@ -35,10 +38,9 @@ const PlacesPage = () => {
   return (
     <div>
       <AccountNav />
-      {/* flex items-center m-2 mt-5 space-x-4 rounded-xl cursor-pointer hover:scale-105 transition transform duration-200 ease-out */}
-      <div className='text-center hover:scale-110 transition transform duration-200 ease-out'>
+      <div className="text-center">
         <Link
-          className='inline-flex gap-1 bg-primary hover:bg-red-700 transition mb-5 text-white py-2 px-6 rounded-full'
+          className="inline-flex gap-1 bg-primary hover:bg-red-700 transition mb-5 text-white py-2 px-6 rounded-full hover:scale-110 "
           to={'/account/places/new'}
         >
           <Add />
@@ -46,10 +48,10 @@ const PlacesPage = () => {
         </Link>
       </div>
 
-      <div className='mt-4 flex flex-wrap'>
+      <div className="mt-4 flex flex-wrap">
         {places.length > 0 &&
           places.map((place) => (
-            <div className='sm:w-1/2 md:w-1/3 lg:w-1/4' key={place._id}>
+            <div className="sm:w-1/2 md:w-1/3 lg:w-1/4" key={place._id}>
               <PlaceCard place={place} />
             </div>
           ))}

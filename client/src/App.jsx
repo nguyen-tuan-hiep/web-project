@@ -17,7 +17,12 @@ import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { MapProvider, PlaceProvider, ThemeProvider, UserProvider } from './providers/AllProviders.jsx';
+import {
+  MapProvider,
+  PlaceProvider,
+  ThemeProvider,
+  UserProvider,
+} from './providers/AllProviders.jsx';
 import { Header } from './components/AllComponents.jsx';
 
 const token = getItemFromLocalStorage('token');
@@ -37,28 +42,19 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Layout />}> */}
               <Route index element={<IndexPage />} />
-              <Route path='/login' element={<LoginPage />} />
-              <Route path='/register' element={<RegisterPage />} />
-              <Route path='/account' element={<ProfilePage />} />
-              <Route path='/account/places' element={<PlacesPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/account" element={<ProfilePage />} />
+              <Route path="/account/places" element={<PlacesPage />} />
+              <Route path="/account/places/new" element={<PlacesFormPage />} />
+              <Route path="/account/places/:id" element={<PlacesFormPage />} />
+              <Route path="/place/:id" element={<PlacePage />} />
+              <Route path="/account/bookings" element={<BookedPlacesPage />} />
               <Route
-                path='/account/places/new'
-                element={<PlacesFormPage />}
-              />
-              <Route
-                path='/account/places/:id'
-                element={<PlacesFormPage />}
-              />
-              <Route path='/place/:id' element={<PlacePage />} />
-              <Route
-                path='/account/bookings'
-                element={<BookedPlacesPage />}
-              />
-              <Route
-                path='/account/bookings/:id'
+                path="/account/bookings/:id"
                 element={<BookedCancelPage />}
               />
-              <Route path='*' element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
             <ToastContainer autoClose={2000} transition={Slide} />
           </MapProvider>

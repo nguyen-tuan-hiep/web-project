@@ -18,10 +18,8 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
-      <div className='App' id={theme}>
-        <div className='my-6 px-8 flex flex-col'>
-          {children}
-        </div>
+      <div className="App" id={theme}>
+        <div className="my-6 px-8 flex flex-col">{children}</div>
         <Footer />
       </div>
     </ThemeContext.Provider>

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { PlaceContext } from '../../providers/AllProviders.jsx';
 import axios from 'axios';
-import {Search, Mic} from '@mui/icons-material';
+import { Search, Mic } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
 const SearchBar = () => {
@@ -10,7 +10,8 @@ const SearchBar = () => {
   const [isListening, setIsListening] = useState(false);
   let speech;
   if (window['webkitSpeechRecognition']) {
-    const SpeechRecognition = window['SpeechRecognition'] || window['webkitSpeechRecognition'];
+    const SpeechRecognition =
+      window['SpeechRecognition'] || window['webkitSpeechRecognition'];
     speech = new SpeechRecognition();
   } else {
     speech = null;
@@ -27,7 +28,7 @@ const SearchBar = () => {
 
   if (speech === null) {
     return (
-      <div className='app'>
+      <div className="app">
         <h1>
           Voice recognition is not supported by your browser, please re-try with
           a supported browser e.g. Chrome
@@ -61,29 +62,28 @@ const SearchBar = () => {
 
   return (
     <>
-      <div
-        className='flex w-3/5 md:w-1/2 border border-gray-400 rounded-full overflow-hidden shadow-sm hover:shadow-lg hover:scale-105 transition transform duration-200 ease-out'>
-        <div className='grow flex search-icon'>
+      <div className="flex w-3/5 md:w-1/2 border shadow-3xl rounded-full overflow-hidden hover:scale-105 transition transform duration-200 ease-out">
+        <div className="grow flex search-icon">
           <input
-            id='search'
-            type='search'
-            placeholder='Search for a place'
-            className='w-full py-2 px-6 border-none focus:outline-none'
+            id="search"
+            type="search"
+            placeholder="Search for a place"
+            className="w-full py-2 px-6 border-none focus:outline-none"
             onChange={(e) => handleSearch(e)}
             value={searchText}
           />
-          <IconButton variant='contained' className=' right-2' onClick={listen}>
+          <IconButton variant="contained" className=" right-2" onClick={listen}>
             <Mic className={`microphone ${isListening && 'isListening'}`} />
           </IconButton>
         </div>
 
-        <div className='flex  bg-blue text-white cursor-pointer'>
+        <div className="flex  bg-blue text-white cursor-pointer">
           <button
-            className='flex py-2 px-4 md:p-2 bg-primary hover:bg-red-700 transition rounded-r-full'
+            className="flex py-2 px-4 md:p-2 bg-primary hover:bg-red-700 transition rounded-r-full"
             onClick={(e) => handleSearch(e)}
           >
             <Search />
-            <span className='hidden md:block ml-1'>Search</span>
+            <span className="hidden md:block ml-1">Search</span>
           </button>
         </div>
       </div>

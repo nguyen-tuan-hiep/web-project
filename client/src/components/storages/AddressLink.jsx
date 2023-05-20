@@ -11,7 +11,7 @@ const AddressLink = ({ placeAddress, className = null }) => {
     <a
       className={className}
       href={`https://maps.google.com/?q=${placeAddress}`}
-      target='blank'
+      target="blank"
     >
       <LocationOnOutlinedIcon />
 

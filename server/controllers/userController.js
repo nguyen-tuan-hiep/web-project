@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
           process.env.JWT_SECRET,
           {
             expiresIn: process.env.JWT_EXPIRY,
-          },
+          }
         );
 
         user.password = undefined;

@@ -30,14 +30,14 @@ app.use(
   cors({
     credentials: true,
     exposedHeaders: ['set-cookie'],
-    'origin'(origin, callback) {
+    origin(origin, callback) {
       if (whiteList.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by cors'));
       }
     },
-  }),
+  })
 );
 
 // use express router
