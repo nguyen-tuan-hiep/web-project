@@ -43,25 +43,25 @@ const PlaceCard = ({ place }) => {
 
   return (
     <>
-      <div className='m-4'>
-        <div className='flex flex-col ml-2'>
-          <h2 className='text-xl'>{place.title}</h2>
-          <p className='text-sm my-3'>{place.description}</p>
+      <div className="m-4">
+        <div className="flex flex-col ml-2">
+          <h2 className="text-xl">{place.title}</h2>
+          <p className="text-sm my-3">{place.description}</p>
         </div>
-        <div className='flex'>
+        <div className="flex">
           <PlaceImg place={place} />
         </div>
 
-        <div className='flex mt-4 items-center justify-center'>
+        <div className="flex mt-4 items-center justify-center">
           <button
-            className='bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2'
+            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2"
             onClick={handleDelete}
           >
             Delete
           </button>
-          <div className='mx-4'></div>
+          <div className="mx-4"></div>
           <button
-            className='bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2'
+            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2"
             onClick={handleUpdate}
           >
             Update
