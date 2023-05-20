@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
+import {DriveFolderUpload, DeleteOutline, Favorite, FavoriteBorder} from '@mui/icons-material';
 
 const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
   const [photoLink, setphotoLink] = useState('');
@@ -76,14 +73,14 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
                 onClick={() => removePhoto(link)}
                 className='absolute cursor-pointer bottom-3 right-3 text-white bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-70'
               >
-                <DeleteOutlineIcon />
+                <DeleteOutline />
               </button>
               <button
                 onClick={(e) => selectAsMainPhoto(e, link)}
                 className='absolute cursor-pointer bottom-3 left-3 text-white bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-70'
               >
-                {link === addedPhotos[0] && <FavoriteIcon />}
-                {link !== addedPhotos[0] && <FavoriteBorderIcon />}
+                {link === addedPhotos[0] && <Favorite />}
+                {link !== addedPhotos[0] && <FavoriteBorder />}
               </button>
             </div>
           ))}
@@ -96,7 +93,7 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
             onChange={uploadPhoto}
           />
           <div style={{ textAlign: 'center' }}>
-            <DriveFolderUploadIcon />
+            <DriveFolderUpload />
             {'\nUpload'}
           </div>
         </label>

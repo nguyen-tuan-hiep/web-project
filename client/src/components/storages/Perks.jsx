@@ -1,12 +1,14 @@
 import React from 'react';
 import WifiIcon from '@mui/icons-material/Wifi';
-import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
-import TvOutlinedIcon from '@mui/icons-material/TvOutlined';
-import RadioOutlinedIcon from '@mui/icons-material/RadioOutlined';
-import PetsOutlinedIcon from '@mui/icons-material/PetsOutlined';
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import BreakfastDiningOutlinedIcon from '@mui/icons-material/BreakfastDiningOutlined';
-import PoolOutlinedIcon from '@mui/icons-material/PoolOutlined';
+import {
+  BreakfastDiningOutlined,
+  LocalShippingOutlined,
+  LoginOutlined,
+  PetsOutlined,
+  PoolOutlined,
+  RadioOutlined,
+  TvOutlined,
+} from '@mui/icons-material';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
 const Perks = ({ selected, onChange }) => {
@@ -61,7 +63,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <LocalShippingOutlinedIcon className='mr-2' />
+              <LocalShippingOutlined className='mr-2' />
             </div>
           }
           label='Free parking'
@@ -85,7 +87,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <BreakfastDiningOutlinedIcon className='mr-2' />
+              <BreakfastDiningOutlined className='mr-2' />
             </div>
           }
           label='Free breakfast'
@@ -109,7 +111,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <PoolOutlinedIcon className='mr-2' />
+              <PoolOutlined className='mr-2' />
             </div>
           }
           label='Private pool'
@@ -133,7 +135,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <TvOutlinedIcon className='mr-3' />
+              <TvOutlined className='mr-3' />
             </div>
           }
           label='TV'
@@ -157,7 +159,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <RadioOutlinedIcon className='mr-3' />
+              <RadioOutlined className='mr-3' />
             </div>
           }
           label='Radio'
@@ -181,7 +183,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <PetsOutlinedIcon className='mr-3' />
+              <PetsOutlined className='mr-3' />
             </div>
           }
           label='Pets'
@@ -205,7 +207,7 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <LoginOutlinedIcon className='mr-3' />
+              <LoginOutlined className='mr-3' />
             </div>
           }
           label='Private Entrance'

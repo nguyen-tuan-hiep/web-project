@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import GoogleMapReact from 'google-map-react';
 import axios from 'axios';
-import { MapContext } from '../providers/MapProvider.jsx';
+import { MapContext } from '../../providers/AllProviders.jsx';
 
 const MapWidget = () => {
   const { setAddress } = useContext(MapContext);

@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import AccountNav from '../../components/AccountNav.jsx';
+import {AccountNav, BookingDates, Spinner, PlaceImg, AI } from '../../components/AllComponents.jsx';
 import axios from 'axios';
-import BookingDates from '../../components/BookingDates.jsx';
-import Spinner from '../../components/Spinner.jsx';
-import PlaceImg from '../../components/PlaceImg.jsx';
 import PaymentIcon from '@mui/icons-material/Payment';
-import AI from '../../components/AI.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 import { toast } from 'react-toastify';
 

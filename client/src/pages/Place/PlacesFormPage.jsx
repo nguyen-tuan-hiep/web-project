@@ -1,13 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import Perks from '../../components/Perks.jsx';
-import PhotosUploader from '../../components/PhotosUploader.jsx';
-import AccountNav from '../../components/AccountNav.jsx';
+import { AccountNav, MapWidget, Perks, PhotosUploader, Spinner } from '../../components/AllComponents.jsx';
 import { Navigate, useParams } from 'react-router-dom';
-import Spinner from '../../components/Spinner.jsx';
 import { toast } from 'react-toastify';
-import MapWidget from '../../components/MapWidget.jsx';
-import { MapContext } from '../../providers/MapProvider.jsx';
+import { MapContext } from '../../providers/AllProviders.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 
 const PlacesFormPage = () => {

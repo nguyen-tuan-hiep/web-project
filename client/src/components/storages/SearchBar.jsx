@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { PlaceContext } from '../providers/PlaceProvider';
+import { PlaceContext } from '../../providers/AllProviders.jsx';
 import axios from 'axios';
-import MicIcon from '@mui/icons-material/Mic';
-import SearchIcon from '@mui/icons-material/Search';
+import {Search, Mic} from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
 const SearchBar = () => {
@@ -74,7 +73,7 @@ const SearchBar = () => {
             value={searchText}
           />
           <IconButton variant='contained' className=' right-2' onClick={listen}>
-            <MicIcon className={`microphone ${isListening && 'isListening'}`} />
+            <Mic className={`microphone ${isListening && 'isListening'}`} />
           </IconButton>
         </div>
 
@@ -83,7 +82,7 @@ const SearchBar = () => {
             className='flex py-2 px-4 md:p-2 bg-primary hover:bg-red-700 transition rounded-r-full'
             onClick={(e) => handleSearch(e)}
           >
-            <SearchIcon />
+            <Search />
             <span className='hidden md:block ml-1'>Search</span>
           </button>
         </div>
