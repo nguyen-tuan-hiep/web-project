@@ -7,9 +7,9 @@ import Stack from '@mui/material/Stack';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { UserContext } from '../providers/UserProvider';
+import { UserContext } from '../../providers/AllProviders.jsx';
 import { toast } from 'react-toastify';
-import { getItemFromLocalStorage } from '../utils/index.js';
+import { getItemFromLocalStorage } from '../../utils/index.js';
 
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);

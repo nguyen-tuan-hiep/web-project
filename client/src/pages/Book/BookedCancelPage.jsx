@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import AddressLink from '../../components/AddressLink.jsx';
-import PlaceGallery from '../../components/PlaceGallery.jsx';
-import BookingDates from '../../components/BookingDates.jsx';
+import {ThingsToKnow, BookingDates, PlaceGallery, AddressLink} from '../../components/AllComponents.jsx';
 import PaymentIcon from '@mui/icons-material/Payment';
-import ThingsToKnow from '../../components/ThingsToKnow.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 
 export default function BookedCancelPage() {

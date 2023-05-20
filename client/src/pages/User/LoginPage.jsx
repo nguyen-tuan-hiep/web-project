@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
-import { UserContext } from '../../providers/UserProvider.jsx';
+import { UserContext } from '../../providers/AllProviders.jsx';
 import { setItemsInLocalStorage } from '../../utils/index.js';
 import ProfilePage from './ProfilePage.jsx';
 import { toast } from 'react-toastify';

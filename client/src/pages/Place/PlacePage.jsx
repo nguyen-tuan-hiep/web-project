@@ -1,11 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import AddressLink from '../../components/AddressLink.jsx';
-import BookingWidget from '../../components/BookingWidget.jsx';
-import PlaceGallery from '../../components/PlaceGallery.jsx';
-import Spinner from '../../components/Spinner.jsx';
-import ThingsToKnow from '../../components/ThingsToKnow.jsx';
+import { AddressLink, BookingWidget, PlaceGallery, Spinner, ThingsToKnow } from '../../components/AllComponents.jsx';
 
 const PlacePage = () => {
   const { id } = useParams();
@@ -24,7 +20,8 @@ const PlacePage = () => {
       setPlace(data.place);
       setLoading(false);
     };
-    getPlace().then(() => {});
+    getPlace().then(() => {
+    });
   }, [id]);
 
   if (loading) {

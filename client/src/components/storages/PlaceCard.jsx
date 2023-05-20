@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
-import PlaceImg from './PlaceImg';
-import { getItemFromLocalStorage } from '../utils/index.js';
+import { PlaceImg } from '../AllComponents.jsx';
+import { getItemFromLocalStorage } from '../../utils/index.js';
 
 const PlaceCard = ({ place }) => {
   const [deleted, setDeleted] = useState(false); // Declare state variable and function

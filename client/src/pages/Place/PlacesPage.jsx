@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import AccountNav from '../../components/AccountNav.jsx';
+import { AccountNav, PlaceCard, Spinner } from '../../components/AllComponents.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
-import Spinner from '../../components/Spinner.jsx';
-import PlaceCard from '../../components/PlaceCard.jsx';
-import AddIcon from '@mui/icons-material/Add';
+import { Add } from '@mui/icons-material';
 
 const PlacesPage = () => {
   const [places, setPlaces] = useState([]);
@@ -26,7 +24,8 @@ const PlacesPage = () => {
         console.error(error);
       }
     };
-    getPlaces().then(() => {});
+    getPlaces().then(() => {
+    });
   }, [places]);
 
   if (loading) {
@@ -42,7 +41,7 @@ const PlacesPage = () => {
           className='inline-flex gap-1 bg-primary hover:bg-red-700 transition mb-5 text-white py-2 px-6 rounded-full'
           to={'/account/places/new'}
         >
-          <AddIcon />
+          <Add />
           Add new place
         </Link>
       </div>

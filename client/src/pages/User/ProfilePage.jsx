@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { UserContext } from '../../providers/UserProvider.jsx';
-import PlacesPage from '../Place/PlacesPage.jsx';
-import AccountNav from '../../components/AccountNav.jsx';
-import Spinner from '../../components/Spinner.jsx';
+import { UserContext } from '../../providers/AllProviders.jsx';
+import { PlacesPage } from '../AllPages.jsx'
+import { AccountNav, Spinner } from '../../components/AllComponents.jsx';
 import { removeItemFromLocalStorage } from '../../utils/index.js';
 import { toast } from 'react-toastify';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
