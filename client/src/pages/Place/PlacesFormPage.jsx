@@ -11,6 +11,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { MapContext } from '../../providers/AllProviders.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
+import Weather from '../../components/weather/Weather.jsx';
 
 const PlacesFormPage = () => {
   const { id } = useParams();
@@ -159,6 +160,7 @@ const PlacesFormPage = () => {
             />
           </div>
           <MapWidget />
+          <Weather />
         </div>
 
         {preInput('Description', 'description of the place')}
@@ -223,7 +225,7 @@ const PlacesFormPage = () => {
             />
           </div>
         </div>
-        <button className="primary hover:bg-red-700 transition my-4">
+        <button className="primary hover:bg-secondary transition my-4">
           Save
         </button>
       </form>

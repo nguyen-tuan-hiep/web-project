@@ -4,7 +4,9 @@ export const MapContext = React.createContext({});
 
 export const MapProvider = ({ children }) => {
   const [address, setAddress] = useState('');
-  const contextValue = { address, setAddress };
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
+  const contextValue = { address, setAddress, latitude, setLatitude, longitude, setLongitude };
   return (
     <MapContext.Provider value={contextValue}>{children}</MapContext.Provider>
   );

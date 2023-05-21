@@ -54,14 +54,14 @@ const PlaceCard = ({ place }) => {
 
         <div className="flex mt-4 items-center justify-center">
           <button
-            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2"
+            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-secondary transition w-1/3 p-2"
             onClick={handleDelete}
           >
             Delete
           </button>
           <div className="mx-4"></div>
           <button
-            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-red-700 transition w-1/3 p-2"
+            className="bg-primary rounded-2xl text-white hover:scale-110 hover:bg-secondary transition w-1/3 p-2"
             onClick={handleUpdate}
           >
             Update

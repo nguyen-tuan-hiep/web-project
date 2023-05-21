@@ -508,7 +508,7 @@ button {
 .cover {
   width: 200px;
   height: 80px;
-  background: #0bd5e8;
+  background: #f37a79;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
   position: relative;
@@ -520,7 +520,7 @@ button {
   max-width: 200px;
   height: 20px;
   border-radius: 100%;
-  background: #08ffff;
+  background: #f69797;
   position: absolute;
   left: 0px;
   right: 0px;
@@ -531,26 +531,27 @@ button {
 .in-cover .bulb {
   width: 50px;
   height: 50px;
-  background-color: #08fffa;
+  background-color: #e76161;
   border-radius: 50%;
   position: absolute;
   left: 0px;
   right: 0px;
   bottom: -20px;
   margin: 0px auto;
-  -webkit-box-shadow: 0 0 15px 7px rgba(0, 255, 255, 0.8),
-    0 0 40px 25px rgba(0, 255, 255, 0.5),
-    -75px 0 30px 15px rgba(0, 255, 255, 0.2);
-  box-shadow: 0 0 25px 7px rgb(127 255 255 / 80%),
-    0 0 64px 47px rgba(0, 255, 255, 0.5), 0px 0 30px 15px rgba(0, 255, 255, 0.2);
+  -webkit-box-shadow: 0 0 15px 7px rgba(224, 100, 105, 0.8),
+    0 0 40px 25px rgba(224, 100, 105, 0.5),
+    -75px 0 30px 15px rgba(224, 100, 105, 0.2);
+  box-shadow: 0 0 25px 7px rgb(222 120 120 / 9%),
+    0 0 64px 47px rgba(224, 100, 105, 0.5), 0px 0 30px 15px rgba(224, 100, 105, 0.9);
 }
 
 .light {
   width: 200px;
   height: 0px;
-  border-bottom: 1200px solid rgb(44 255 255 / 24%);
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
+  border-bottom: 1200px solid rgba(224, 100, 105,0.6);
+  /* border-bottom: 1200px solid rgb(44 255 255 / 40%); */
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
   position: absolute;
   left: 0px;
   right: 0px;

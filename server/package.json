@@ -11,7 +11,7 @@
     "api",
     "backend"
   ],
-  "author": "rahul4019",
+  "author": "nguyen-tuan-hiep",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
