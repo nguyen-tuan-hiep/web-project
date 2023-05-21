@@ -1,4 +1,4 @@
-import { thingsToKnow } from '../Constants.jsx';
+import { thingsToKnow } from '../Constant/Constants.jsx';
 
 const ThingsToKnow = () => {
   const thingsToKnowContent = (

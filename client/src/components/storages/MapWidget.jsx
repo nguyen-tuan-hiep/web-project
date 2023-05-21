@@ -4,8 +4,14 @@ import axios from 'axios';
 import { MapContext } from '../../providers/AllProviders.jsx';
 
 const MapWidget = () => {
-  const { setAddress } = useContext(MapContext);
+  const { setAddress, setLatitude, setLongitude } = useContext(MapContext);
   const handleMapClick = async (event) => {
+    const lat = event.lat;
+    const lng = event.lng;
+
+    // Update the context state variables with the new latitude and longitude values
+    setLatitude(lat);
+    setLongitude(lng)
     const response = await axios.get('/reverse-geocode', {
       params: { lat: event.lat, lng: event.lng },
     });

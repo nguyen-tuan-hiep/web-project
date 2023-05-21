@@ -156,7 +156,7 @@ const BookingWidget = ({ place }) => {
       <div className="my-4 mx-20">
         <button
           onClick={handleBooking}
-          className="primary hover:bg-red-700 transition hover:scale-110 transform duration-200 ease-out"
+          className="primary hover:bg-secondary transition hover:scale-110 transform duration-200 ease-out"
         >
           Book this place
           {numberOfNights > 0 && <span> ₹{numberOfNights * place.price}</span>}

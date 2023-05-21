@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import './styles/App.css';
 import { Route, Routes } from 'react-router-dom';
 import {
@@ -13,7 +14,6 @@ import {
   ProfilePage,
   RegisterPage,
 } from './pages/AllPages.jsx';
-import axios from 'axios';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

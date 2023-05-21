@@ -24,7 +24,7 @@ const Header = () => {
             alt=""
           />
 
-          <span className="hidden md:block font-bold text-2xl text-red-500">
+          <span className="hidden md:block font-bold text-2xl text-primary">
             airbnb
           </span>
         </Link>
@@ -46,7 +46,7 @@ const Header = () => {
         <div className="bookmart">
           <HeartIcon
             className="z-0 hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2
-                  cursor-pointer hover:bg-red-700 duration-200 ease-out"
+                  cursor-pointer hover:bg-secondary duration-200 ease-out"
             onClick={() => {
               console.log('Open bookmark');
             }}

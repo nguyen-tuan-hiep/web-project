@@ -45,7 +45,7 @@ const ProfilePage = () => {
           Logged in as {user.name} ({user.email})
           <br />
           <button
-            className="primary max-w-sm mt-4 hover:bg-red-700 hover:scale-110 transition transform duration-200 ease-out"
+            className="primary max-w-sm mt-4 hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
             onClick={logout}
           >
             <LoginOutlinedIcon className="mr-2" />

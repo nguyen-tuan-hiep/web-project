@@ -12,4 +12,4 @@ export { default as LoginPage } from './User/LoginPage.jsx';
 export { default as ProfilePage } from './User/ProfilePage.jsx';
 export { default as RegisterPage } from './User/RegisterPage.jsx';
 // Index
-export { default as IndexPage } from './IndexPage.jsx';
+export { default as IndexPage } from './Home/IndexPage.jsx';

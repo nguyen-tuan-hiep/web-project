@@ -40,7 +40,7 @@ const PlacesPage = () => {
       <AccountNav />
       <div className="text-center">
         <Link
-          className="inline-flex gap-1 bg-primary hover:bg-red-700 transition mb-5 text-white py-2 px-6 rounded-full hover:scale-110 "
+          className="inline-flex gap-1 bg-primary hover:bg-secondary transition mb-5 text-white py-2 px-6 rounded-full hover:scale-110 "
           to={'/account/places/new'}
         >
           <Add />

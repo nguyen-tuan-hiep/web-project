@@ -79,11 +79,11 @@ const SearchBar = () => {
 
         <div className="flex  bg-blue text-white cursor-pointer">
           <button
-            className="flex py-2 px-4 md:p-2 bg-primary hover:bg-red-700 transition rounded-r-full"
+            className="flex py-2 px-4 md:p-2 bg-primary hover:bg-secondary transition rounded-r-full"
             onClick={(e) => handleSearch(e)}
           >
             <Search />
-            <span className="hidden md:block ml-1">Search</span>
+            <span className="hidden md:block mx-2">Search</span>
           </button>
         </div>
       </div>

@@ -59,7 +59,7 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
           placeholder="Add image link here or upload from your device"
         />
         <button
-          className="bg-primary hover:bg-red-700 hover:scale-105 transition text-white px-4 my-2 rounded-2xl"
+          className="bg-primary hover:bg-secondary hover:scale-105 transition text-white px-4 my-2 rounded-2xl"
           onClick={addPhotoByLink}
         >
           Add&nbsp;photo

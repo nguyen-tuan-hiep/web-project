@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { PlaceContext } from '../providers/AllProviders.jsx';
+import { PlaceContext } from '../../providers/AllProviders.jsx';
 import { Link } from 'react-router-dom';
-import { Spinner, Image } from '../components/AllComponents.jsx';
+import { Spinner, Image } from '../../components/AllComponents.jsx';
 
 const IndexPage = () => {
   const { places, loading, getPlaces } = useContext(PlaceContext);
