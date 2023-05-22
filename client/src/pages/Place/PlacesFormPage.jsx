@@ -27,11 +27,13 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
-  const { address, setAddress } = useContext(MapContext);
+  const { address, setAddress, latitude, longitude, setLatitude, setLongitude } = useContext(MapContext);
 
   useEffect(() => {
     if (!id) {
       setAddress('');
+      setLatitude(null);
+      setLongitude(null);
       return;
     }
     setLoading(true);
@@ -47,6 +49,8 @@ const PlacesFormPage = () => {
       setCheckOut(place.checkOut);
       setMaxGuests(place.maxGuests);
       setPrice(place.price);
+      setLatitude(place.latitude);
+      setLongitude(place.longitude);
       setLoading(false);
     });
   }, [id]);
@@ -88,7 +92,6 @@ const PlacesFormPage = () => {
       maxGuests,
       price,
     };
-    console.log(placeData);
     if (id) {
       placeData = { id, ...placeData };
       // update existing place
@@ -142,6 +145,7 @@ const PlacesFormPage = () => {
           placeholder="title, for example: My lovely apt"
         />
 
+        <Weather />
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-2">
           <div className="grid gap-2 sm:grid-cols-3 md:grid-cols-1">
             {preInput('Address', 'Address to this place')}
@@ -160,7 +164,6 @@ const PlacesFormPage = () => {
             />
           </div>
           <MapWidget />
-          <Weather />
         </div>
 
         {preInput('Description', 'description of the place')}

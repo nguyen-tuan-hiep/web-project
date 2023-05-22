@@ -8,7 +8,6 @@ const MapWidget = () => {
   const handleMapClick = async (event) => {
     const lat = event.lat;
     const lng = event.lng;
-
     // Update the context state variables with the new latitude and longitude values
     setLatitude(lat);
     setLongitude(lng)
