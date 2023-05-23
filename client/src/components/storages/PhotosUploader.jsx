@@ -97,8 +97,8 @@ const PhotosUploader = ({ addedPhotos, setAddedPhotos }) => {
             onChange={uploadPhoto}
           />
           <div style={{ textAlign: 'center' }}>
-            <DriveFolderUpload />
-            {'\nUpload'}
+            <DriveFolderUpload className="upload" />
+            <p>Upload</p>
           </div>
         </label>
       </div>

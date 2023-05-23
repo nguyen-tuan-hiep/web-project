@@ -82,12 +82,12 @@ const BookingWidget = ({ place }) => {
   return (
     <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form input-bookings">
       <div className="text-xl text-center price">
-        Price: ₹{place.price} per night
+        <div className='price'>Price: ₹{place.price} per night</div>
       </div>
       <Stack spacing={2} mt={2} px={1}>
         <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">
           <DatePicker
-            label="Check In"
+            label="Check-in"
             value={checkIn}
             onChange={(newValue) => {
               setCheckIn(newValue);
@@ -100,7 +100,7 @@ const BookingWidget = ({ place }) => {
             }
           />
           <DatePicker
-            label="Check out"
+            label="Check-out"
             value={checkOut}
             onChange={(newValue) => {
               setCheckOut(newValue);

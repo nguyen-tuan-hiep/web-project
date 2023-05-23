@@ -20,7 +20,7 @@ const IndexPage = () => {
         places.map((place) => (
           <Link to={`/place/${place._id}`} key={place._id}>
             <div className="flex items-center space-x-4 cursor-pointer hover:scale-105 transition transform duration-200 ease-out">
-              {place.photos?.[0] && <Image src={place.photos?.[0]} />}
+              <Image src={place.photos.length > 0 ? place.photos?.[0] : "./empty.png"} />
             </div>
             <div>
               <h2 className="font-bold">{place.address}</h2>

@@ -27,7 +27,14 @@ const PlacesFormPage = () => {
   const [redirect, setRedirect] = useState(false);
   const [price, setPrice] = useState(1500);
   const [loading, setLoading] = useState(false);
-  const { address, setAddress, latitude, longitude, setLatitude, setLongitude } = useContext(MapContext);
+  const {
+    address,
+    setAddress,
+    latitude,
+    longitude,
+    setLatitude,
+    setLongitude,
+  } = useContext(MapContext);
 
   useEffect(() => {
     if (!id) {
@@ -91,6 +98,8 @@ const PlacesFormPage = () => {
       checkOut,
       maxGuests,
       price,
+      latitude,
+      longitude,
     };
     if (id) {
       placeData = { id, ...placeData };
@@ -144,8 +153,8 @@ const PlacesFormPage = () => {
           onChange={(e) => setTitle(e.target.value)}
           placeholder="title, for example: My lovely apt"
         />
-
-        <Weather />
+        <h2 className="text-2xl mt-4">Forecasted Weather</h2>
+        <Weather latitude={latitude} longitude={longitude} />
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-2">
           <div className="grid gap-2 sm:grid-cols-3 md:grid-cols-1">
             {preInput('Address', 'Address to this place')}
@@ -168,6 +177,7 @@ const PlacesFormPage = () => {
 
         {preInput('Description', 'description of the place')}
         <textarea
+          placeholder='For example: "This is a lovely apartment in the heart of the city. It has a great view and is close to all the shops and restaurants."'
           id="desc"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
@@ -178,6 +188,7 @@ const PlacesFormPage = () => {
 
         {preInput('Extra info', 'house rules, etc ')}
         <textarea
+          placeholder='For example: "no smoking, no pets"'
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
         />

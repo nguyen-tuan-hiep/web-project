@@ -28,7 +28,7 @@ const SearchBar = () => {
 
   if (speech === null) {
     return (
-      <div className="app">
+      <div>
         <h1>
           Voice recognition is not supported by your browser, please re-try with
           a supported browser e.g. Chrome
