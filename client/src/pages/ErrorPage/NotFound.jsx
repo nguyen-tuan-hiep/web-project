@@ -1,41 +1,37 @@
 import React from 'react';
-import './NotFound.css';
+import { useNavigate } from 'react-router-dom';
 
 function NotFound() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/');
+  };
   return (
     <>
-      {/* <!--dust particel--> */}
-<div>
-  <div className="starsec"></div>
-  <div className="starthird"></div>
-  <div className="starfourth"></div>
-  <div className="starfifth"></div>
-</div>
-{/* <!--Dust particle end---> */}
-
-
-<div className="lamp__wrap">
-  <div className="lamp">
-    <div className="cable"></div>
-    <div className="cover"></div>
-    <div className="in-cover">
-      <div className="bulb"></div>
-    </div>
-    <div className="light"></div>
-  </div>
-</div>
-{/* <!-- END Lamp --> */}
-<section className="error">
-  <div className="error__content">
-    <div className="error__message message">
-      <div className="message__title">404 Page Not Found</div>
-      <div className="message__text">The page you were looking for doesn't exist. Please try again.</div>
-    </div>
-    <div className="error__nav e-nav">
-    </div>
+      <section className="flex justify-center items-center pt-12 px-20 gap-30">
+        <div className="w-full">
+          <p className="font-semibold text-4xl">
+            We can’t seem to find the page you’re looking for
+          </p>
+          <p className="font-semibold text-2xl mt-6">
+            Please check the URL and try again.
+          </p>
+          <div className="font-semibold text-2xl mt-10 w-40">
+            <button
+              className="primary hover:bg-secondary transition my-4"
+              onClick={handleClick}
+            >
+              Home
+            </button>
+          </div>
         </div>
-        </section>
-  {/* <!-- END Content --> */}
+        <div className="w-full flex justify-center">
+          <img
+            src="../404_error.gif"
+            alt="404 Not Found"
+          />
+        </div>
+      </section>
     </>
   );
 }
