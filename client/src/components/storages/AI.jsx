@@ -89,8 +89,8 @@ const AI = () => {
       },
       body: JSON.stringify({
         prompt:
-          `Suppose you are an place provider with some places:` +
-          JSON.stringify(places) +
+          `Suppose you are a place provider with some places:` +
+          JSON.parse(JSON.stringify(places).replace(/\\/g, "")) +
           `and I am a customer. I will ask and you will answer. My question: \n` +
           data.get('prompt'),
       }),
