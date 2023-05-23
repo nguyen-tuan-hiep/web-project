@@ -26,7 +26,7 @@ const PlaceGallery = ({ place }) => {
           {place?.photos?.length > 0 &&
             place.photos.map((photo, index) => (
               <div className="mx-auto" key={index}>
-                <img src={String(photo)} alt="" />
+                <img src={String(photo)} alt="" style={{ width: '85vh' }} />
               </div>
             ))}
         </div>
@@ -39,18 +39,34 @@ const PlaceGallery = ({ place }) => {
       <div className="relative inline-block">
         <div className="flex flex-row gap-4">
           {place.photos?.[0] && (
-            <div className="w-full">
-              <img src={place.photos[0]} alt="" />
+            <div
+              className={`w-full h-68${
+                place.photos.length > 1 ? ' md:w-1/3' : ''
+              }`}
+            >
+              <img
+                src={place.photos[0]}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </div>
           )}
           {place.photos?.[1] && (
-            <div className="w-full">
-              <img src={place.photos[1]} alt="" />
+            <div className={`w-full h-68 md:w-1/3`}>
+              <img
+                src={place.photos[1]}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </div>
           )}
           {place.photos?.[2] && (
-            <div className="w-full">
-              <img src={place.photos[2]} alt="" />
+            <div className="w-full h-68 md:w-1/3">
+              <img
+                src={place.photos[2]}
+                alt=""
+                className="w-full h-full object-cover"
+              />
             </div>
           )}
         </div>

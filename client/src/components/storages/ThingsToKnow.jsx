@@ -21,7 +21,7 @@ const ThingsToKnow = () => {
   );
 
   return (
-    <div className="py-5 w-full px-20">
+    <div className="py-5 w-full px-16">
       <h3 className="text-2xl pb-3 font-semibold">Things to know</h3>
       {thingsToKnowContent}
     </div>

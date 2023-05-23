@@ -48,3 +48,19 @@
   height: 120px;
   margin: 0 auto;
 }
+
+#dark .time {
+  color: #27374D;
+}
+
+#dark .temperature {
+  color: #FFB84C;
+}
+
+#dark .humidity {
+  color: #60A5FA;
+}
+
+#dark .weather {
+  color: #27374D;
+}

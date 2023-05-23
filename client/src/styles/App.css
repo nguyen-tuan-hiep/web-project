@@ -1,175 +1,9 @@
-#dark {
-  background-color: #373737;
-}
-
-#dark h1 {
-  color: #f3ebf6;
-}
-
-#dark h2 {
-  color: #f3ebf6;
-}
-
-#dark h3 {
-  color: white;
-}
-
-#dark h4 {
-  color: white;
-}
-
-#dark h5 {
-  color: white;
-}
-
-#dark p {
-  color: white;
-}
-
-#dark .mt-1 {
-  color: #f3ebf6;
-}
-
-#dark .username {
-  color: #f3ebf6;
-}
-
-#dark .text-center {
-  color: #f3ebf6;
-}
-
-#dark .grid {
-  color: #f3ebf6;
-}
-
-#dark a {
-  color: #f3ebf6;
-}
-
-#dark .icon {
-  color: black;
-}
-
-#dark input {
-  color: black;
-}
-
-#dark .things {
-  background-color: #373737;
-}
-
-#dark .text-xl {
-  color: #373737;
-}
-
-#dark .all-photo-button {
-  background-color: #a2a2a2;
-}
-
-#dark .footer {
-  background-color: #323232;
-}
-
-#dark .place-card {
-  background-color: #d9d9d9;
-}
-
-#dark input {
-  background-color: #d9d9d9;
-}
-
-#dark textarea {
-  background-color: #d9d9d9;
-}
-
-#dark textarea::placeholder {
-  color: #4c4c4c;
-}
-
-#dark .form {
-  background-color: #a2a2a2;
-}
-
-#dark .upload {
-  color: white;
-}
-
-#dark #search::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #title::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #address::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #checkIn::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #checkOut::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #maxGuests::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #price::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #photoLink::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #email::placeholder {
-  color: #4c4c4c;
-}
-
-#dark #password::placeholder {
-  color: #4c4c4c;
-}
-
-#dark .checkbox {
-  color: white;
-}
-
-#dark .checkbox.Mui-checked {
-  color: pink;
-}
-
-#app {
-  /* display: flex; */
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#chat_container {
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  padding-bottom: 20px;
-}
-
-#dark .search-icon {
-  background-color: #d9d9d9;
-  border: none;
-}
-
-#dark .chatbox {
-  background-color: #d9d9d9;
-}
-
-#dark .input-bookings {
-  background-color: #d9d9d9;
+:root {
+  --white: white;
+  --placeholder: #4c4c4c;
+  --background: #373737;
+  --box-background: #d9d9d9;
+  --footer-background: #323232;
 }
 
 .App {
@@ -179,18 +13,83 @@
   justify-content: space-between;
 }
 
-#dark .message__title {
-  color: #373737;
+#dark,
+#dark .things {
+  background-color: var(--background);
 }
 
+#light .message__title,
+#light .message__text,
+#dark a,
+#dark h1,
+#dark h2,
+#dark h3,
+#dark h4,
+#dark h5,
+#dark p,
+#dark .register,
+#dark .upload,
+#dark .checkbox,
+#dark .perk,
+#dark .thingstoknow {
+  color: var(--white);
+}
+
+#dark input,
+#dark textarea,
+#dark .form,
+#dark .place-card,
+#dark .search-icon,
+#dark .input-bookings,
+#dark .chatbox,
+#dark .all-photo-button {
+  background-color: var(--box-background);
+}
+
+
+#dark textarea::placeholder,
+#dark #search::placeholder,
+#dark #title::placeholder,
+#dark #checkIn::placeholder,
+#dark #checkOut::placeholder,
+#dark #maxGuests::placeholder,
+#dark #price::placeholder,
+#dark #photoLink::placeholder,
+#dark #email::placeholder,
+#dark #password::placeholder,
+#dark #address::placeholder {
+  color: var(--placeholder);
+}
+
+#dark .price,
+#dark .message__title,
 #dark .message__text {
-  color: #373737;
+  color: var(--background);
 }
 
-#light .message__title {
-  color: white;
+#dark input,
+#dark .icon {
+  color: black;
 }
 
-#light .message__text {
-  color: white;
+#dark .footer {
+  background-color: var(--footer-background);
+}
+
+#dark .checkbox.Mui-checked {
+  color: pink;
+}
+
+/* #app {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+#chat_container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
 }

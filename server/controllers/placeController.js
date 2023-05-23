@@ -10,6 +10,8 @@ exports.addPlace = async (req, res) => {
       owner: userData.id,
       title: infoData.title,
       address: infoData.address,
+      latitude: infoData.latitude,
+      longitude: infoData.longitude,
       photos: infoData.addedPhotos,
       description: infoData.desc,
       perks: infoData.perks,

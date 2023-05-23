@@ -41,7 +41,7 @@ const ProfilePage = () => {
     <div>
       <AccountNav />
       {subpage === 'profile' && (
-        <div className="text-center max-w-lg mx-auto ">
+        <p className="text-center max-w-lg mx-auto ">
           Logged in as {user.name} ({user.email})
           <br />
           <button
@@ -51,7 +51,7 @@ const ProfilePage = () => {
             <LoginOutlinedIcon className="mr-2" />
             Logout
           </button>
-        </div>
+        </p>
       )}
       {subpage === 'places' && <PlacesPage />}
     </div>

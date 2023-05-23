@@ -1,13 +1,10 @@
 import React from 'react';
 
-const PlaceImg = ({ place, index = 0, className = null }) => {
-  if (!place.photos?.length) {
-    return '';
-  }
+const PlaceImg = ({ place, index = 0, className }) => {
   if (!className) {
     className = 'object-cover';
   }
-  return <img src={place.photos[index]} alt="" className={className} />;
+  return <img src={place.photos.length > 0 ? place.photos[index] : "../../empty.png"} alt="" className={`h-60 w-92 ${className}`} />;
 };
 
 export default PlaceImg;

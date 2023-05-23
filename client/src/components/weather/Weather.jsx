@@ -4,8 +4,8 @@ import ThermostatIcon from '@mui/icons-material/Thermostat';
 import { MapContext } from '../../providers/AllProviders.jsx';
 import './Weather.css';
 
-const Weather = () => {
-  const { latitude, longitude } = useContext(MapContext);
+const Weather = ({latitude, longitude}) => {
+  // const { latitude, longitude } = useContext(MapContext);
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ const Weather = () => {
   };
   return (
     <>
-      <h2 className="text-2xl mt-4">Weather</h2>
       <div className="flex gap-10 overflow-x-auto px-5">
         {weatherData.list.map((item) => {
           return (

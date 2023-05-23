@@ -48,10 +48,10 @@ const PlacesPage = () => {
         </Link>
       </div>
 
-      <div className="mt-4 flex flex-wrap">
+      <div className="flex flex-wrap gap-9 w-full">
         {places.length > 0 &&
           places.map((place) => (
-            <div className="sm:w-1/2 md:w-1/3 lg:w-1/4" key={place._id}>
+            <div className="" key={place._id}>
               <PlaceCard place={place} />
             </div>
           ))}
