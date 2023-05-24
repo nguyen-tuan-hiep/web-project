@@ -20,7 +20,6 @@ const BookedPlacesPage = () => {
     navigate('/');
   };
   const { theme } = useContext(ThemeContext);
-
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
