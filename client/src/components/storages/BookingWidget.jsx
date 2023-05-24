@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { differenceInDays } from 'date-fns';
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -10,6 +9,7 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { UserContext } from '../../providers/AllProviders.jsx';
 import { toast } from 'react-toastify';
 import { getItemFromLocalStorage } from '../../utils/index.js';
+import { loadStripe } from '@stripe/stripe-js';
 
 const BookingWidget = ({ place }) => {
   const [checkIn, setCheckIn] = useState(null);
@@ -17,7 +17,6 @@ const BookingWidget = ({ place }) => {
   const [numOfGuests, setNumOfGuests] = useState(0);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [redirect, setRedirect] = useState('');
   const { user } = useContext(UserContext);
 
   useEffect(() => {
@@ -33,7 +32,6 @@ const BookingWidget = ({ place }) => {
       new Date(String(checkIn))
     );
   }
-
   const handleBooking = async () => {
     if (checkIn === null || checkOut === null) {
       toast.error('Check-in & check-out time is required');
@@ -58,7 +56,9 @@ const BookingWidget = ({ place }) => {
       name,
       phone,
       place: place._id,
-      price: numberOfNights * place.price,
+      price: place.price * numberOfNights,
+      title: place.title,
+      photo: place.photos[0],
     };
     await axios.post(
       '/bookings',
@@ -68,21 +68,25 @@ const BookingWidget = ({ place }) => {
           Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
         },
       }
-    );
-
-    // const bookingId = response.data._id;
-
-    setRedirect(`/account/bookings/`);
+      );
+      // connect to stripe payment gateway
+      const stripePromise = loadStripe(
+        'pk_test_51NBG0gENhiICCjN8E3Ttjx0g0r3EQ3svxeDApLg7oP1gvL7khadkBKJt9fZvW3tj1cr57DVPLiPD5OCUFTUdswci00smaNmMSp'
+      );
+      const stripe = await stripePromise;
+      const { data } = await axios.post('/checkout', {
+        infoData,
+      });
+      // Redirect to Stripe checkout
+      await stripe.redirectToCheckout({
+        sessionId: data.id,
+      });
   };
-
-  if (redirect) {
-    return <Navigate to={redirect} />;
-  }
 
   return (
     <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form input-bookings">
       <div className="text-xl text-center price">
-        <div className='price'>Price: ₹{place.price} per night</div>
+        <div className="price">Price: ₹{place.price} per night</div>
       </div>
       <Stack spacing={2} mt={2} px={1}>
         <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">

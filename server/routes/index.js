@@ -4,6 +4,7 @@ const cloudinary = require('cloudinary').v2;
 const multer = require('multer');
 const opencage = require('opencage-api-client');
 const dotenv = require('dotenv');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 dotenv.config();
 
 // multer
@@ -25,6 +26,43 @@ router.get('/weather', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.sendStatus(500);
+  }
+});
+
+router.post('/checkout', async (req, res) => {
+  const { price, title, photo } =
+    req.body.infoData;
+
+  try {
+    // Create a new Checkout Session
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            unit_amount: price * 100,
+            product_data: {
+              name: `Reservation for ${title}`,
+              images: [photo],
+            },
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: 'http://localhost:5173/account/bookings',
+      cancel_url: 'http://localhost:5173/123',
+      metadata: {
+        title,
+        photo,
+      },
+    });
+    // Return session ID to client
+    return res.json({ id: session.id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to create checkout session' });
   }
 });
 
