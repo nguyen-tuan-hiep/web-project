@@ -29,7 +29,8 @@ const PlacesPage = () => {
       }
     };
     getPlaces().then(() => {});
-  }, [places]);
+    console.log("Pl")
+  }, []);
 
   if (loading) {
     return <Spinner />;
