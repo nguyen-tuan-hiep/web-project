@@ -29,7 +29,7 @@ const PlacesPage = () => {
       }
     };
     getPlaces().then(() => {});
-    console.log("Pl")
+    console.log('Pl');
   }, []);
 
   if (loading) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function NotFound() {
+function PaymentCancel() {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
@@ -10,11 +10,9 @@ function NotFound() {
     <>
       <section className="flex justify-center items-center pt-12 px-20 gap-30">
         <div className="w-full">
-          <p className="font-semibold text-4xl">
-            We can’t seem to find the page you’re looking for
-          </p>
+          <p className="font-semibold text-4xl">Payment unsuccessful</p>
           <p className="font-semibold text-2xl mt-6">
-            Please check the URL and try again.
+            Transaction was declined. Please try again.
           </p>
           <div className="font-semibold text-2xl mt-10 w-40">
             <button
@@ -33,4 +31,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default PaymentCancel;

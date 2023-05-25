@@ -3,6 +3,7 @@ export { default as BookedCancelPage } from './Book/BookedCancelPage.jsx';
 export { default as BookedPlacesPage } from './Book/BookedPlacesPage.jsx';
 // Errors
 export { default as NotFound } from './ErrorPage/NotFound.jsx';
+export { default as PaymentCancel } from './ErrorPage/PaymentCancel.jsx';
 // Places
 export { default as PlacePage } from './Place/PlacePage.jsx';
 export { default as PlacesPage } from './Place/PlacesPage.jsx';

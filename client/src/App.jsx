@@ -13,6 +13,7 @@ import {
   PlacesPage,
   ProfilePage,
   RegisterPage,
+  PaymentCancel,
 } from './pages/AllPages.jsx';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -54,6 +55,7 @@ function App() {
                 path="/account/bookings/:id"
                 element={<BookedCancelPage />}
               />
+              <Route path="/payment-cancel" element={<PaymentCancel />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ToastContainer autoClose={2000} transition={Slide} />

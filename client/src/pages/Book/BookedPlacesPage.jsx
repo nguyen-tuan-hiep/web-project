@@ -69,7 +69,7 @@ const BookedPlacesPage = () => {
                   <PlaceImg place={booking.place} />
                 </div>
                 <div className="py-3 pr-3 grow">
-                  <h2 className="text-xl">{booking.place.title}</h2>
+                  <h2 className="text-xl darktxt">{booking.place.title}</h2>
                   <div className="text-xl">
                     <div className="flex gap-2 "></div>
                     <div className="text-xl">
@@ -79,8 +79,8 @@ const BookedPlacesPage = () => {
                       />
 
                       <div className="flex gap-1 items-center">
-                        <PaymentIcon />
-                        <span className="text-2xl">
+                        <PaymentIcon className="darktxt" />
+                        <span className="text-2xl darktxt">
                           Total price: ₹{booking.price}
                         </span>
                       </div>

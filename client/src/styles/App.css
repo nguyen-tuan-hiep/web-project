@@ -1,5 +1,6 @@
 :root {
   --white: white;
+  --black: black;
   --placeholder: #4c4c4c;
   --background: #373737;
   --box-background: #d9d9d9;
@@ -35,6 +36,10 @@
   color: var(--white);
 }
 
+#dark .darktxt {
+  color: var(--black);
+}
+
 #dark input,
 #dark textarea,
 #dark .form,
@@ -45,7 +50,6 @@
 #dark .all-photo-button {
   background-color: var(--box-background);
 }
-
 
 #dark textarea::placeholder,
 #dark #search::placeholder,

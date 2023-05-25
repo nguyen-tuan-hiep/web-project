@@ -69,7 +69,7 @@ export default function BookedCancelPage() {
           style={{ justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div>
-            <h2 className="text-xl mb-2">Your booking infomation: </h2>
+            <h2 className="text-xl mb-2 darktxt">Your booking infomation: </h2>
             <BookingDates
               booking={booking}
               className="items-center mb-2 mt-4  text-gray-600"

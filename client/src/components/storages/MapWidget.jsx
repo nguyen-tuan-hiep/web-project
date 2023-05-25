@@ -10,7 +10,7 @@ const MapWidget = () => {
     const lng = event.lng;
     // Update the context state variables with the new latitude and longitude values
     setLatitude(lat);
-    setLongitude(lng)
+    setLongitude(lng);
     const response = await axios.get('/reverse-geocode', {
       params: { lat: event.lat, lng: event.lng },
     });

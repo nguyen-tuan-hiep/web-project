@@ -5,6 +5,7 @@ const multer = require('multer');
 const opencage = require('opencage-api-client');
 const dotenv = require('dotenv');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const Booking = require('../models/Booking');
 dotenv.config();
 
 // multer
@@ -30,9 +31,18 @@ router.get('/weather', async (req, res) => {
 });
 
 router.post('/checkout', async (req, res) => {
-  const { price, title, photo } =
-    req.body.infoData;
-
+  const {
+    price,
+    title,
+    photo,
+    checkIn,
+    checkOut,
+    phone,
+    numOfGuests,
+    name,
+    place,
+    user,
+  } = req.body.infoData;
   try {
     // Create a new Checkout Session
     const session = await stripe.checkout.sessions.create({
@@ -51,11 +61,18 @@ router.post('/checkout', async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:5173/account/bookings',
-      cancel_url: 'http://localhost:5173/123',
+      success_url:
+        'http://localhost:8001/success?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'http://localhost:5173/payment-cancel',
       metadata: {
-        title,
-        photo,
+        checkIn,
+        checkOut,
+        phone,
+        name,
+        numOfGuests,
+        price,
+        place,
+        user,
       },
     });
     // Return session ID to client
@@ -63,6 +80,33 @@ router.post('/checkout', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to create checkout session' });
+  }
+});
+
+router.get('/success', async (req, res) => {
+  try {
+    const session = await stripe.checkout.sessions.retrieve(
+      req.query.session_id
+    );
+    const { checkIn, checkOut, numOfGuests, name, phone, place, price, user } =
+      session.metadata;
+    await Booking.create({
+      user: user,
+      place: place,
+      checkIn: checkIn,
+      checkOut: checkOut,
+      numOfGuests: numOfGuests,
+      name: name,
+      phone: phone,
+      price: price,
+    });
+    // return to client home page
+    res.redirect('http://localhost:5173/account/bookings');
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ error: 'An error occurred while creating the booking' });
   }
 });
 

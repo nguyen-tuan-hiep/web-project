@@ -2,7 +2,7 @@ import { thingsToKnow } from '../Constant/Constants.jsx';
 
 const ThingsToKnow = () => {
   const thingsToKnowContent = (
-    <div className="grid grid-cols-3 ">
+    <div className="grid grid-cols-3 gap-10">
       {thingsToKnow.map((item) => (
         <div key={item.title}>
           <h4 className="font-semibold text-lg pb-2">{item.title}</h4>
