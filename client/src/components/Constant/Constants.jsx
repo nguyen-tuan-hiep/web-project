@@ -4,18 +4,26 @@ import CelebrationIcon from '@mui/icons-material/Celebration';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
 import Co2Icon from '@mui/icons-material/Co2';
 import HelpIcon from '@mui/icons-material/Help';
+import CancelIcon from '@mui/icons-material/Cancel';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 
 export const thingsToKnow = [
   {
     title: 'House rules',
     content: [
-      { name: 'Check-in: After 3:00 PM', icon: <AccessTimeFilledIcon className='thingstoknow'/> },
+      {
+        name: 'Check-in: After 3:00 PM',
+        icon: <AccessTimeFilledIcon className="thingstoknow" />,
+      },
       {
         name: 'Checkout: 11:00 AM',
-        icon: <AccessTimeFilledIcon className='thingstoknow'/>,
+        icon: <AccessTimeFilledIcon className="thingstoknow" />,
       },
-      { name: 'No smoking', icon: <SmokeFreeIcon className='thingstoknow'/> },
-      { name: 'No parties or events', icon: <CelebrationIcon className='thingstoknow'/> },
+      { name: 'No smoking', icon: <SmokeFreeIcon className="thingstoknow" /> },
+      {
+        name: 'No parties or events',
+        icon: <CelebrationIcon className="thingstoknow" />,
+      },
     ],
   },
   {
@@ -23,21 +31,28 @@ export const thingsToKnow = [
     content: [
       {
         name: "Airbnb's COVID-19 safety practices apply",
-        icon: <CoronavirusIcon className='thingstoknow'/>,
+        icon: <CoronavirusIcon className="thingstoknow" />,
       },
       {
         name: 'Carbon monoxide alarm not reported',
-        icon: <Co2Icon className='thingstoknow'/>,
+        icon: <Co2Icon className="thingstoknow" />,
       },
-      { name: 'Smoke alarm not reported', icon: <HelpIcon className='thingstoknow'/> },
+      {
+        name: 'Smoke alarm not reported',
+        icon: <NotificationsActiveIcon className="thingstoknow" />,
+      },
     ],
   },
   {
     title: 'Cancellation policy',
     content: [
-      { name: 'Free cancellation before checkin 2 days.' },
       {
-        name: 'Review the Hosts full cancellation policy which applies even if you cancel for illness or disruptions caused by COVID-19.',
+        name: 'Free cancellation before check-in 2 days.',
+        icon: <CancelIcon className="thingstoknow" />,
+      },
+      {
+        name: 'Review the hosts full cancellation policy which applies even if you cancel for illness or disruptions caused by COVID-19.',
+        icon: <HelpIcon className="thingstoknow" />,
       },
     ],
   },

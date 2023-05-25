@@ -4,7 +4,7 @@ import ThermostatIcon from '@mui/icons-material/Thermostat';
 import { MapContext } from '../../providers/AllProviders.jsx';
 import './Weather.css';
 
-const Weather = ({latitude, longitude}) => {
+const Weather = ({ latitude, longitude }) => {
   // const { latitude, longitude } = useContext(MapContext);
   const [weatherData, setWeatherData] = useState(null);
 
@@ -73,7 +73,9 @@ const Weather = ({latitude, longitude}) => {
                   <ThermostatIcon className="mb-1" /> {item.main.humidity}%
                 </div>
                 <div className="weather text-center text-primary">
-                  {item.weather[0].description.toLowerCase().replace(/(^|\s)\S/g, (letter) => letter.toUpperCase())}
+                  {item.weather[0].description
+                    .toLowerCase()
+                    .replace(/(^|\s)\S/g, (letter) => letter.toUpperCase())}
                 </div>
               </div>
             </div>
