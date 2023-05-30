@@ -14,3 +14,5 @@ export { default as ProfilePage } from './User/ProfilePage.jsx';
 export { default as RegisterPage } from './User/RegisterPage.jsx';
 // Index
 export { default as IndexPage } from './Home/IndexPage.jsx';
+
+export { default as PageSuccessful} from './ErrorPage/PaymentSuccessful.jsx';

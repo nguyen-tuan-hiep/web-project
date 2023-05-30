@@ -35,6 +35,10 @@ const bookingSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  review: {
+    type: String,
+    default: '',
+  }
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);
