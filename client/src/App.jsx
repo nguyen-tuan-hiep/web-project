@@ -14,6 +14,7 @@ import {
   ProfilePage,
   RegisterPage,
   PaymentCancel,
+  PageSuccessful
 } from './pages/AllPages.jsx';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
@@ -25,6 +26,7 @@ import {
   UserProvider,
 } from './providers/AllProviders.jsx';
 import { Header } from './components/AllComponents.jsx';
+import PaymentSuccessful from './pages/ErrorPage/PaymentSuccessful';
 
 const token = getItemFromLocalStorage('token');
 
@@ -56,6 +58,7 @@ function App() {
                 element={<BookedCancelPage />}
               />
               <Route path="/payment-cancel" element={<PaymentCancel />} />
+              <Route path="/payment-successful" element={<PaymentSuccessful />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ToastContainer autoClose={2000} transition={Slide} />
