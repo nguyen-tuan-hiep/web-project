@@ -112,4 +112,4 @@ exports.getAllUsers = async (req, res) => {
       error: err,
     });
   }
-}
+};

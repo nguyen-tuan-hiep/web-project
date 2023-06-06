@@ -85,7 +85,10 @@ function PaymentSuccessful() {
   return (
     <>
       <div className="flex justify-center items-center h-full my-12">
-        <div className="w-1/2 text-center shadow-3xl rounded-2xl p-8" style={{minWidth:"700px"}}>
+        <div
+          className="w-1/2 text-center shadow-3xl rounded-2xl p-8"
+          style={{ minWidth: '700px' }}
+        >
           <div className="">
             <CheckCircleRoundedIcon
               style={{ color: '#FF5A5F', fontSize: '64' }}
