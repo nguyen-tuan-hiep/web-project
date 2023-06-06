@@ -38,7 +38,7 @@ const bookingSchema = new mongoose.Schema({
   review: {
     type: String,
     default: '',
-  }
+  },
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);

@@ -30,7 +30,7 @@ const MapWidget = () => {
     >
       <GoogleMapReact
         bootstrapURLKeys={{ key: 'AIzaSyDNI_ZWPqvdS6r6gPVO50I4TlYkfkZdXh8' }}
-        defaultCenter={{ lat: 21.09, lng: 105.8 }}
+        defaultCenter={{ lat: 40.73061, lng: -73.935242 }}
         defaultZoom={10}
         onClick={handleMapClick}
       ></GoogleMapReact>
