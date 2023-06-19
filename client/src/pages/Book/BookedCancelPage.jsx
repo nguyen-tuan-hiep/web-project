@@ -14,7 +14,10 @@ export default function BookedCancelPage() {
   const token = getItemFromLocalStorage('token');
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
+  const [rating, setRating] = useState(1);
+  const [review, setReview] = useState('');
   const navigate = useNavigate();
+
   useEffect(() => {
     if (id) {
       axios
@@ -41,16 +44,36 @@ export default function BookedCancelPage() {
           },
         })
         .then(() => {
-          // Reservation canceled successfully
-          // You can perform additional actions here if needed
           console.log('Reservation canceled');
           navigate('/account/bookings');
         })
         .catch((error) => {
-          // Handle error
           console.error('Error canceling reservation:', error);
         });
     }
+  };
+
+  const handleSubmitReview = () => {
+    const reviewData = {
+      placeId: booking.place._id,
+      bookingId: booking._id,
+      rating,
+      review
+    };
+
+    axios
+      .post(`./bookings/${booking._id}/review`, reviewData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        console.log('Review submitted');
+        navigate(`/place/${booking.place._id}`);
+      })
+      .catch((error) => {
+        console.error('Error submitting review:', error);
+      });
   };
 
   if (!booking) {
@@ -69,7 +92,7 @@ export default function BookedCancelPage() {
           style={{ justifyContent: 'space-between', alignItems: 'center' }}
         >
           <div>
-            <h2 className="text-xl mb-2 darktxt">Your booking infomation: </h2>
+            <h2 className="text-xl mb-2 darktxt">Your booking information: </h2>
             <BookingDates
               booking={booking}
               className="items-center mb-2 mt-4  text-gray-600"
@@ -91,6 +114,45 @@ export default function BookedCancelPage() {
       </div>
       <div className="border-t mt-10">
         <ThingsToKnow />
+      </div>
+
+      <div className="mt-8 px-20">
+        <h2 className="text-2xl font-semibold mb-2">Submit a Review</h2>
+        <div className="flex items-center mb-4">
+          <label htmlFor="rating" className="mr-2">
+            Rating:
+          </label>
+          <select
+            id="rating"
+            className="border rounded p-1"
+            value={rating}
+            onChange={(e) => setRating(Number(e.target.value))}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div className="mb-4">
+          <label htmlFor="review" className="mr-2">
+            Review:
+          </label>
+          <textarea
+            id="review"
+            className="border rounded p-1 w-full"
+            rows="4"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+          ></textarea>
+        </div>
+        <button
+          className="bg-primary p-4 text-white rounded-2xl cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
+          onClick={handleSubmitReview}
+        >
+          Submit Review
+        </button>
       </div>
     </div>
   );

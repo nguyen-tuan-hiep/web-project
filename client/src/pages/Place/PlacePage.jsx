@@ -18,6 +18,7 @@ const PlacePage = () => {
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     if (!id) {
@@ -38,6 +39,16 @@ const PlacePage = () => {
       console.log('longitude', longitude);
     };
     getPlace().then(() => {});
+
+    const getReviews = async () => {
+      const { data } = await axios.get(`/places/${id}/reviews`);
+      setReviews(data.reviews);
+    };
+
+    Promise.all([getPlace(), getReviews()]).catch((error) => {
+      console.error('Error:', error);
+    });
+
   }, [id]);
 
   if (loading) {
@@ -49,12 +60,10 @@ const PlacePage = () => {
   }
 
   return (
-    // <div className="w-full">
     <>
       <div className="mt-4 -mx-8 pt-8">
         <div className="px-20">
           <h1 className="text-3xl font-semibold">{place.title}</h1>
-
           <AddressLink placeAddress={place.address} />
         </div>
         <div className="relative z-30">
@@ -97,6 +106,21 @@ const PlacePage = () => {
           </div>
         </div>
         <div className="bg-white px-8 py-8 border-t things">
+          <div>
+            <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
+            {reviews.length > 0 ? (
+              <ul>
+                {reviews.map((review) => (
+                  <li key={review._id}>
+                    <p>Rating: {review.rating}</p>
+                    <p>Review: {review.review}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No reviews yet.</p>
+            )}
+          </div>
           <div>
             <ThingsToKnow />
           </div>
