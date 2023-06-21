@@ -15,7 +15,6 @@
     "@emotion/styled": "^11.11.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@heroicons/react": "^1.0.6",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.1",
     "@mui/x-date-pickers": "^6.4.0",

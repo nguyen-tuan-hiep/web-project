@@ -9,7 +9,6 @@ import {
   Menu,
 } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
-import { HeartIcon } from '@heroicons/react/solid';
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -41,16 +40,6 @@ const Header = () => {
               <Brightness4 style={{ color: 'black' }} />
             )}
           </IconButton>
-        </div>
-
-        <div className="bookmart">
-          <HeartIcon
-            className="z-0 hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2
-                  cursor-pointer hover:bg-secondary duration-200 ease-out"
-            onClick={() => {
-              console.log('Open bookmark');
-            }}
-          />
         </div>
 
         <div className="flex items-center space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out">
