@@ -57,8 +57,6 @@ export default function BookedCancelPage() {
     }
   };
 
-  
-
   if (!booking) {
     return '';
   }
@@ -97,7 +95,7 @@ export default function BookedCancelPage() {
       </div>
       <div className="border-t mt-10">
         <div className="mt-8 px-20">
-          <h2 className="text-2xl font-semibold mb-2">Submit a Review</h2>
+          <h2 className="text-2xl font-semibold mb-2">Create a review</h2>
           {/* <div className="flex items-center mb-4">
             <label htmlFor="rating" className="mr-2">
               Rating:
@@ -116,13 +114,15 @@ export default function BookedCancelPage() {
             </select>
           </div> */}
 
-          <ReactStars
-            count={5}
-            onChange={ratingChanged}
-            size={24}
-            activeColor="#ffd700"
-          />
-          <Review booking={booking} rating={rating} token={token}/>
+          <div className='pl-4'>
+            <ReactStars
+              count={5}
+              onChange={ratingChanged}
+              size={24}
+              activeColor="#ffd700"
+            />
+          </div>
+          <Review booking={booking} rating={rating} token={token} />
         </div>
       </div>
       <div className="border-t mt-10">
@@ -132,7 +132,7 @@ export default function BookedCancelPage() {
   );
 }
 
-function Review({booking, rating, token}) {
+function Review({ booking, rating, token }) {
   const navigate = useNavigate();
   const [review, setReview] = useState('');
   const handleSubmitReview = () => {
@@ -162,8 +162,9 @@ function Review({booking, rating, token}) {
     <>
       <div className="mb-4">
         <textarea
+          placeholder="Write your review here..."
           id="review"
-          className="border rounded p-1 w-full"
+          className="border-rounded w-full p-4"
           rows="4"
           value={review}
           onChange={(e) => setReview(e.target.value)}

@@ -119,16 +119,16 @@ const PlacePage = () => {
               {averageRating.toFixed(1)} <StarRateIcon style={{paddingBottom:"5px"}} /> {reviews.length} reviews
             </h2>
             <div
-              className=" mb-4 mt-2 px-10"
+              className=" mb-4 mt-6 px-10"
               style={{ maxHeight: '500px', overflowY: 'auto' }}
             >
               {reviews.length > 0 ? (
                 <ul>
                   {reviews.map((review) => (
                     <div className="bg-gray-100 p-4 mb-4" key={review._id}>
-                      <h2 className="font-semibold text-xl">
+                      <div className="font-semibold text-xl text-gray-700">
                         {review.user.name}
-                      </h2>
+                      </div>
                       <li key={review._id} className="text-sm leading-5">
                         <ReactStars
                           name={`rating-${review._id}`}
@@ -137,9 +137,9 @@ const PlacePage = () => {
                           size={20}
                           starColor="#ffb400"
                           emptyStarColor="#bbb"
-                          editing={false}
+                          edit={false}
                         />
-                        <p>{review.review}</p>
+                        <div className="font-semibold text-gray-700 pt-4">{review.review}</div>
                       </li>
                     </div>
                   ))}
