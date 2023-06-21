@@ -9,14 +9,13 @@ import {
 } from '../../components/AllComponents.jsx';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { getItemFromLocalStorage } from '../../utils/index.js';
+import ReactStars from 'react-rating-stars-component';
 
 export default function BookedCancelPage() {
   const token = getItemFromLocalStorage('token');
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
-  const [rating, setRating] = useState(1);
-  const [review, setReview] = useState('');
-  const navigate = useNavigate();
+  const [rating, setRating] = useState(null);
 
   useEffect(() => {
     if (id) {
@@ -34,6 +33,11 @@ export default function BookedCancelPage() {
         });
     }
   }, [id]);
+
+  const ratingChanged = (newRating) => {
+    setRating(newRating);
+  };
+  console.log(rating);
 
   const handleCancelReservation = () => {
     if (booking) {
@@ -53,28 +57,7 @@ export default function BookedCancelPage() {
     }
   };
 
-  const handleSubmitReview = () => {
-    const reviewData = {
-      placeId: booking.place._id,
-      bookingId: booking._id,
-      rating,
-      review
-    };
-
-    axios
-      .post(`./bookings/${booking._id}/review`, reviewData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(() => {
-        console.log('Review submitted');
-        navigate(`/place/${booking.place._id}`);
-      })
-      .catch((error) => {
-        console.error('Error submitting review:', error);
-      });
-  };
+  
 
   if (!booking) {
     return '';
@@ -113,47 +96,85 @@ export default function BookedCancelPage() {
         <PlaceGallery place={booking.place} />
       </div>
       <div className="border-t mt-10">
+        <div className="mt-8 px-20">
+          <h2 className="text-2xl font-semibold mb-2">Submit a Review</h2>
+          {/* <div className="flex items-center mb-4">
+            <label htmlFor="rating" className="mr-2">
+              Rating:
+            </label>
+            <select
+              id="rating"
+              className="border rounded p-1"
+              value={rating}
+              onChange={(e) => setRating(Number(e.target.value))}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div> */}
+
+          <ReactStars
+            count={5}
+            onChange={ratingChanged}
+            size={24}
+            activeColor="#ffd700"
+          />
+          <Review booking={booking} rating={rating} token={token}/>
+        </div>
+      </div>
+      <div className="border-t mt-10">
         <ThingsToKnow />
       </div>
-
-      <div className="mt-8 px-20">
-        <h2 className="text-2xl font-semibold mb-2">Submit a Review</h2>
-        <div className="flex items-center mb-4">
-          <label htmlFor="rating" className="mr-2">
-            Rating:
-          </label>
-          <select
-            id="rating"
-            className="border rounded p-1"
-            value={rating}
-            onChange={(e) => setRating(Number(e.target.value))}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="review" className="mr-2">
-            Review:
-          </label>
-          <textarea
-            id="review"
-            className="border rounded p-1 w-full"
-            rows="4"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          ></textarea>
-        </div>
-        <button
-          className="bg-primary p-4 text-white rounded-2xl cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
-          onClick={handleSubmitReview}
-        >
-          Submit Review
-        </button>
-      </div>
     </div>
+  );
+}
+
+function Review({booking, rating, token}) {
+  const navigate = useNavigate();
+  const [review, setReview] = useState('');
+  const handleSubmitReview = () => {
+    const reviewData = {
+      placeId: booking.place._id,
+      bookingId: booking._id,
+      rating,
+      review,
+    };
+
+    axios
+      .post(`./bookings/${booking._id}/review`, reviewData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        console.log('Review submitted');
+        navigate(`/place/${booking.place._id}`);
+      })
+      .catch((error) => {
+        console.error('Error submitting review:', error);
+      });
+  };
+
+  return (
+    <>
+      <div className="mb-4">
+        <textarea
+          id="review"
+          className="border rounded p-1 w-full"
+          rows="4"
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+        ></textarea>
+      </div>
+      <button
+        className="bg-primary p-4 text-white rounded-2xl cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
+        onClick={handleSubmitReview}
+      >
+        Submit Review
+      </button>
+    </>
   );
 }

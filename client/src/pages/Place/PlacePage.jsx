@@ -10,6 +10,8 @@ import {
 } from '../../components/AllComponents.jsx';
 import Weather from '../../components/weather/Weather.jsx';
 import { MapContext } from '../../providers/AllProviders.jsx';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import ReactStars from 'react-rating-stars-component';
 
 const PlacePage = () => {
   const { latitude, longitude, setLatitude, setLongitude } =
@@ -33,8 +35,6 @@ const PlacePage = () => {
       const { data } = await axios.get(`/places/${id}`);
       setPlace(data.place);
       setLoading(false);
-      console.log('latitude', latitude);
-      console.log('longitude', longitude);
     };
     getPlace().then(() => {});
 
@@ -43,7 +43,10 @@ const PlacePage = () => {
       setReviews(data.reviews);
 
       if (data.reviews.length > 0) {
-        const sum = data.reviews.reduce((total, review) => total + review.rating, 0);
+        const sum = data.reviews.reduce(
+          (total, review) => total + review.rating,
+          0
+        );
         const average = sum / data.reviews.length;
         setAverageRating(average);
       } else {
@@ -54,7 +57,6 @@ const PlacePage = () => {
     Promise.all([getPlace(), getReviews()]).catch((error) => {
       console.error('Error:', error);
     });
-
   }, [id]);
 
   if (loading) {
@@ -113,31 +115,43 @@ const PlacePage = () => {
         </div>
         <div className="bg-white px-8 py-8 border-t things">
           <div>
-              <h2 className="font-semibold text-2xl mt-4 px-10">Reviews</h2>
-              <div className="text-sm leading-5 mb-4 mt-2 px-10">
-                {reviews.length > 0 ? (
-                  <>
-                    {averageRating > 0 && (
-                      <p >Average Rating: {averageRating.toFixed(1)} *** {reviews.length} reviews</p>
-                    )}
-                    <ul>
-                      {reviews.map((review) => (
-                        <li key={review._id}>
-                          <p>Rating: {review.rating}</p>
-                          <p>Review: {review.review}</p>
-                          <p>By: {review.user.name}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </>
-                ) : (
-                  <p>No reviews yet.</p>
-                )}
-              </div>
+            <h2 className="font-semibold text-2xl mt-4 px-12">
+              {averageRating.toFixed(1)} <StarRateIcon style={{paddingBottom:"5px"}} /> {reviews.length} reviews
+            </h2>
+            <div
+              className=" mb-4 mt-2 px-10"
+              style={{ maxHeight: '500px', overflowY: 'auto' }}
+            >
+              {reviews.length > 0 ? (
+                <ul>
+                  {reviews.map((review) => (
+                    <div className="bg-gray-100 p-4 mb-4" key={review._id}>
+                      <h2 className="font-semibold text-xl">
+                        {review.user.name}
+                      </h2>
+                      <li key={review._id} className="text-sm leading-5">
+                        <ReactStars
+                          name={`rating-${review._id}`}
+                          value={review.rating}
+                          starCount={5}
+                          size={20}
+                          starColor="#ffb400"
+                          emptyStarColor="#bbb"
+                          editing={false}
+                        />
+                        <p>{review.review}</p>
+                      </li>
+                    </div>
+                  ))}
+                </ul>
+              ) : (
+                <p>No reviews yet.</p>
+              )}
+            </div>
           </div>
         </div>
         <div className="bg-white px-8 py-8 border-t things">
-        <div>
+          <div>
             <ThingsToKnow />
           </div>
         </div>
