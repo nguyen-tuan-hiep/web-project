@@ -5,7 +5,6 @@ const userFromToken = require('../utils/userFromToken');
 async function createReview(req, res) {
   try {
     const userData = userFromToken(req);
-    console.log(req.body)
     const reviewData = await Review.create({
       user: userData.id,
       place: req.body.placeId,
@@ -13,9 +12,7 @@ async function createReview(req, res) {
       rating: req.body.rating,
       review: req.body.review
     });
-    console.log("a")
     const newReview = await Review.create(reviewData);
-    console.log("b")
     res.status(201).json({ success: true, review: newReview });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
@@ -27,7 +24,7 @@ async function getPlaceReviews(req, res) {
   try {
     const { id } = req.params;
 
-    const reviews = await Review.find({ place: id }).populate('user');
+    const reviews = await Review.find({ place: id }).populate('user', 'name');
 
     res.json({ success: true, reviews });
   } catch (error) {
