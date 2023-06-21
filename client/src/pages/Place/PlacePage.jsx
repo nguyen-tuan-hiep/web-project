@@ -10,7 +10,6 @@ import {
 } from '../../components/AllComponents.jsx';
 import Weather from '../../components/weather/Weather.jsx';
 import { MapContext } from '../../providers/AllProviders.jsx';
-import { removeItemFromLocalStorage } from '../../utils/index.js';
 
 const PlacePage = () => {
   const { latitude, longitude, setLatitude, setLongitude } =
@@ -19,14 +18,13 @@ const PlacePage = () => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     if (!id) {
       setLatitude(null);
       setLongitude(null);
       return;
-      // }
-      // return '';
     }
 
     setLoading(true);
@@ -43,6 +41,14 @@ const PlacePage = () => {
     const getReviews = async () => {
       const { data } = await axios.get(`/places/${id}/reviews`);
       setReviews(data.reviews);
+
+      if (data.reviews.length > 0) {
+        const sum = data.reviews.reduce((total, review) => total + review.rating, 0);
+        const average = sum / data.reviews.length;
+        setAverageRating(average);
+      } else {
+        setAverageRating(0);
+      }
     };
 
     Promise.all([getPlace(), getReviews()]).catch((error) => {
@@ -107,21 +113,31 @@ const PlacePage = () => {
         </div>
         <div className="bg-white px-8 py-8 border-t things">
           <div>
-            <h2 className="text-2xl font-semibold mb-4">Reviews</h2>
-            {reviews.length > 0 ? (
-              <ul>
-                {reviews.map((review) => (
-                  <li key={review._id}>
-                    <p>Rating: {review.rating}</p>
-                    <p>Review: {review.review}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No reviews yet.</p>
-            )}
+              <h2 className="font-semibold text-2xl mt-4 px-10">Reviews</h2>
+              <div className="text-sm leading-5 mb-4 mt-2 px-10">
+                {reviews.length > 0 ? (
+                  <>
+                    {averageRating > 0 && (
+                      <p >Average Rating: {averageRating.toFixed(1)} *** {reviews.length} reviews</p>
+                    )}
+                    <ul>
+                      {reviews.map((review) => (
+                        <li key={review._id}>
+                          <p>Rating: {review.rating}</p>
+                          <p>Review: {review.review}</p>
+                          <p>By: {review.user.name}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                ) : (
+                  <p>No reviews yet.</p>
+                )}
+              </div>
           </div>
-          <div>
+        </div>
+        <div className="bg-white px-8 py-8 border-t things">
+        <div>
             <ThingsToKnow />
           </div>
         </div>
