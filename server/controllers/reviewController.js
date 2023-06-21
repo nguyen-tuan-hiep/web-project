@@ -14,11 +14,11 @@ async function createReview(req, res) {
     }
     const checkOutDate = booking.checkOut;
     
-    // // Check if the review date is after the check-out date
-    // const reviewDate = new Date();
-    // if (reviewDate <= checkOutDate) {
-    //   return res.status(456).json({ success: false, error: 'Cannot review before check-out' });
-    // }
+    // Check if the review date is after the check-out date
+    const reviewDate = new Date();
+    if (reviewDate <= checkOutDate) {
+      return res.status(456).json({ success: false, error: 'Cannot review before check-out' });
+    }
 
     // Check if a review for this booking ID already exists
     const existingReview = await Review.findOne({ booking: bookingId });
