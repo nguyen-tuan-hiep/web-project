@@ -8,7 +8,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { UserContext } from '../../providers/AllProviders.jsx';
 import { toast } from 'react-toastify';
-import { getItemFromLocalStorage } from '../../utils/index.js';
 import { loadStripe } from '@stripe/stripe-js';
 
 const BookingWidget = ({ place }) => {
@@ -46,6 +45,10 @@ const BookingWidget = ({ place }) => {
       phone.match(/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/) === null
     ) {
       toast.error('Phone is required (10 numbers)');
+      return;
+    }
+    if (numOfGuests > place.maxGuests) {
+      toast.error(`Max guests allowed is ${place.maxGuests}`);
       return;
     }
     const infoData = {
