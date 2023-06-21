@@ -10,7 +10,7 @@ const AI = () => {
   };
 
   useEffect(() => {
-    getPlaces().then(() => {});
+    getPlaces();
   }, []);
   const places = placeArray.map(
     ({ title, address, price, description, perks }) => ({
@@ -22,7 +22,6 @@ const AI = () => {
     })
   );
   let loadingInterval;
-
   function loader(el) {
     el.textContent = '';
 
@@ -58,7 +57,7 @@ const AI = () => {
 
   function chatStripe(isAi, value, uniqueId) {
     return `
-  <div id='${uniqueId}' class = 'border w-full p-5 chatbox'>${value}</div>
+  <div id=${uniqueId} class = "border w-full p-5 chatbox">${value}</div>
   `;
   }
 
@@ -89,8 +88,8 @@ const AI = () => {
       },
       body: JSON.stringify({
         prompt:
-          `Suppose you are a place provider with some places:` +
-          JSON.parse(JSON.stringify(places).replace(/\\/g, '')) +
+          `Suppose you are an accomodation provider with some places:` +
+          JSON.stringify(places) +
           `and I am a customer. I will ask and you will answer. My question: \n` +
           data.get('prompt'),
       }),
@@ -116,7 +115,7 @@ const AI = () => {
   const handleKeyDown = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
-      handleSubmit(e).then(() => {});
+      handleSubmit(e);
     }
   };
 
