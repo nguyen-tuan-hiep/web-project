@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { containerVariants } from '../../components/Constant/Constants.jsx';
 
 function NotFound() {
   const navigate = useNavigate();
@@ -7,7 +9,11 @@ function NotFound() {
     navigate('/');
   };
   return (
-    <>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+    >
       <section className="flex justify-center items-center pt-12 px-20 gap-30">
         <div className="w-full">
           <p className="font-semibold text-4xl">
@@ -29,7 +35,7 @@ function NotFound() {
           <img src="../../404_error.gif" alt="404 Not Found" />
         </div>
       </section>
-    </>
+    </motion.div>
   );
 }
 

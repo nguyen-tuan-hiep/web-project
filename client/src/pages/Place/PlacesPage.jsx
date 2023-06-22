@@ -8,6 +8,8 @@ import {
 } from '../../components/AllComponents.jsx';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 import { Add } from '@mui/icons-material';
+import { motion } from 'framer-motion';
+import { containerVariants } from '../../components/Constant/Constants.jsx';
 
 const PlacesPage = () => {
   const [places, setPlaces] = useState([]);
@@ -36,7 +38,12 @@ const PlacesPage = () => {
   }
 
   return (
-    <div>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      // exit="exit"
+    >
       <AccountNav />
       <div className="text-center">
         <Link
@@ -56,7 +63,7 @@ const PlacesPage = () => {
             </div>
           ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

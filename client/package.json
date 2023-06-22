@@ -21,6 +21,7 @@
     "axios": "^1.2.5",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
+    "framer-motion": "^10.12.16",
     "google-map-react": "^2.2.1",
     "opencage-api-client": "^1.0.1",
     "postcss": "^8.4.24",

@@ -6,6 +6,8 @@ import { AccountNav, Spinner } from '../../components/AllComponents.jsx';
 import { removeItemFromLocalStorage } from '../../utils/index.js';
 import { toast } from 'react-toastify';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
+import { motion } from 'framer-motion';
+import { containerVariants } from '../../components/Constant/Constants.jsx';
 
 const ProfilePage = () => {
   const { loading, user, setUser } = useContext(UserContext);
@@ -29,7 +31,6 @@ const ProfilePage = () => {
   }
 
   if (!loading && !user && !redirect) {
-    console.log(`loading: ${loading}, user: ${user}, redirect: ${redirect}`);
     return <Navigate to={'/login'} />;
   }
 
@@ -38,23 +39,31 @@ const ProfilePage = () => {
   }
 
   return (
-    <div>
+    <motion.div
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    // exit="exit"
+    >
       <AccountNav />
       {subpage === 'profile' && (
-        <p className="text-center max-w-lg mx-auto ">
-          Logged in as {user.name} ({user.email})
-          <br />
-          <button
-            className="primary max-w-sm mt-4 hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
-            onClick={logout}
-          >
-            <LoginOutlinedIcon className="mr-2" />
-            Logout
-          </button>
-        </p>
+        <div
+        >
+          <p className="text-center max-w-lg mx-auto">
+            Logged in as {user.name} ({user.email})
+            <br />
+            <button
+              className="primary max-w-sm mt-4 hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
+              onClick={logout}
+            >
+              <LoginOutlinedIcon className="mr-2" />
+              Logout
+            </button>
+          </p>
+        </div>
       )}
       {subpage === 'places' && <PlacesPage />}
-    </div>
+    </motion.div>
   );
 };
 
