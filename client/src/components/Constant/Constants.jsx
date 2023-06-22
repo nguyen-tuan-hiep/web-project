@@ -1,4 +1,3 @@
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import SmokeFreeIcon from '@mui/icons-material/SmokeFree';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import CoronavirusIcon from '@mui/icons-material/Coronavirus';
@@ -11,14 +10,6 @@ export const thingsToKnow = [
   {
     title: 'House rules',
     content: [
-      {
-        name: 'Check-in: After 3:00 PM',
-        icon: <AccessTimeFilledIcon className="thingstoknow" />,
-      },
-      {
-        name: 'Checkout: 11:00 AM',
-        icon: <AccessTimeFilledIcon className="thingstoknow" />,
-      },
       { name: 'No smoking', icon: <SmokeFreeIcon className="thingstoknow" /> },
       {
         name: 'No parties or events',

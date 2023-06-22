@@ -6,6 +6,7 @@ const opencage = require('opencage-api-client');
 const dotenv = require('dotenv');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Booking = require('../models/Booking');
+const axios = require('axios');
 dotenv.config();
 
 // multer
@@ -21,9 +22,8 @@ router.get('/weather', async (req, res) => {
   try {
     const { lat, lon } = req.query;
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_API_KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    res.json(data);
+    const response = await axios.get(url); // Use axios.get instead of fetch
+    res.json(response.data);
   } catch (error) {
     console.error(error);
     res.sendStatus(500);

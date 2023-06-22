@@ -135,7 +135,6 @@ exports.searchPlaces = async (req, res) => {
   }
 };
 
-
 exports.deletePlace = async (req, res) => {
   try {
     const userData = userFromToken(req);

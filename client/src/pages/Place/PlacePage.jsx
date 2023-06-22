@@ -12,10 +12,11 @@ import Weather from '../../components/weather/Weather.jsx';
 import { MapContext } from '../../providers/AllProviders.jsx';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import ReactStars from 'react-rating-stars-component';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import PeopleIcon from '@mui/icons-material/People';
 
 const PlacePage = () => {
-  const { latitude, longitude, setLatitude, setLongitude } =
-    useContext(MapContext);
+  const { setLatitude, setLongitude } = useContext(MapContext);
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -87,9 +88,9 @@ const PlacePage = () => {
               <h2 className="font-semibold text-2xl">Description</h2>
               <p>{place.description}</p>
             </div>
-            <p>Check-in: {place.checkIn}</p>
-            <p>Check-out: {place.checkOut}</p>
-            <p>Max number of guests: {place.maxGuests}</p>
+            <p> <AccessTimeFilledIcon/> Check-in: {place.checkIn}h</p>
+            <p> <AccessTimeFilledIcon/> Check-out: {place.checkOut}h</p>
+            <p> <PeopleIcon/> Max number of guests: {place.maxGuests}</p>
             <div>
               <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
             </div>

@@ -1,11 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import ThermostatIcon from '@mui/icons-material/Thermostat';
-import { MapContext } from '../../providers/AllProviders.jsx';
 import './Weather.css';
 
 const Weather = ({ latitude, longitude }) => {
-  // const { latitude, longitude } = useContext(MapContext);
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
