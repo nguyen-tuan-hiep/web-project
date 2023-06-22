@@ -10,6 +10,7 @@ import {
 import PaymentIcon from '@mui/icons-material/Payment';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 import ReactStars from 'react-rating-stars-component';
+import { toast } from 'react-toastify';
 
 export default function BookedCancelPage() {
   const token = getItemFromLocalStorage('token');
@@ -86,9 +87,9 @@ export default function BookedCancelPage() {
             <span className="text-xl">Total price: ₹{booking.price}</span>
           </div>
           <button
-          className="bg-primary p-4 text-white rounded-2xl  mr-10 cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
-          style={{ height: '50%', display: daysDiff > 2 ? 'block' : 'none' }}
-          onClick={handleCancelReservation}
+            className="bg-primary p-4 text-white rounded-2xl mr-10 cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
+            style={{ height: '50%', display: daysDiff > 2 ? 'block' : 'none' }}
+            onClick={handleCancelReservation}
           >
             Cancel reservation
           </button>
@@ -100,7 +101,7 @@ export default function BookedCancelPage() {
       <div className="border-t mt-10">
         <div className="mt-8 px-20">
           <h2 className="text-2xl font-semibold mb-2">Create a review</h2>
-          <div className='pl-4'>
+          <div className="pl-4">
             <ReactStars
               count={5}
               onChange={ratingChanged}
@@ -121,7 +122,6 @@ export default function BookedCancelPage() {
 function Review({ booking, rating, token }) {
   const navigate = useNavigate();
   const [review, setReview] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmitReview = () => {
     const reviewData = {
@@ -144,15 +144,15 @@ function Review({ booking, rating, token }) {
       .catch((error) => {
         if (error.response) {
           const { status } = error.response;
-          if (status === 445) {
-            setErrorMessage('Review already exists for this booking.');
-          } else if (status === 456) {
-            setErrorMessage('Cannot review before check-out.');
+          if (status === 409) {
+            toast.error('You have already reviewed  this booking.');
+          } else if (status === 400) {
+            toast.error('Cannot review before check-out.');
           } else {
-            setErrorMessage('Error submitting review. Please try again later.');
+            toast.error('Error submitting review. Please try again later.');
           }
         } else {
-          setErrorMessage('Error submitting review. Please try again later.');
+          toast.error('Error submitting review. Please try again later.');
         }
       });
   };
@@ -169,7 +169,6 @@ function Review({ booking, rating, token }) {
           onChange={(e) => setReview(e.target.value)}
         ></textarea>
       </div>
-      {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
       <button
         className="bg-primary p-4 text-white rounded-2xl cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
         onClick={handleSubmitReview}
