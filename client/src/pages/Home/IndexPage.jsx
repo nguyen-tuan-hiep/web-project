@@ -31,7 +31,7 @@ const IndexPage = () => {
               <h3 className="text-sm text-gray-500 ">{place.address}</h3>
             </div>
             <div>
-              <span className="font-semibold">₹{place.price} </span>
+              <span className="font-semibold">${place.price} </span>
               per night
             </div>
           </Link>

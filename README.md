@@ -10,7 +10,7 @@ To install and run the application, please follow these steps:
 - Navigate to the project root folder in the terminal
 - Install dependencies using the command `npm install` for both server and client.
 - You can either work with MongoDB atlas or use your locally installed MongoDB
-- Create a .env file in your project api folder and add your variables.
+- Create a .env file in your server folder and add your variables.
 
 ---
 ## Features
@@ -18,7 +18,7 @@ To install and run the application, please follow these steps:
 The application has the following features:
 
 - User authentication and authorization
-- Search for places by location and voice search
+- Search for places by location/title using text/voice
 - Dark mode
 - Intelligent Chatbot
 - View places details, amenities, and pricing description

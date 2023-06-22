@@ -84,7 +84,7 @@ export default function BookedCancelPage() {
               className="items-center mb-2 mt-4  text-gray-600"
             />
             <PaymentIcon />
-            <span className="text-xl">Total price: ₹{booking.price}</span>
+            <span className="text-xl">Total price: ${booking.price}</span>
           </div>
           <button
             className="bg-primary p-4 text-white rounded-2xl mr-10 cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"

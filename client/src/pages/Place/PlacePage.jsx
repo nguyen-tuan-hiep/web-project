@@ -145,7 +145,7 @@ const PlacePage = () => {
                   ))}
                 </ul>
               ) : (
-                <p>No reviews yet.</p>
+                <p className="px-2">No reviews yet.</p>
               )}
             </div>
           </div>

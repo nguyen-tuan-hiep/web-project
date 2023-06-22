@@ -89,7 +89,7 @@ const BookingWidget = ({ place }) => {
   return (
     <div className="bg-white p-4 rounded-2xl mr-20 shadow-3xl form input-bookings">
       <div className="text-xl text-center price">
-        <div className="price">Price: ₹{place.price} per night</div>
+        <div className="price">Price: ${place.price} per night</div>
       </div>
       <Stack spacing={2} mt={2} px={1}>
         <LocalizationProvider dateAdapter={AdapterDateFns} className="px-2">
@@ -166,7 +166,7 @@ const BookingWidget = ({ place }) => {
           className="primary hover:bg-secondary transition hover:scale-110 transform duration-200 ease-out"
         >
           Book this place
-          {numberOfNights > 0 && <span> ₹{numberOfNights * place.price}</span>}
+          {numberOfNights > 0 && <span> ${numberOfNights * place.price}</span>}
         </button>
       </div>
     </div>

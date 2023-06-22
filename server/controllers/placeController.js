@@ -112,6 +112,7 @@ exports.userPlaces = async (req, res) => {
 exports.searchPlaces = async (req, res) => {
   try {
     const searchWord = req.params.key;
+    const searchRegex = new RegExp(searchWord, 'i');
 
     if (searchWord === 'undefined') {
       const result = await Place.find();
@@ -119,17 +120,21 @@ exports.searchPlaces = async (req, res) => {
     }
 
     const searchMatches = await Place.find({
-      address: { $regex: searchWord, $options: 'i' },
+      $or: [
+        { title: { $regex: searchRegex } },
+        { address: { $regex: searchRegex } }
+      ]
     });
 
     res.status(200).json(searchMatches);
   } catch (err) {
     console.log(err);
     res.status(500).json({
-      message: 'Internal serever error 1',
+      message: 'Internal server error',
     });
   }
 };
+
 
 exports.deletePlace = async (req, res) => {
   try {

@@ -81,7 +81,7 @@ const BookedPlacesPage = () => {
                       <div className="flex gap-1 items-center">
                         <PaymentIcon className="darktxt" />
                         <span className="text-2xl darktxt">
-                          Total price: ₹{booking.price}
+                          Total price: ${booking.price}
                         </span>
                       </div>
                     </div>
