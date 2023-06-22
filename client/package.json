@@ -6,13 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prettier": "npx prettier --write ."
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@heroicons/react": "^1.0.6",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.1",
     "@mui/x-date-pickers": "^6.4.0",
@@ -28,6 +30,7 @@
     "react-date-range": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.3.4",
+    "react-rating-stars-component": "^2.2.0",
     "react-router-dom": "^6.8.0",
     "react-select-country-list": "^2.2.3",
     "react-toastify": "^9.1.2",

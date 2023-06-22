@@ -10,7 +10,7 @@ const openai = new OpenAIApi(configuration);
 
 router.get('/', async (req, res) => {
   res.status(200).send({
-    message: 'Hello',
+    message: 'Hello, I am looking for some place for a vacation. What types of places do you provide?',
   });
 });
 
@@ -22,7 +22,7 @@ router.post('/', async (req, res) => {
       model: 'text-davinci-003',
       prompt: `${prompt}`,
       temperature: 0,
-      max_tokens: 4000,
+      max_tokens: 3200,
       top_p: 1,
       frequency_penalty: 0.5,
       presence_penalty: 0,
@@ -31,8 +31,6 @@ router.post('/', async (req, res) => {
     res.status(200).send({
       bot: response.data.choices[0].text,
     });
-
-    console.log(response.data.choices[0].text);
   } catch (error) {
     console.error(error);
     res.status(500).send(error || 'Something went wrong');

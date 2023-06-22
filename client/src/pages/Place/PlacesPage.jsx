@@ -29,7 +29,6 @@ const PlacesPage = () => {
       }
     };
     getPlaces().then(() => {});
-    console.log('Pl');
   }, []);
 
   if (loading) {

@@ -27,8 +27,8 @@ const IndexPage = () => {
               />
             </div>
             <div>
-              <h2 className="font-bold">{place.address}</h2>
-              <h3 className="text-sm text-gray-500 ">{place.title}</h3>
+              <h2 className="font-bold">{place.title}</h2>
+              <h3 className="text-sm text-gray-500 ">{place.address}</h3>
             </div>
             <div>
               <span className="font-semibold">₹{place.price} </span>

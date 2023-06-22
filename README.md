@@ -8,33 +8,27 @@ To install and run the application, please follow these steps:
 
 - Clone the repository to your local machine.
 - Navigate to the project root folder in the terminal
-- Install dependencies using the command `yarn`.
+- Install dependencies using the command `npm install` for both server and client.
 - You can either work with MongoDB atlas or use your locally installed MongoDB
 - Create a .env file in your project api folder and add your variables.
 
 ---
-
-## env variables
-
-#### DB_URL=
-
-#### JWT_SECRET=
-
-#### JWT_EXPIRY=
-
-#### COOKIE_TIME=
-
----
-
 ## Features
 
 The application has the following features:
 
-- User authentication and autherization
-- View places details, amenities, and pricing
-- Book a place by selecting check-in and check-out dates
-- View and manage bookings as a registered user
-- Add and manage places as a registered user
+- User authentication and authorization
+- Search for places by location and voice search
+- Dark mode
+- Intelligent Chatbot
+- View places details, amenities, and pricing description
+- Reserve a place for a specific date
+- Add a place as a host accomodation
+- Choose precise address on a map as a host accomodation
+- Review and rate booked places
+- Display weather forecast according to the location of the place
+- Virtual payment processing using Stripe
+- Automatic email confirmation after booking a place
 
 ## Dependencies
 
@@ -44,6 +38,12 @@ This project uses the following dependencies:
 - Express - Node.js framework used to build the server-side of the application.
 - React - JavaScript library used to build the client-side of the application.
 - Node.js - JavaScript runtime used to execute server-side code.
+- Tailwind - CSS framework used to style the application.
 - Mongoose - Object Data Modeling (ODM) library used to interface with MongoDB.
 - React Router: Declarative routing library for React applications.
 - Axios - Promise based HTTP client for making API requests from the client-side.
+- OpenWeatherMap API - API used to get weather forecast data.
+- OpenCage Geocoder API - API used to get location data.
+- OpenAI API - API used to get chatbot response.
+- EmailJS - API used to send emails.
+- Stripe - API used to process payments.

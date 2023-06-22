@@ -10,7 +10,8 @@ import {
 } from '../../components/AllComponents.jsx';
 import Weather from '../../components/weather/Weather.jsx';
 import { MapContext } from '../../providers/AllProviders.jsx';
-import { removeItemFromLocalStorage } from '../../utils/index.js';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import ReactStars from 'react-rating-stars-component';
 
 const PlacePage = () => {
   const { latitude, longitude, setLatitude, setLongitude } =
@@ -18,14 +19,14 @@ const PlacePage = () => {
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [reviews, setReviews] = useState([]);
+  const [averageRating, setAverageRating] = useState(0);
 
   useEffect(() => {
     if (!id) {
       setLatitude(null);
       setLongitude(null);
       return;
-      // }
-      // return '';
     }
 
     setLoading(true);
@@ -34,10 +35,28 @@ const PlacePage = () => {
       const { data } = await axios.get(`/places/${id}`);
       setPlace(data.place);
       setLoading(false);
-      console.log('latitude', latitude);
-      console.log('longitude', longitude);
     };
     getPlace().then(() => {});
+
+    const getReviews = async () => {
+      const { data } = await axios.get(`/places/${id}/reviews`);
+      setReviews(data.reviews);
+
+      if (data.reviews.length > 0) {
+        const sum = data.reviews.reduce(
+          (total, review) => total + review.rating,
+          0
+        );
+        const average = sum / data.reviews.length;
+        setAverageRating(average);
+      } else {
+        setAverageRating(0);
+      }
+    };
+
+    Promise.all([getPlace(), getReviews()]).catch((error) => {
+      console.error('Error:', error);
+    });
   }, [id]);
 
   if (loading) {
@@ -49,12 +68,10 @@ const PlacePage = () => {
   }
 
   return (
-    // <div className="w-full">
     <>
       <div className="mt-4 -mx-8 pt-8">
         <div className="px-20">
           <h1 className="text-3xl font-semibold">{place.title}</h1>
-
           <AddressLink placeAddress={place.address} />
         </div>
         <div className="relative z-30">
@@ -80,7 +97,7 @@ const PlacePage = () => {
               <p>{place.extraInfo}</p>
             </div>
             <div>
-              <h2 className="font-semibold text-2xl mt-4">Perks</h2>
+              <h2 className="font-semibold text-2xl mt-4">Amenities</h2>
             </div>
             <div>
               <div className="text-sm leading-5 mb-4 mt-2">
@@ -94,6 +111,43 @@ const PlacePage = () => {
           </div>
           <div>
             <BookingWidget place={place} />
+          </div>
+        </div>
+        <div className="bg-white px-8 py-8 border-t things">
+          <div>
+            <h2 className="font-semibold text-2xl mt-4 px-12">
+              {averageRating.toFixed(1)} <StarRateIcon style={{paddingBottom:"5px"}} /> {reviews.length} reviews
+            </h2>
+            <div
+              className=" mb-4 mt-6 px-10"
+              style={{ maxHeight: '500px', overflowY: 'auto' }}
+            >
+              {reviews.length > 0 ? (
+                <ul>
+                  {reviews.map((review) => (
+                    <div className="bg-gray-100 p-4 mb-4" key={review._id}>
+                      <div className="font-semibold text-xl text-gray-700">
+                        {review.user.name}
+                      </div>
+                      <li key={review._id} className="text-sm leading-5">
+                        <ReactStars
+                          name={`rating-${review._id}`}
+                          value={review.rating}
+                          starCount={5}
+                          size={20}
+                          starColor="#ffb400"
+                          emptyStarColor="#bbb"
+                          edit={false}
+                        />
+                        <div className="font-semibold text-gray-700 pt-4">{review.review}</div>
+                      </li>
+                    </div>
+                  ))}
+                </ul>
+              ) : (
+                <p>No reviews yet.</p>
+              )}
+            </div>
           </div>
         </div>
         <div className="bg-white px-8 py-8 border-t things">
