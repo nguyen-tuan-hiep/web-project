@@ -26,7 +26,7 @@ function NotFound() {
           </div>
         </div>
         <div className="w-full flex justify-center">
-          <img src="../404_error.gif" alt="404 Not Found" />
+          <img src="../../404_error.gif" alt="404 Not Found" />
         </div>
       </section>
     </>
