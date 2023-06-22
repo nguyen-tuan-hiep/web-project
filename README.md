@@ -23,8 +23,8 @@ The application has the following features:
 - Intelligent Chatbot
 - View places details, amenities, and pricing description
 - Reserve a place for a specific date
-- Add a place as a host accomodation
-- Choose precise address on a map as a host accomodation
+- Add a place as a host accommodation
+- Choose precise address on a map as a host accommodation
 - Review and rate booked places
 - Display weather forecast according to the location of the place
 - Virtual payment processing using Stripe

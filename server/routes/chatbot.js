@@ -10,7 +10,8 @@ const openai = new OpenAIApi(configuration);
 
 router.get('/', async (req, res) => {
   res.status(200).send({
-    message: 'Hello, I am looking for some place for a vacation. What types of places do you provide?',
+    message:
+      'Hello, I am looking for some place for a vacation. What types of places do you provide?',
   });
 });
 

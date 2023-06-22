@@ -88,9 +88,18 @@ const PlacePage = () => {
               <h2 className="font-semibold text-2xl">Description</h2>
               <p>{place.description}</p>
             </div>
-            <p> <AccessTimeFilledIcon/> Check-in: {place.checkIn}h</p>
-            <p> <AccessTimeFilledIcon/> Check-out: {place.checkOut}h</p>
-            <p> <PeopleIcon/> Max number of guests: {place.maxGuests}</p>
+            <p>
+              {' '}
+              <AccessTimeFilledIcon /> Check-in: {place.checkIn}h
+            </p>
+            <p>
+              {' '}
+              <AccessTimeFilledIcon /> Check-out: {place.checkOut}h
+            </p>
+            <p>
+              {' '}
+              <PeopleIcon /> Max number of guests: {place.maxGuests}
+            </p>
             <div>
               <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
             </div>
@@ -117,7 +126,9 @@ const PlacePage = () => {
         <div className="bg-white px-8 py-8 border-t things">
           <div>
             <h2 className="font-semibold text-2xl mt-4 px-12">
-              {averageRating.toFixed(1)} <StarRateIcon style={{paddingBottom:"5px"}} /> {reviews.length} reviews
+              {averageRating.toFixed(1)}{' '}
+              <StarRateIcon style={{ paddingBottom: '5px' }} /> {reviews.length}{' '}
+              reviews
             </h2>
             <div
               className=" mb-4 mt-6 px-10"
@@ -140,7 +151,9 @@ const PlacePage = () => {
                           emptyStarColor="#bbb"
                           edit={false}
                         />
-                        <div className="font-semibold text-gray-700 pt-4">{review.review}</div>
+                        <div className="font-semibold text-gray-700 pt-4">
+                          {review.review}
+                        </div>
                       </li>
                     </div>
                   ))}

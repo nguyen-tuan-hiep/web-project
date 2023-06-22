@@ -11,20 +11,29 @@ async function createReview(req, res) {
     // Check if the booking exists and retrieve the check-out date
     const booking = await Booking.findById(bookingId);
     if (!booking) {
-      return res.status(404).json({ success: false, error: 'Booking not found' });
+      return res
+        .status(404)
+        .json({ success: false, error: 'Booking not found' });
     }
     const checkOutDate = booking.checkOut;
 
     // Check if the review date is after the check-out date
     const reviewDate = new Date();
     if (reviewDate <= checkOutDate) {
-      return res.status(400).json({ success: false, error: 'Cannot review before check-out' });
+      return res
+        .status(400)
+        .json({ success: false, error: 'Cannot review before check-out' });
     }
 
     // Check if a review for this booking ID already exists
     const existingReview = await Review.findOne({ booking: bookingId });
     if (existingReview) {
-      return res.status(409).json({ success: false, error: 'Review already exists for this booking' });
+      return res
+        .status(409)
+        .json({
+          success: false,
+          error: 'Review already exists for this booking',
+        });
     }
 
     const reviewData = {
@@ -32,7 +41,7 @@ async function createReview(req, res) {
       place: req.body.placeId,
       booking: bookingId,
       rating: req.body.rating,
-      review: req.body.review
+      review: req.body.review,
     };
     const newReview = await Review.create(reviewData);
     res.status(201).json({ success: true, review: newReview });

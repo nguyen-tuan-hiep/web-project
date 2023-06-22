@@ -122,8 +122,8 @@ exports.searchPlaces = async (req, res) => {
     const searchMatches = await Place.find({
       $or: [
         { title: { $regex: searchRegex } },
-        { address: { $regex: searchRegex } }
-      ]
+        { address: { $regex: searchRegex } },
+      ],
     });
 
     res.status(200).json(searchMatches);
