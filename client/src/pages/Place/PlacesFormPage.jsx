@@ -198,26 +198,41 @@ const PlacesFormPage = () => {
           'add check in and out times, remember to have some time window for cleaning the room between guests. '
         )}
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
-          <div>
-            <h3 className="mt-2 -mb-1">Check in time</h3>
-            <input
-              id="checkIn"
-              type="number"
-              value={checkIn}
-              onChange={(e) => setCheckIn(Number(e.target.value))}
-              placeholder="14"
-            />
-          </div>
-          <div>
-            <h3 className="mt-2 -mb-1">Check out time</h3>
-            <input
-              id="checkOut"
-              type="number"
-              value={checkOut}
-              onChange={(e) => setCheckOut(Number(e.target.value))}
-              placeholder="11"
-            />
-          </div>
+          
+        <div>
+          <h3 className="mt-2 -mb-1">Check in time</h3>
+          <input
+            id="checkIn"
+            type="number"
+            value={checkIn}
+            onChange={(e) => {
+              const value = Number(e.target.value);
+              if (value >= 0 && value <= 24) {
+                setCheckIn(value);
+              } else {
+                toast.error('Invalid check-in time. Please enter a value between 0 and 23.');
+              }
+            }}
+            placeholder="14"
+          />
+        </div>
+        <div>
+          <h3 className="mt-2 -mb-1">Check out time</h3>
+          <input
+            id="checkOut"
+            type="number"
+            value={checkOut}
+            onChange={(e) => {
+              const value = Number(e.target.value);
+              if (value >= 0 && value <= 24) {
+                setCheckOut(value);
+              } else {
+                toast.error('Invalid check-out time. Please enter a value between 0 and 23.');
+              }
+            }}
+            placeholder="11"
+          />
+        </div>
           <div>
             <h3 className="mt-2 -mb-1">Max number of guests</h3>
             <input
