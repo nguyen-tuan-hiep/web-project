@@ -29,8 +29,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('wifi')}
-                name="wifi"
+                checked={selected.includes('Free Wifi')}
+                name="Free Wifi"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -53,8 +53,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('parking')}
-                name="parking"
+                checked={selected.includes('Free parking')}
+                name="Free parking"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -77,8 +77,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('breakfast')}
-                name="breakfast"
+                checked={selected.includes('Free breakfast')}
+                name="Free breakfast"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -101,8 +101,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('pool')}
-                name="pool"
+                checked={selected.includes('Private pool')}
+                name="Private pool"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -125,8 +125,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('tv')}
-                name="tv"
+                checked={selected.includes('Smart TV')}
+                name="Smart TV"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -138,7 +138,7 @@ const Perks = ({ selected, onChange }) => {
               <TvOutlined className="mr-3" />
             </div>
           }
-          label="TV"
+          label="Smart TV"
           labelPlacement="end"
         />
       </div>
@@ -149,8 +149,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('radio')}
-                name="radio"
+                checked={selected.includes('Radio')}
+                name="Radio"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -173,8 +173,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('pets')}
-                name="pets"
+                checked={selected.includes('Pets')}
+                name="Pets"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -197,8 +197,8 @@ const Perks = ({ selected, onChange }) => {
             <div>
               <Checkbox
                 className="checkbox"
-                checked={selected.includes('enterence')}
-                name="enterence"
+                checked={selected.includes('Private Entrance')}
+                name="Private Entrance"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',

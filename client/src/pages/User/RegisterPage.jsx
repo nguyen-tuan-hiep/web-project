@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -17,6 +18,7 @@ const RegisterPage = () => {
         password,
       });
       toast.success('Registration successful. Now you can login');
+      navigate('/login');
     } catch (err) {
       if (err.response) {
         const { message } = err.response.data;

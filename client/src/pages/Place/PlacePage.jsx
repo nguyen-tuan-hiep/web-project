@@ -97,7 +97,7 @@ const PlacePage = () => {
               <p>{place.extraInfo}</p>
             </div>
             <div>
-              <h2 className="font-semibold text-2xl mt-4">Perks</h2>
+              <h2 className="font-semibold text-2xl mt-4">Amenities</h2>
             </div>
             <div>
               <div className="text-sm leading-5 mb-4 mt-2">

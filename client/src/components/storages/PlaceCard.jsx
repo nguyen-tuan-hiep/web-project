@@ -45,7 +45,7 @@ const PlaceCard = ({ place }) => {
     <>
       <div className="flex flex-col ml-2">
         <h2 className="text-xl">{place.title}</h2>
-        <p className="text-sm my-2">{place.description}</p>
+        {/* <p className="text-sm my-2">{place.description}</p> */}
       </div>
       <div className="flex">
         <PlaceImg place={place} />
