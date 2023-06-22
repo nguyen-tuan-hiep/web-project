@@ -16,6 +16,7 @@ export default function BookedCancelPage() {
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
   const [rating, setRating] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
@@ -60,7 +61,10 @@ export default function BookedCancelPage() {
   if (!booking) {
     return '';
   }
-
+  const today = new Date();
+  const checkInDate = new Date(booking.checkIn);
+  const timeDiff = checkInDate.getTime() - today.getTime();
+  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
   return (
     <div className="mt-4 -mx-8 pt-8">
       <div className="px-20">
@@ -82,9 +86,9 @@ export default function BookedCancelPage() {
             <span className="text-xl">Total price: ₹{booking.price}</span>
           </div>
           <button
-            className="bg-primary p-4 text-white rounded-2xl  mr-10 cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
-            style={{ height: '50%' }}
-            onClick={handleCancelReservation}
+          className="bg-primary p-4 text-white rounded-2xl  mr-10 cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
+          style={{ height: '50%', display: daysDiff > 2 ? 'block' : 'none' }}
+          onClick={handleCancelReservation}
           >
             Cancel reservation
           </button>
@@ -96,24 +100,6 @@ export default function BookedCancelPage() {
       <div className="border-t mt-10">
         <div className="mt-8 px-20">
           <h2 className="text-2xl font-semibold mb-2">Create a review</h2>
-          {/* <div className="flex items-center mb-4">
-            <label htmlFor="rating" className="mr-2">
-              Rating:
-            </label>
-            <select
-              id="rating"
-              className="border rounded p-1"
-              value={rating}
-              onChange={(e) => setRating(Number(e.target.value))}
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-          </div> */}
-
           <div className='pl-4'>
             <ReactStars
               count={5}
@@ -135,6 +121,8 @@ export default function BookedCancelPage() {
 function Review({ booking, rating, token }) {
   const navigate = useNavigate();
   const [review, setReview] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const handleSubmitReview = () => {
     const reviewData = {
       placeId: booking.place._id,
@@ -154,7 +142,18 @@ function Review({ booking, rating, token }) {
         navigate(`/place/${booking.place._id}`);
       })
       .catch((error) => {
-        console.error('Error submitting review:', error);
+        if (error.response) {
+          const { status } = error.response;
+          if (status === 445) {
+            setErrorMessage('Review already exists for this booking.');
+          } else if (status === 456) {
+            setErrorMessage('Cannot review before check-out.');
+          } else {
+            setErrorMessage('Error submitting review. Please try again later.');
+          }
+        } else {
+          setErrorMessage('Error submitting review. Please try again later.');
+        }
       });
   };
 
@@ -170,6 +169,7 @@ function Review({ booking, rating, token }) {
           onChange={(e) => setReview(e.target.value)}
         ></textarea>
       </div>
+      {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
       <button
         className="bg-primary p-4 text-white rounded-2xl cursor-pointer hover:bg-primary hover:opacity-90 hover:scale-105 transition transform duration-200 ease-out"
         onClick={handleSubmitReview}

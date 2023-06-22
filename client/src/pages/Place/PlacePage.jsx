@@ -39,7 +39,7 @@ const PlacePage = () => {
     getPlace().then(() => {});
 
     const getReviews = async () => {
-      const { data } = await axios.get(`/places/${id}/reviews`);
+      const { data } = await axios.get(`/places/${id}/review`);
       setReviews(data.reviews);
 
       if (data.reviews.length > 0) {
