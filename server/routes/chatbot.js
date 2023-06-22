@@ -17,7 +17,6 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const prompt = req.body.prompt;
-    console.log(prompt);
 
     const response = await openai.createCompletion({
       model: 'text-davinci-003',
@@ -32,8 +31,6 @@ router.post('/', async (req, res) => {
     res.status(200).send({
       bot: response.data.choices[0].text,
     });
-
-    console.log(response.data.choices[0].text);
   } catch (error) {
     console.error(error);
     res.status(500).send(error || 'Something went wrong');
