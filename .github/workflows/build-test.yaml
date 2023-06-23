@@ -1,4 +1,4 @@
-name: Docker-Test
+name: Test-Docker
 on:
   push:
     branches: [ master ]
