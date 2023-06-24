@@ -10,7 +10,7 @@ const axios = require('axios');
 dotenv.config();
 
 // multer
-const upload = multer({ dest: '/temp' });
+const upload = multer({ dest: './temp' });
 
 router.get('/', (req, res) => {
   res.status(200).json({

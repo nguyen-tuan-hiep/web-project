@@ -63,6 +63,50 @@ const PlacesPage = () => {
             </div>
           ))}
       </div>
+
+      <div className="grid gap-y-8 mx-24 my-12">
+        <div>
+          <img
+            src="../../../airbnb_host.png"
+            alt="host"
+          />
+        </div>
+
+        <div className="grid grid-cols-3 gap-16">
+          <div>
+            <p className="font-bold mb-2 text-lg">
+              One-to-one guidance from a Superhost
+            </p>
+            <p className="text-gray-500">
+              We'll match you with a Superhost in your area, who'll guide you
+              from your first question to your first guest—by phone, video call,
+              or chat.
+            </p>
+          </div>
+
+          <div>
+            <p className="font-bold mb-2 text-lg">
+              An experienced guest for your first booking
+            </p>
+            <p className="text-gray-500">
+              For your first booking, you can choose to welcome an experienced
+              guest who has at least three stays and a good track record on
+              Airbnb.
+            </p>
+          </div>
+
+          <div>
+            <p className="font-bold mb-2 text-lg">
+              Specialized support from Airbnb
+            </p>
+            <p className="text-gray-500">
+              New Hosts get one-tap access to specially trained Community
+              Support agents who can help with everything from account issues to
+              billing support.
+            </p>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 };

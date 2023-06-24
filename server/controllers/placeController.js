@@ -1,5 +1,6 @@
 const Place = require('../models/Place');
 const Booking = require('../models/Booking');
+const Review = require('../models/Review');
 const userFromToken = require('../utils/userFromToken');
 
 exports.addPlace = async (req, res) => {
@@ -165,5 +166,17 @@ exports.deletePlace = async (req, res) => {
       message: 'Internal server error',
       error: err,
     });
+  }
+};
+
+exports.getPlaceReviews = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const reviews = await Review.find({ place: id }).populate('user', 'name');
+
+    res.json({ success: true, reviews });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
   }
 };

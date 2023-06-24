@@ -9,9 +9,11 @@ const {
   userPlaces,
   searchPlaces,
   deletePlace,
+  getPlaceReviews,
+  getAvgRating
 } = require('../controllers/placeController');
 
-const { getPlaceReviews } = require('../controllers/reviewController');
+// const { getPlaceReviews } = require('../controllers/reviewController');
 
 router.route('/').get(getPlaces);
 router.route('/add-places').post(addPlace);
