@@ -195,20 +195,3 @@ exports.getPlaceReviews = async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 };
-
-exports.getAvgRating = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const reviews = await Review.find({ place: id });
-
-    if (reviews.length > 0) {
-      const sum = reviews.reduce((total, review) => total + review.rating, 0);
-      const averageRating = sum / reviews.length;
-      res.json({ success: true, averageRating });
-    } else {
-      res.json({ success: true, averageRating: 0 });
-    }
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
-  }
-};

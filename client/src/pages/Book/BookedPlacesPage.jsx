@@ -70,7 +70,7 @@ const BookedPlacesPage = () => {
               >
                 <Link
                   to={`/account/bookings/${booking._id}`}
-                  className="flex gap-4 rounded-2xl overflow-hidden"
+                  className="flex gap-4 rounded-2xl overflow-hidden w-full"
                 >
                   <div className="w-72">
                     <PlaceImg place={booking.place} />
