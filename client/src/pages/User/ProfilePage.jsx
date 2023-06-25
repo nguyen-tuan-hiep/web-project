@@ -255,101 +255,103 @@ const ProfilePage = () => {
               Logout
             </button>
           </div>
-          <div className="items-center justify-center grid grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto">
-            <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
-                <AccountBoxOutlinedIcon
-                  style={{ paddingBottom: '5px', fontSize: '50px' }}
-                />
-              </div>
-              <p className="font-bold text-lg">Personal info</p>
-              <p>Provide personal details and how we can reach you</p>
+          <div className="items-center justify-center grid grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto" >
+          <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <AccountBoxOutlinedIcon style={{ paddingBottom: '5px', fontSize: '50px' }} />
             </div>
+            <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Personal info
+            </p>
+            <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              Provide personal details and how we can <br/>reach you
+            </p>
+          </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <SecurityOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Login & security</p>
-              <p>Update your password and secure your account</p>
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Login & security</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Update your password and secure your <br/>account</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <PaymentOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Payments & payouts</p>
-              <p>Review payments, payouts, coupons, and gift cards</p>
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Payments & payouts</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Review payments, payouts, coupons, and <br/>gift cards</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <PaidOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Taxes</p>
-              <p>Manage taxpayer information and tax documents</p>
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Taxes</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Manage taxpayer information and tax <br/>documents</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <NotificationsNoneOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Notifications</p>
-              <p>
-                Choose notification preferences and how you want to be contacted
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Notifications</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                Choose notification preferences and how <br/>you want to be contacted
               </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <VisibilityOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Privacy & sharing</p>
-              <p>
-                Manage your personal data, connected services, and data sharing
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Privacy & sharing</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                Manage your personal data, connected <br/>services, and data sharing
                 settings
               </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <PublicOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Global preferences</p>
-              <p>Set your default language, currency, and timezone</p>
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Global preferences</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Set your default language, currency, and <br/>timezone</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <CardTravelOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Travel for work</p>
-              <p>Add a work email for business trip benefits</p>
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Travel for work</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Add a work email for business trip benefits</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon">
+              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 <LeaderboardOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg">Professional hosting tools</p>
-              <p>
-                Get professional tools if you manage several properties on
+              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Professional hosting tools</p>
+              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                Get professional tools if you manage <br/>several properties on
                 Airbnb
               </p>
             </div>
