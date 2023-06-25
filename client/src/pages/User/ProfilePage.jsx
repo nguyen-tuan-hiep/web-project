@@ -257,41 +257,51 @@ const ProfilePage = () => {
           </div>
           <div className="items-center justify-center grid grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto">
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <AccountBoxOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <AccountBoxOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Personal info</p>
               <p>Provide personal details and how we can reach you</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <SecurityOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <SecurityOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Login & security</p>
               <p>Update your password and secure your account</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <PaymentOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <PaymentOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Payments & payouts</p>
               <p>Review payments, payouts, coupons, and gift cards</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <PaidOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <PaidOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Taxes</p>
               <p>Manage taxpayer information and tax documents</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <NotificationsNoneOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <NotificationsNoneOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Notifications</p>
               <p>
                 Choose notification preferences and how you want to be contacted
@@ -299,9 +309,11 @@ const ProfilePage = () => {
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <VisibilityOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <VisibilityOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Privacy & sharing</p>
               <p>
                 Manage your personal data, connected services, and data sharing
@@ -310,25 +322,31 @@ const ProfilePage = () => {
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <PublicOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <PublicOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Global preferences</p>
               <p>Set your default language, currency, and timezone</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <CardTravelOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <CardTravelOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Travel for work</p>
               <p>Add a work email for business trip benefits</p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <LeaderboardOutlinedIcon
-                style={{ paddingBottom: '5px', fontSize: '50px' }}
-              />
+              <div className="profile-icon">
+                <LeaderboardOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
               <p className="font-bold text-lg">Professional hosting tools</p>
               <p>
                 Get professional tools if you manage several properties on
