@@ -42,7 +42,7 @@ const PlacesPage = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      // exit="exit"
+      exit="exit"
     >
       <AccountNav />
       <div className="text-center">

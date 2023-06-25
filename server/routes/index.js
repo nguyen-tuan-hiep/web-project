@@ -6,6 +6,7 @@ const opencage = require('opencage-api-client');
 const dotenv = require('dotenv');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const Booking = require('../models/Booking');
+const User = require('../models/User');
 const axios = require('axios');
 dotenv.config();
 
@@ -174,6 +175,39 @@ router.post('/upload', upload.array('photos', 100), async (req, res) => {
     res.status(500).json({
       error,
       message: 'Internal server error',
+    });
+  }
+});
+
+// Upload user profile picture
+router.post('/upload-profile-picture/:id', upload.single('profilePicture'), async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findById(id);
+
+    // Upload the image to Cloudinary
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: 'Airbnb/ProfilePicture',
+      use_filename: true
+    });
+
+    // Update the user's profile picture URL in the database
+    user.profilePicture = result.secure_url;
+    await user.save();
+
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { profilePicture: result.secure_url },
+      { new: true }
+    );
+
+    // Respond with the profile picture URL
+    res.status(200).json({ url: result.secure_url });
+  } catch (error) {
+    console.log('Error: ', error);
+    res.status(500).json({
+      error,
+      message: 'Internal server error'
     });
   }
 });

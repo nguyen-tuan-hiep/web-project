@@ -83,8 +83,9 @@ exports.profile = async (req, res) => {
   try {
     const userData = userFromToken(req);
     if (userData) {
-      const { name, email, _id } = await User.findById(userData.id);
-      res.status(200).json({ name, email, _id });
+      const { name, email, description, profilePicture, _id } =
+        await User.findById(userData.id);
+      res.status(200).json({ name, email, description, profilePicture, _id });
     } else {
       res.status(200).json(null);
     }
@@ -109,6 +110,45 @@ exports.getAllUsers = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       message: 'Internal server Error',
+      error: err,
+    });
+  }
+};
+
+// create controller to update description, name, email, profile picture
+
+exports.updateProfile = async (req, res) => {
+  try {
+    const { description, name, email } = req.body;
+    const userId = req.params.id;
+
+    // check if new email is already registered
+    const existingUser = await User.findOne({ email });
+    if (existingUser && existingUser._id.toString() !== userId) {
+      return res.status(400).json({
+        message: 'Email is already registered',
+      });
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { description, name, email },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        message: 'User not found',
+      });
+    }
+
+    // It's a good practice to remove sensitive data before sending the response
+    updatedUser.password = undefined;
+
+    res.status(200).json(updatedUser);
+  } catch (err) {
+    res.status(500).json({
+      message: 'Internal server error',
       error: err,
     });
   }

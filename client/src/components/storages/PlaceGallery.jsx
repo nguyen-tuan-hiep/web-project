@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../providers/AllProviders.jsx';
 import { motion } from 'framer-motion';
-// import {constantAnimation} from '../Constant/Constants.jsx';
 
 const PlaceGallery = ({ place }) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
@@ -13,9 +12,9 @@ const PlaceGallery = ({ place }) => {
         className="relative inset-0 text-black min-h-full "
         style={{ backgroundColor: theme === 'dark' ? '#373737' : 'white' }}
         initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 50 }}
-      transition={{ duration: 0.5 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        transition={{ duration: 0.5 }}
       >
         <div className="pt-10 pb-10 grid gap-4 backdrop-blur-lg">
           <div className="mb-2">
