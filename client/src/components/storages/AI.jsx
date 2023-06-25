@@ -81,7 +81,7 @@ const AI = () => {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
 
-    const response = await fetch('http://localhost:8001/chatbot', {
+    const response = await fetch('https://bnb-backend.onrender.com/chatbot', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
