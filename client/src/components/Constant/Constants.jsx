@@ -95,14 +95,14 @@ export const footer = [
 export const containerVariants = {
   hidden: {
     opacity: 0,
-    scale: 0.8,
+    scale: 1,
   },
   visible: {
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.8,
-      ease: "easeInOut",
+      duration: 1,
+      ease: 'easeInOut',
     },
   },
   exit: {
@@ -110,7 +110,7 @@ export const containerVariants = {
     scale: 0.8,
     transition: {
       duration: 0.8,
-      ease: "easeInOut",
+      ease: 'easeInOut',
     },
   },
 };

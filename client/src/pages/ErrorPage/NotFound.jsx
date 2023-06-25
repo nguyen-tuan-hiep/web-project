@@ -9,11 +9,7 @@ function NotFound() {
     navigate('/');
   };
   return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
+    <motion.div variants={containerVariants} initial="hidden" animate="visible">
       <section className="flex justify-center items-center pt-12 px-20 gap-30">
         <div className="w-full">
           <p className="font-semibold text-4xl">

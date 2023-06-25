@@ -43,20 +43,19 @@ const BookedPlacesPage = () => {
     getBookings().then(() => {});
   }, []);
 
-  if (loading) {
-    return <Spinner />;
-  }
+  // if (loading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <motion.div
-    variants={containerVariants}
-    initial="hidden"
-    animate="visible"
-    exit="exit"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      // exit="exit"
     >
       <AccountNav />
-      <div
-      >
+      <div>
         {bookings.length > 0 ? (
           <>
             <h1 className="text-3xl font-semibold mb-5 mx-8">

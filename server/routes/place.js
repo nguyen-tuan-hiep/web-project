@@ -10,7 +10,6 @@ const {
   searchPlaces,
   deletePlace,
   getPlaceReviews,
-  getAvgRating
 } = require('../controllers/placeController');
 
 // const { getPlaceReviews } = require('../controllers/reviewController');

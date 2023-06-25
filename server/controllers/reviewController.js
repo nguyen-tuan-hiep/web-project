@@ -28,12 +28,10 @@ async function createReview(req, res) {
     // Check if a review for this booking ID already exists
     const existingReview = await Review.findOne({ booking: bookingId });
     if (existingReview) {
-      return res
-        .status(409)
-        .json({
-          success: false,
-          error: 'Review already exists for this booking',
-        });
+      return res.status(409).json({
+        success: false,
+        error: 'Review already exists for this booking',
+      });
     }
 
     const reviewData = {

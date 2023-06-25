@@ -180,37 +180,41 @@ router.post('/upload', upload.array('photos', 100), async (req, res) => {
 });
 
 // Upload user profile picture
-router.post('/upload-profile-picture/:id', upload.single('profilePicture'), async (req, res) => {
-  try {
-    const id = req.params.id;
-    const user = await User.findById(id);
+router.post(
+  '/upload-profile-picture/:id',
+  upload.single('profilePicture'),
+  async (req, res) => {
+    try {
+      const id = req.params.id;
+      const user = await User.findById(id);
 
-    // Upload the image to Cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path, {
-      folder: 'Airbnb/ProfilePicture',
-      use_filename: true
-    });
+      // Upload the image to Cloudinary
+      const result = await cloudinary.uploader.upload(req.file.path, {
+        folder: 'Airbnb/ProfilePicture',
+        use_filename: true,
+      });
 
-    // Update the user's profile picture URL in the database
-    user.profilePicture = result.secure_url;
-    await user.save();
+      // Update the user's profile picture URL in the database
+      user.profilePicture = result.secure_url;
+      await user.save();
 
-    const updatedUser = await User.findByIdAndUpdate(
-      id,
-      { profilePicture: result.secure_url },
-      { new: true }
-    );
+      const updatedUser = await User.findByIdAndUpdate(
+        id,
+        { profilePicture: result.secure_url },
+        { new: true }
+      );
 
-    // Respond with the profile picture URL
-    res.status(200).json({ url: result.secure_url });
-  } catch (error) {
-    console.log('Error: ', error);
-    res.status(500).json({
-      error,
-      message: 'Internal server error'
-    });
+      // Respond with the profile picture URL
+      res.status(200).json({ url: result.secure_url });
+    } catch (error) {
+      console.log('Error: ', error);
+      res.status(500).json({
+        error,
+        message: 'Internal server error',
+      });
+    }
   }
-});
+);
 
 router.use('/user', require('./user'));
 router.use('/places', require('./place'));

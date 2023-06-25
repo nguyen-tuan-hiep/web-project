@@ -7,7 +7,7 @@ const {
   profile,
   logout,
   getAllUsers,
-  updateProfile
+  updateProfile,
 } = require('../controllers/userController');
 
 router.route('/').get(getAllUsers);

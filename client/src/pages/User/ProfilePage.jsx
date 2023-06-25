@@ -106,7 +106,7 @@ const ProfilePage = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      exit="exit"
+      // exit="exit"
     >
       <AccountNav />
       {subpage === 'profile' && (
@@ -117,7 +117,7 @@ const ProfilePage = () => {
                 <Avatar
                   alt={user.name}
                   src={user.profilePicture}
-                  sx={{ width: 120, height: 120, margin: '0 auto' }}
+                  sx={{ width: 150, height: 150, margin: '0 auto' }}
                 />
                 <input
                   type="file"
@@ -136,7 +136,7 @@ const ProfilePage = () => {
                     right: '0px',
                     backgroundColor: 'white',
                     borderRadius: '50%',
-                    padding: '4px',
+                    padding: '8px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -148,10 +148,9 @@ const ProfilePage = () => {
                   <EditIcon />
                 </button>
               </div>
-              <p className="font-bold text-lg">
+              <p className="font-bold text-lg mt-4">
                 Logged in as {user.name} ({user.email})
               </p>
-              <p className="font-bold pt-4">About me</p>
               <p className="mt-2">{user.description}</p>
             </div>
             <br />

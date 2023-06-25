@@ -33,16 +33,16 @@ const PlacesPage = () => {
     getPlaces().then(() => {});
   }, []);
 
-  if (loading) {
-    return <Spinner />;
-  }
+  // if (loading) {
+  //   return <Spinner />;
+  // }
 
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      exit="exit"
+      // exit="exit"
     >
       <AccountNav />
       <div className="text-center">
@@ -66,10 +66,7 @@ const PlacesPage = () => {
 
       <div className="grid gap-y-8 mx-24 my-12">
         <div>
-          <img
-            src="../../../airbnb_host.png"
-            alt="host"
-          />
+          <img src="../../../airbnb_host.png" alt="host" />
         </div>
 
         <div className="grid grid-cols-3 gap-16">
