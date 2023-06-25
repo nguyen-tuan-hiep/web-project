@@ -63,7 +63,7 @@ router.post('/checkout', async (req, res) => {
       ],
       mode: 'payment',
       success_url:
-        'https://bnb-backend.onrender.com/success?session_id={CHECKOUT_SESSION_ID}',
+        'http://localhost:8001/success?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: 'http://localhost:5173/payment-cancel',
       metadata: {
         checkIn,
