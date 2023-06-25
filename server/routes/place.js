@@ -10,6 +10,7 @@ const {
   searchPlaces,
   deletePlace,
   getPlaceReviews,
+  getAvgRating,
 } = require('../controllers/placeController');
 
 // const { getPlaceReviews } = require('../controllers/reviewController');
@@ -21,5 +22,6 @@ router.route('/user-places').get(userPlaces);
 router.route('/:id').get(singlePlace).delete(deletePlace);
 router.route('/search/:key').get(searchPlaces);
 router.route('/:id/review').get(getPlaceReviews);
+router.route('/:id/avgRating').get(getAvgRating);
 
 module.exports = router;

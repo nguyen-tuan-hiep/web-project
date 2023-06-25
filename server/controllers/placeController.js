@@ -37,8 +37,23 @@ exports.addPlace = async (req, res) => {
 exports.getPlaces = async (req, res) => {
   try {
     const places = await Place.find();
+    const placesWithAvgRating = await Promise.all(
+      places.map(async (place) => {
+        const reviews = await Review.find({ place: place._id });
+        if (reviews.length > 0) {
+          const sum = reviews.reduce(
+            (total, review) => total + review.rating,
+            0
+          );
+          const averageRating = sum / reviews.length;
+          return { ...place.toObject(), averageRating };
+        } else {
+          return { ...place.toObject(), averageRating: 0 };
+        }
+      })
+    );
     res.status(200).json({
-      places,
+      places: placesWithAvgRating,
     });
   } catch (err) {
     res.status(500).json({
@@ -176,6 +191,23 @@ exports.getPlaceReviews = async (req, res) => {
     const reviews = await Review.find({ place: id }).populate('user', 'name');
 
     res.json({ success: true, reviews });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+exports.getAvgRating = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const reviews = await Review.find({ place: id });
+
+    if (reviews.length > 0) {
+      const sum = reviews.reduce((total, review) => total + review.rating, 0);
+      const averageRating = sum / reviews.length;
+      res.json({ success: true, averageRating });
+    } else {
+      res.json({ success: true, averageRating: 0 });
+    }
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
