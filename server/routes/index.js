@@ -63,8 +63,8 @@ router.post('/checkout', async (req, res) => {
       ],
       mode: 'payment',
       success_url:
-        'http://localhost:8001/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'http://localhost:5173/payment-cancel',
+        'https://air-bnb-clone-8w6n.onrender.com/success?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'https://air-bnb-clone-site.netlify.app/payment-cancel',
       metadata: {
         checkIn,
         checkOut,
@@ -102,7 +102,7 @@ router.get('/success', async (req, res) => {
       price: price,
     });
     // return to client home page
-    res.redirect('http://localhost:5173/payment-successful');
+    res.redirect('https://air-bnb-clone-site.netlify.app/payment-successful');
   } catch (err) {
     console.error(err);
     res
