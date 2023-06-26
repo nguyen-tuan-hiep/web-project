@@ -82,7 +82,7 @@ const AI = () => {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
 
-    const response = await fetch('https://air-bnb-clone.onrender.com/chatbot', {
+    const response = await fetch('https://air-bnb-clone-8w6n.onrender.com/chatbot', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
