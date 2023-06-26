@@ -130,19 +130,32 @@ exports.searchPlaces = async (req, res) => {
     const searchWord = req.params.key;
     const searchRegex = new RegExp(searchWord, 'i');
 
+    let searchMatches;
     if (searchWord === 'undefined') {
-      const result = await Place.find();
-      return res.status(200).json(result);
+      searchMatches = await Place.find();
+    } else {
+      searchMatches = await Place.find({
+        $or: [
+          { title: { $regex: searchRegex } },
+          { address: { $regex: searchRegex } },
+        ],
+      });
     }
 
-    const searchMatches = await Place.find({
-      $or: [
-        { title: { $regex: searchRegex } },
-        { address: { $regex: searchRegex } },
-      ],
-    });
+    const placesWithAvgRating = await Promise.all(
+      searchMatches.map(async (place) => {
+        const reviews = await Review.find({ place: place._id });
+        if (reviews.length > 0) {
+          const sum = reviews.reduce((total, review) => total + review.rating, 0);
+          const averageRating = sum / reviews.length;
+          return { ...place.toObject(), averageRating };
+        } else {
+          return { ...place.toObject(), averageRating: 0 };
+        }
+      })
+    );
 
-    res.status(200).json(searchMatches);
+    res.status(200).json(placesWithAvgRating);
   } catch (err) {
     console.log(err);
     res.status(500).json({
