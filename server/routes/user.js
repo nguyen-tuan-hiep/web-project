@@ -7,7 +7,8 @@ const {
   profile,
   logout,
   getAllUsers,
-  updateProfile
+  updateProfile,
+  deleteProfilePicture,
 } = require('../controllers/userController');
 
 router.route('/').get(getAllUsers);
@@ -15,6 +16,7 @@ router.route('/register').post(register);
 router.route('/login').post(login);
 router.route('/profile').get(profile);
 router.route('/logout').post(logout);
-router.route('/update/:id').post(updateProfile);
+router.route('/delete-profile-picture/').delete(deleteProfilePicture);
+router.route('/update/').post(updateProfile);
 
 module.exports = router;

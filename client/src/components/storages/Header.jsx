@@ -49,7 +49,15 @@ const Header = () => {
           >
             <Menu />
             <div className="overflow-hidden">
-              <AccountCircle />
+              {user?.profilePicture ? (
+                <img
+                  src={user.profilePicture}
+                  alt="User Avatar"
+                  className="w-6 h-6 rounded-full"
+                />
+              ) : (
+                <AccountCircle />
+              )}
             </div>
             {user && (
               <div className="hidden sm:block username">{user.name}</div>

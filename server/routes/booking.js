@@ -5,12 +5,9 @@ const {
   createBookings,
   getBookings,
   deleteBooking,
-} = require('../controllers/bookingController');
-
-const {
-  createReview,
   getPlaceReviews,
-} = require('../controllers/reviewController');
+  createReview,
+} = require('../controllers/bookingController');
 
 router.route('/').get(getBookings).post(createBookings);
 router.route('/:id').delete(deleteBooking);

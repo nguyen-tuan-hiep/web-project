@@ -8,7 +8,7 @@ const PlaceImg = ({ place, index = 0, className }) => {
     <img
       src={place.photos.length > 0 ? place.photos[index] : '../../empty.png'}
       alt=""
-      className={`h-60 w-92 ${className}`}
+      className={`aspect-[3/2] ${className} rounded-xl w-full h-full`}
     />
   );
 };

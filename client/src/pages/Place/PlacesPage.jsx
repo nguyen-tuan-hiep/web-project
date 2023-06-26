@@ -55,7 +55,7 @@ const PlacesPage = () => {
         </Link>
       </div>
 
-      <div className="flex flex-wrap gap-9 w-full">
+      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {places.length > 0 &&
           places.map((place) => (
             <div className="" key={place._id}>
@@ -66,13 +66,10 @@ const PlacesPage = () => {
 
       <div className="grid gap-y-8 mx-24 my-12">
         <div>
-          <img
-            src="../../../airbnb_host.png"
-            alt="host"
-          />
+          <img src="../../../airbnb_host.png" alt="host" />
         </div>
 
-        <div className="grid grid-cols-3 gap-16">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-1 gap-16">
           <div>
             <p className="font-bold mb-2 text-lg">
               One-to-one guidance from a Superhost

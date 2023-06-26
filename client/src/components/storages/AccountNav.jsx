@@ -22,7 +22,7 @@ const AccountNav = () => {
     return classes;
   };
   return (
-    <nav className="w-full flex flex-wrap justify-center mt-8 gap-2 mb-8">
+    <nav className="w-full flex flex-wrap justify-center mt-8 gap-2 mb-8  grid-cols-1">
       <div className="flex items-center m-2 mt-5 space-x-4 cursor-pointer hover:scale-110 transition transform duration-200 ease-out nav-item">
         <Link className={linkClasses('profile')} to={'/account'}>
           <div className="icon ">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import {
-  BookedCancelPage,
+  BookedPlacePage,
   BookedPlacesPage,
   IndexPage,
   LoginPage,
@@ -12,8 +12,8 @@ import {
   ProfilePage,
   RegisterPage,
   PaymentCancel,
+  PaymentSuccessful,
 } from '../pages/AllPages';
-import PaymentSuccessful from '../pages/ErrorPage/PaymentSuccessful';
 import { AnimatePresence } from 'framer-motion';
 
 function AnimationRoutes() {
@@ -31,7 +31,7 @@ function AnimationRoutes() {
         <Route path="/account/places/:id" element={<PlacesFormPage />} />
         <Route path="/place/:id" element={<PlacePage />} />
         <Route path="/account/bookings" element={<BookedPlacesPage />} />
-        <Route path="/account/bookings/:id" element={<BookedCancelPage />} />
+        <Route path="/account/bookings/:id" element={<BookedPlacePage />} />
         <Route path="/payment-cancel" element={<PaymentCancel />} />
         <Route path="/payment-successful" element={<PaymentSuccessful />} />
         <Route path="*" element={<NotFound />} />

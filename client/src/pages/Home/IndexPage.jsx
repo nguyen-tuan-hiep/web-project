@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Spinner, Image } from '../../components/AllComponents.jsx';
 import { motion } from 'framer-motion';
 import { containerVariants } from '../../components/Constant/Constants.jsx';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 const IndexPage = () => {
   const { places, loading, getPlaces } = useContext(PlaceContext);
@@ -27,8 +28,7 @@ const IndexPage = () => {
       {places.length > 0 &&
         places.map((place) => (
           <Link to={`/place/${place._id}`} key={place._id}>
-            <motion.div className="flex items-center space-x-4 cursor-pointer hover:scale-105 transition transform duration-200 ease-out"
-            >
+            <motion.div className="items-center cursor-pointer hover:scale-105 transition transform duration-200 ease-out sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               <Image
                 src={
                   place.photos.length > 0 ? place.photos?.[0] : './empty.png'
@@ -36,8 +36,14 @@ const IndexPage = () => {
               />
             </motion.div>
             <div>
-              <h2 className="font-bold">{place.title}</h2>
-              <h3 className="text-sm text-gray-500 ">{place.address}</h3>
+              <div className="flex items-center">
+                <p className="font-bold inline-block">{place.title}</p>
+                <p className="ml-auto">
+                  {place.averageRating}
+                  <StarRateIcon style={{ paddingBottom: '5px' }} />
+                </p>
+              </div>
+              <p className="text-sm text-gray-500 ">{place.address}</p>
             </div>
             <div>
               <span className="font-semibold">${place.price} </span>

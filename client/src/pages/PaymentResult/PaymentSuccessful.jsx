@@ -5,6 +5,8 @@ import { getItemFromLocalStorage } from '../../utils/index.js';
 import emailjs from '@emailjs/browser';
 import { differenceInCalendarDays } from 'date-fns';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
+import { containerVariants } from '../../components/Constant/Constants.jsx';
+import { motion } from 'framer-motion';
 
 function PaymentSuccessful() {
   const [bookings, setBookings] = useState([]);
@@ -84,7 +86,13 @@ function PaymentSuccessful() {
 
   return (
     <>
-      <div className="flex justify-center items-center h-full my-12">
+      <motion.div
+        className="flex justify-center items-center h-full my-12"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
         <div
           className="w-1/2 text-center shadow-3xl rounded-2xl p-8"
           style={{ minWidth: '700px' }}
@@ -128,7 +136,7 @@ function PaymentSuccessful() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }

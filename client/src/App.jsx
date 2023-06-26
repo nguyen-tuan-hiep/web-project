@@ -1,20 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './styles/App.css';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import {
-  BookedCancelPage,
-  BookedPlacesPage,
-  IndexPage,
-  LoginPage,
-  NotFound,
-  PlacePage,
-  PlacesFormPage,
-  PlacesPage,
-  ProfilePage,
-  RegisterPage,
-  PaymentCancel,
-} from './pages/AllPages.jsx';
+import { useLocation } from 'react-router-dom';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,7 +12,6 @@ import {
   UserProvider,
 } from './providers/AllProviders.jsx';
 import { Header } from './components/AllComponents.jsx';
-import PaymentSuccessful from './pages/ErrorPage/PaymentSuccessful';
 import AnimationRoutes from './components/AnimationRoutes';
 
 const token = getItemFromLocalStorage('token');

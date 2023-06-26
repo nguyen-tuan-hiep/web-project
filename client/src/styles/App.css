@@ -32,6 +32,7 @@
 #dark .upload,
 #dark .checkbox,
 #dark .perk,
+#dark .profile-icon,
 #dark .thingstoknow {
   color: var(--white);
 }
@@ -47,6 +48,7 @@
 #dark .search-icon,
 #dark .input-bookings,
 #dark .chatbox,
+#dark .start-planning,
 #dark .all-photo-button {
   background-color: var(--box-background);
 }

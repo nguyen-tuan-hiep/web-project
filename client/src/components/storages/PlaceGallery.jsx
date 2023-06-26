@@ -1,16 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { ThemeContext } from '../../providers/AllProviders.jsx';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const PlaceGallery = ({ place }) => {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
-  const { theme } = useContext(ThemeContext);
 
   if (showAllPhotos) {
     return (
       <motion.div
         className="relative inset-0 text-black min-h-full "
-        style={{ backgroundColor: theme === 'dark' ? '#373737' : 'white' }}
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}

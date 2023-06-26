@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import { containerVariants } from '../../components/Constant/Constants.jsx';
 
-export default function BookedCancelPage() {
+export default function BookedPlacePage() {
   const token = getItemFromLocalStorage('token');
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
@@ -68,11 +68,12 @@ export default function BookedCancelPage() {
   const timeDiff = checkInDate.getTime() - today.getTime();
   const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
   return (
-    <motion.div className="mt-4 -mx-8 pt-8"
-    variants={containerVariants}
-    initial="hidden"
-    animate="visible"
-    exit="exit"
+    <motion.div
+      className="mt-4 -mx-8 pt-8"
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
     >
       <div className="px-20">
         <h1 className="text-3xl font-semibold">{booking.place.title}</h1>
