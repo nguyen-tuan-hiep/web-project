@@ -19,6 +19,7 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import PublicOutlinedIcon from '@mui/icons-material/PublicOutlined';
 import CardTravelOutlinedIcon from '@mui/icons-material/CardTravelOutlined';
 import LeaderboardOutlinedIcon from '@mui/icons-material/LeaderboardOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 
 const ProfilePage = () => {
@@ -54,7 +55,7 @@ const ProfilePage = () => {
   const updateProfile = (description, name, email) => {
     axios
       .post(
-        `/user/update/${user._id}`,
+        `/user/update/`,
         {
           description,
           name,
@@ -97,6 +98,22 @@ const ProfilePage = () => {
       });
   };
 
+  const deleteProfilePicture = () => {
+    axios
+      .delete(`/user/delete-profile-picture/`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      })
+      .then((res) => {
+        setUser((prevUser) => ({ ...prevUser, profilePicture: null }));
+        toast.success('Profile picture deleted');
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  };
+
   const toggleForm = () => {
     setShowForm(!showForm); // Toggle the form visibility
   };
@@ -106,7 +123,7 @@ const ProfilePage = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      // exit="exit"
+      exit="exit"
     >
       <AccountNav />
       {subpage === 'profile' && (
@@ -146,6 +163,25 @@ const ProfilePage = () => {
                   }}
                 >
                   <EditIcon />
+                </button>
+                <button
+                  onClick={deleteProfilePicture}
+                  style={{
+                    position: 'absolute',
+                    bottom: '0px',
+                    left: '0px',
+                    backgroundColor: 'white',
+                    borderRadius: '50%',
+                    padding: '8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: 'none',
+                    cursor: 'pointer',
+                    boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  <DeleteIcon />
                 </button>
               </div>
               <p className="font-bold text-lg mt-4">
@@ -255,104 +291,318 @@ const ProfilePage = () => {
               Logout
             </button>
           </div>
-          <div className="items-center justify-center grid grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto" >
-          <div className="shadow-3xl p-4 rounded-xl h-40">
-            <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              <AccountBoxOutlinedIcon style={{ paddingBottom: '5px', fontSize: '50px' }} />
+          <div className="items-center justify-center grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto">
+            <div className="shadow-3xl p-4 rounded-xl h-40">
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <AccountBoxOutlinedIcon
+                  style={{ paddingBottom: '5px', fontSize: '50px' }}
+                />
+              </div>
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Personal info
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Provide personal details and how we can <br />
+                reach you
+              </p>
             </div>
-            <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              Personal info
-            </p>
-            <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              Provide personal details and how we can <br/>reach you
-            </p>
-          </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <SecurityOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Login & security</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Update your password and secure your <br/>account</p>
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Login & security
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Update your password and secure your <br />
+                account
+              </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <PaymentOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Payments & payouts</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Review payments, payouts, coupons, and <br/>gift cards</p>
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Payments & payouts
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Review payments, payouts, coupons, and <br />
+                gift cards
+              </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <PaidOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Taxes</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Manage taxpayer information and tax <br/>documents</p>
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Taxes
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Manage taxpayer information and tax <br />
+                documents
+              </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <NotificationsNoneOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Notifications</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                Choose notification preferences and how <br/>you want to be contacted
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Notifications
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Choose notification preferences and how <br />
+                you want to be contacted
               </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <VisibilityOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Privacy & sharing</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                Manage your personal data, connected <br/>services, and data sharing
-                settings
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Privacy & sharing
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Manage your personal data, connected <br />
+                services, and data sharing settings
               </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <PublicOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Global preferences</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Set your default language, currency, and <br/>timezone</p>
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Global preferences
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Set your default language, currency, and <br />
+                timezone
+              </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <CardTravelOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Travel for work</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Add a work email for business trip benefits</p>
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Travel for work
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Add a work email for business trip benefits
+              </p>
             </div>
 
             <div className="shadow-3xl p-4 rounded-xl h-40">
-              <div className="profile-icon" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              <div
+                className="profile-icon"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
                 <LeaderboardOutlinedIcon
                   style={{ paddingBottom: '5px', fontSize: '50px' }}
                 />
               </div>
-              <p className="font-bold text-lg" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>Professional hosting tools</p>
-              <p style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                Get professional tools if you manage <br/>several properties on
-                Airbnb
+              <p
+                className="font-bold text-lg"
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Professional hosting tools
+              </p>
+              <p
+                style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Get professional tools if you manage <br />
+                several properties on Airbnb
               </p>
             </div>
           </div>

@@ -115,12 +115,11 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-// create controller to update description, name, email, profile picture
-
+// create controller to update description, name, email
 exports.updateProfile = async (req, res) => {
   try {
     const { description, name, email } = req.body;
-    const userId = req.params.id;
+    const userId = userFromToken(req).id;
 
     // check if new email is already registered
     const existingUser = await User.findOne({ email });
@@ -151,5 +150,26 @@ exports.updateProfile = async (req, res) => {
       message: 'Internal server error',
       error: err,
     });
+  }
+};
+
+exports.deleteProfilePicture = async (req, res) => {
+  console.log('deleteProfilePicture');
+  try {
+    const userId = userFromToken(req).id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Delete the profile picture URL from the user document
+    user.profilePicture = undefined;
+    await user.save();
+
+    res.json({ message: 'Profile picture deleted' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
   }
 };

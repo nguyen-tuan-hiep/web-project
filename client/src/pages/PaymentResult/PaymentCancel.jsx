@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { containerVariants } from '../../components/Constant/Constants.jsx';
 
 function PaymentCancel() {
   const navigate = useNavigate();
@@ -8,7 +10,13 @@ function PaymentCancel() {
   };
   return (
     <>
-      <section className="flex justify-center items-center pt-12 px-20 gap-30">
+      <motion.section
+        className="flex justify-center items-center pt-12 px-20 gap-30"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
         <div className="w-full">
           <p className="font-semibold text-4xl">Payment unsuccessful</p>
           <p className="font-semibold text-2xl mt-6">
@@ -26,7 +34,7 @@ function PaymentCancel() {
         <div className="w-full flex justify-center">
           <img src="../404_error.gif" alt="404 Not Found" />
         </div>
-      </section>
+      </motion.section>
     </>
   );
 }

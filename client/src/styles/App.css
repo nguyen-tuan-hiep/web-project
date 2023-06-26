@@ -48,6 +48,7 @@
 #dark .search-icon,
 #dark .input-bookings,
 #dark .chatbox,
+#dark .start-planning,
 #dark .all-photo-button {
   background-color: var(--box-background);
 }

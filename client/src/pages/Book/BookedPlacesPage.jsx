@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   AccountNav,
@@ -11,12 +11,10 @@ import axios from 'axios';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { getItemFromLocalStorage } from '../../utils/index.js';
 import { toast } from 'react-toastify';
-import { ThemeContext } from '../../providers/ThemeProvider';
 import { motion } from 'framer-motion';
 import { containerVariants } from '../../components/Constant/Constants.jsx';
 
 const BookedPlacesPage = () => {
-  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
   const token = getItemFromLocalStorage('token');
   const handleStartPlanning = () => {
@@ -43,16 +41,16 @@ const BookedPlacesPage = () => {
     getBookings().then(() => {});
   }, []);
 
-  // if (loading) {
-  //   return <Spinner />;
-  // }
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      // exit="exit"
+      exit="exit"
     >
       <AccountNav />
       <div>
@@ -110,11 +108,7 @@ const BookedPlacesPage = () => {
                 Time to dust off your bag!
               </p>
               <button
-                className={`font-semibold border px-4 py-2 rounded-lg hover:transition-all ${
-                  theme === 'dark' ? 'border-white text-white' : 'border-black'
-                } ${
-                  theme === 'dark' ? 'bg-transparent' : 'bg-slate-100'
-                } hover:bg-slate-100 hover:text-black`}
+                className="font-semibold border px-4 py-2 rounded-lg hover:scale-105 transition bg-gray-100 hover:bg-gray-200 start-planning"
                 onClick={handleStartPlanning}
               >
                 Start planning

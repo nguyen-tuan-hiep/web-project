@@ -14,7 +14,7 @@ import { toast } from 'react-toastify';
 import { motion } from 'framer-motion';
 import { containerVariants } from '../../components/Constant/Constants.jsx';
 
-export default function BookedCancelPage() {
+export default function BookedPlacePage() {
   const token = getItemFromLocalStorage('token');
   const { id } = useParams();
   const [booking, setBooking] = useState(null);
