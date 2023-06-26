@@ -1,22 +1,22 @@
 :root {
-  --white: white;
-  --black: black;
-  --placeholder: #4c4c4c;
-  --background: #373737;
-  --box-background: #d9d9d9;
-  --footer-background: #323232;
+    --white: white;
+    --black: black;
+    --placeholder: #4c4c4c;
+    --background: #373737;
+    --box-background: #d9d9d9;
+    --footer-background: #323232;
 }
 
 .App {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #dark,
 #dark .things {
-  background-color: var(--background);
+    background-color: var(--background);
 }
 
 #light .message__title,
@@ -34,11 +34,11 @@
 #dark .perk,
 #dark .profile-icon,
 #dark .thingstoknow {
-  color: var(--white);
+    color: var(--white);
 }
 
 #dark .darktxt {
-  color: var(--black);
+    color: var(--black);
 }
 
 #dark input,
@@ -50,7 +50,7 @@
 #dark .chatbox,
 #dark .start-planning,
 #dark .all-photo-button {
-  background-color: var(--box-background);
+    background-color: var(--box-background);
 }
 
 #dark textarea::placeholder,
@@ -64,32 +64,32 @@
 #dark #email::placeholder,
 #dark #password::placeholder,
 #dark #address::placeholder {
-  color: var(--placeholder);
+    color: var(--placeholder);
 }
 
 #dark .price,
 #dark .message__title,
 #dark .message__text {
-  color: var(--background);
+    color: var(--background);
 }
 
 #dark input,
 #dark .icon {
-  color: black;
+    color: black;
 }
 
 #dark .footer {
-  background-color: var(--footer-background);
+    background-color: var(--footer-background);
 }
 
 #dark .checkbox.Mui-checked {
-  color: pink;
+    color: pink;
 }
 
 #chat_container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-bottom: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 20px;
 }

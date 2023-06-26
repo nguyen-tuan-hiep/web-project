@@ -1,66 +1,66 @@
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 1rem auto;
-  max-width: 700px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1rem auto;
+    max-width: 700px;
 }
 
 .card {
-  background-color: #fff;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
-  margin-bottom: 1rem;
-  padding: 1rem;
-  width: 100%;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    width: 100%;
 }
 
 .time,
 .temperature,
 .humidity,
 .weather {
-  margin-top: 0.3rem;
+    margin-top: 0.3rem;
 }
 
 .time {
-  font-size: 1.25rem;
-  font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .temperature {
-  color: #fbbf24;
-  font-size: 2.3rem;
-  font-weight: bold;
+    color: #fbbf24;
+    font-size: 2.3rem;
+    font-weight: bold;
 }
 
 .humidity {
-  font-size: 1.5rem;
-  color: #3b82f6;
+    font-size: 1.5rem;
+    color: #3b82f6;
 }
 
 .weather {
-  font-size: 1.1rem;
-  font-weight: 700;
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 
 .weather-icon {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
 }
 
 #dark .time {
-  color: #27374d;
+    color: #27374d;
 }
 
 #dark .temperature {
-  color: #ffb84c;
+    color: #ffb84c;
 }
 
 #dark .humidity {
-  color: #60a5fa;
+    color: #60a5fa;
 }
 
 #dark .weather {
-  color: #27374d;
+    color: #27374d;
 }

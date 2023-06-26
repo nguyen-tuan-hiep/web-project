@@ -14,7 +14,8 @@ export const PlaceProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getPlaces().then(() => {});
+    getPlaces().then(() => {
+    });
   }, []);
 
   return (

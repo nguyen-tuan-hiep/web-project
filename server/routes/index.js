@@ -87,7 +87,7 @@ router.post('/checkout', async (req, res) => {
 router.get('/success', async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.retrieve(
-      req.query.session_id
+      req.query.session_id,
     );
     const { checkIn, checkOut, numOfGuests, name, phone, place, price, user } =
       session.metadata;
@@ -201,7 +201,7 @@ router.post(
       const updatedUser = await User.findByIdAndUpdate(
         id,
         { profilePicture: result.secure_url },
-        { new: true }
+        { new: true },
       );
 
       // Respond with the profile picture URL
@@ -213,7 +213,7 @@ router.post(
         message: 'Internal server error',
       });
     }
-  }
+  },
 );
 
 router.use('/user', require('./user'));

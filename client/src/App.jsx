@@ -5,12 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { getItemFromLocalStorage } from './utils';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {
-  MapProvider,
-  PlaceProvider,
-  ThemeProvider,
-  UserProvider,
-} from './providers/AllProviders.jsx';
+import { MapProvider, PlaceProvider, ThemeProvider, UserProvider } from './providers/AllProviders.jsx';
 import { Header } from './components/AllComponents.jsx';
 import AnimationRoutes from './components/AnimationRoutes';
 
@@ -22,7 +17,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 function App() {
-  const location = useLocation();
+  useLocation();
   return (
     <ThemeProvider>
       <UserProvider>

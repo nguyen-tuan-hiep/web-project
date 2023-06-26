@@ -19,9 +19,10 @@ const AI = () => {
       price,
       description,
       perks,
-    })
+    }),
   );
   let loadingInterval;
+
   function loader(el) {
     el.textContent = '';
 
@@ -57,7 +58,7 @@ const AI = () => {
 
   function chatStripe(isAi, value, uniqueId) {
     return `
-  <div id=${uniqueId} class = "border w-full p-5 chatbox">${value}</div>
+  <div id='${uniqueId}' class = 'border w-full p-5 chatbox'>${value}</div>
   `;
   }
 
@@ -120,14 +121,14 @@ const AI = () => {
   };
 
   return (
-    <div id="app" className="mx-8">
-      <div id="chat_container"></div>
-      <form id="form">
+    <div id='app' className='mx-8'>
+      <div id='chat_container'></div>
+      <form id='form'>
         <textarea
-          name="prompt"
-          placeholder="Ask Something..."
-          cols="1"
-          rows="1"
+          name='prompt'
+          placeholder='Ask Something...'
+          cols='1'
+          rows='1'
           onKeyDown={handleKeyDown}
         ></textarea>
         {/* <button

@@ -1,13 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import {
-  AddressLink,
-  BookingWidget,
-  PlaceGallery,
-  Spinner,
-  ThingsToKnow,
-} from '../../components/AllComponents.jsx';
+import { AddressLink, BookingWidget, PlaceGallery, Spinner, ThingsToKnow } from '../../components/AllComponents.jsx';
 import Weather from '../../components/weather/Weather.jsx';
 import { MapContext } from '../../providers/AllProviders.jsx';
 import StarRateIcon from '@mui/icons-material/StarRate';
@@ -39,7 +33,8 @@ const PlacePage = () => {
       setPlace(data.place);
       setLoading(false);
     };
-    getPlace().then(() => {});
+    getPlace().then(() => {
+    });
 
     const getReviews = async () => {
       const { data } = await axios.get(`/places/${id}/review`);
@@ -48,7 +43,7 @@ const PlacePage = () => {
       if (data.reviews.length > 0) {
         const sum = data.reviews.reduce(
           (total, review) => total + review.rating,
-          0
+          0,
         );
         const average = sum / data.reviews.length;
         setAverageRating(average);
@@ -72,27 +67,27 @@ const PlacePage = () => {
 
   return (
     <motion.div
-      className="mt-4 -mx-8 pt-8"
+      className='mt-4 -mx-8 pt-8'
       variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
+      initial='hidden'
+      animate='visible'
+      exit='exit'
     >
-      <div className="px-20">
-        <h1 className="text-3xl font-semibold">{place.title}</h1>
+      <div className='px-20'>
+        <h1 className='text-3xl font-semibold'>{place.title}</h1>
         <AddressLink placeAddress={place.address} />
       </div>
-      <div className="relative z-30">
+      <div className='relative z-30'>
         <PlaceGallery place={place} />
       </div>
-      <div className="px-20 pt-10">
-        <h1 className="text-3xl font-semibold">Forecasted weather</h1>
+      <div className='px-20 pt-10'>
+        <h1 className='text-3xl font-semibold'>Forecasted weather</h1>
         <Weather latitude={place.latitude} longitude={place.longitude} />
       </div>
-      <div className="mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[6fr_5fr]">
-        <div className="pl-20">
-          <div className="my-4">
-            <h2 className="font-semibold text-2xl">Description</h2>
+      <div className='mt-8 mb-8 gap-8 grid grid-cols-1 md:grid-cols-[6fr_5fr]'>
+        <div className='pl-20'>
+          <div className='my-4'>
+            <h2 className='font-semibold text-2xl'>Description</h2>
             <p>{place.description}</p>
           </div>
           <p>
@@ -108,18 +103,18 @@ const PlacePage = () => {
             <PeopleIcon /> Max number of guests: {place.maxGuests}
           </p>
           <div>
-            <h2 className="font-semibold text-2xl mt-4">Extra Info</h2>
+            <h2 className='font-semibold text-2xl mt-4'>Extra Info</h2>
           </div>
-          <div className="text-sm leading-5 mb-4 mt-2">
+          <div className='text-sm leading-5 mb-4 mt-2'>
             <p>{place.extraInfo}</p>
           </div>
           <div>
-            <h2 className="font-semibold text-2xl mt-4">Amenities</h2>
+            <h2 className='font-semibold text-2xl mt-4'>Amenities</h2>
           </div>
           <div>
-            <div className="text-sm leading-5 mb-4 mt-2">
+            <div className='text-sm leading-5 mb-4 mt-2'>
               {place.perks.map((item) => (
-                <p className="mx-auto" key={String(item)}>
+                <p className='mx-auto' key={String(item)}>
                   {item}
                 </p>
               ))}
@@ -130,35 +125,35 @@ const PlacePage = () => {
           <BookingWidget place={place} />
         </div>
       </div>
-      <div className="bg-white px-8 py-8 border-t things">
+      <div className='bg-white px-8 py-8 border-t things'>
         <div>
-          <h2 className="font-semibold text-2xl mt-4 px-12">
+          <h2 className='font-semibold text-2xl mt-4 px-12'>
             {averageRating.toFixed(1)}{' '}
             <StarRateIcon style={{ paddingBottom: '5px' }} /> {reviews.length}{' '}
             reviews
           </h2>
           <div
-            className=" mb-4 mt-6 px-10"
+            className=' mb-4 mt-6 px-10'
             style={{ maxHeight: '500px', overflowY: 'auto' }}
           >
             {reviews.length > 0 ? (
               <ul>
                 {reviews.map((review) => (
-                  <div className="bg-gray-100 p-4 mb-4" key={review._id}>
-                    <div className="font-semibold text-xl text-gray-700">
+                  <div className='bg-gray-100 p-4 mb-4' key={review._id}>
+                    <div className='font-semibold text-xl text-gray-700'>
                       {review.user.name}
                     </div>
-                    <li key={review._id} className="text-sm leading-5">
+                    <li key={review._id} className='text-sm leading-5'>
                       <ReactStars
                         name={`rating-${review._id}`}
                         value={review.rating}
                         starCount={5}
                         size={20}
-                        starColor="#ffb400"
-                        emptyStarColor="#bbb"
+                        starColor='#ffb400'
+                        emptyStarColor='#bbb'
                         edit={false}
                       />
-                      <div className="font-semibold text-gray-700 pt-4">
+                      <div className='font-semibold text-gray-700 pt-4'>
                         {review.review}
                       </div>
                     </li>
@@ -166,12 +161,12 @@ const PlacePage = () => {
                 ))}
               </ul>
             ) : (
-              <p className="px-2">No reviews yet.</p>
+              <p className='px-2'>No reviews yet.</p>
             )}
           </div>
         </div>
       </div>
-      <div className="bg-white px-8 py-8 border-t things">
+      <div className='bg-white px-8 py-8 border-t things'>
         <div>
           <ThingsToKnow />
         </div>

@@ -7,7 +7,7 @@ const PlaceImg = ({ place, index = 0, className }) => {
   return (
     <img
       src={place.photos.length > 0 ? place.photos[index] : '../../empty.png'}
-      alt=""
+      alt=''
       className={`aspect-[3/2] ${className} rounded-xl w-full h-full`}
     />
   );

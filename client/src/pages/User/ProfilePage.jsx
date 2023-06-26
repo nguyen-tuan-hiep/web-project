@@ -65,7 +65,7 @@ const ProfilePage = () => {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
-        }
+        },
       )
       .then((res) => {
         setUser(res.data);
@@ -121,15 +121,15 @@ const ProfilePage = () => {
   return (
     <motion.div
       variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
+      initial='hidden'
+      animate='visible'
+      exit='exit'
     >
       <AccountNav />
       {subpage === 'profile' && (
         <div>
-          <div className="text-center max-w-lg mx-auto">
-            <div className="text-center">
+          <div className='text-center max-w-lg mx-auto'>
+            <div className='text-center'>
               <div style={{ position: 'relative', display: 'inline-block' }}>
                 <Avatar
                   alt={user.name}
@@ -137,10 +137,10 @@ const ProfilePage = () => {
                   sx={{ width: 150, height: 150, margin: '0 auto' }}
                 />
                 <input
-                  type="file"
-                  accept="image/*"
-                  id="upload-profile-picture"
-                  className="hidden"
+                  type='file'
+                  accept='image/*'
+                  id='upload-profile-picture'
+                  className='hidden'
                   onChange={uploadProfilePicture}
                 />
                 <button
@@ -184,18 +184,18 @@ const ProfilePage = () => {
                   <DeleteIcon />
                 </button>
               </div>
-              <p className="font-bold text-lg mt-4">
+              <p className='font-bold text-lg mt-4'>
                 Logged in as {user.name} ({user.email})
               </p>
-              <p className="mt-2">{user.description}</p>
+              <p className='mt-2'>{user.description}</p>
             </div>
             <br />
           </div>
 
-          <div className="max-w-lg mx-auto text-center">
+          <div className='max-w-lg mx-auto text-center'>
             {!showForm ? (
               <button
-                className="primary max-w-sm hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
+                className='primary max-w-sm hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out'
                 onClick={toggleForm}
               >
                 Update Profile
@@ -211,67 +211,67 @@ const ProfilePage = () => {
                   updateProfile(
                     e.target.description.value,
                     e.target.name.value,
-                    e.target.email.value
+                    e.target.email.value,
                   );
                 }}
               >
-                <h2 className="text-center text-2xl font-bold mb-4">
+                <h2 className='text-center text-2xl font-bold mb-4'>
                   Update profile
                 </h2>
-                <div className="mb-4">
+                <div className='mb-4'>
                   <label
-                    className="block text-sm font-bold mb-2 text-left"
-                    htmlFor="name"
+                    className='block text-sm font-bold mb-2 text-left'
+                    htmlFor='name'
                   >
                     <p>Name</p>
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
-                    id="name"
-                    type="text"
-                    placeholder="Name"
+                    className='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary'
+                    id='name'
+                    type='text'
+                    placeholder='Name'
                     defaultValue={user.name}
                   />
                 </div>
-                <div className="mb-4">
+                <div className='mb-4'>
                   <label
-                    className="block text-sm font-bold mb-2 text-left"
-                    htmlFor="email"
+                    className='block text-sm font-bold mb-2 text-left'
+                    htmlFor='email'
                   >
                     <p>Email</p>
                   </label>
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
-                    id="email"
-                    type="email"
-                    placeholder="Email"
+                    className='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary'
+                    id='email'
+                    type='email'
+                    placeholder='Email'
                     defaultValue={user.email}
                   />
                 </div>
                 <div>
                   <label
-                    className="block text-sm font-bold mb-2 text-left"
-                    htmlFor="description"
+                    className='block text-sm font-bold mb-2 text-left'
+                    htmlFor='description'
                   >
                     <p>Description</p>
                   </label>
                   <textarea
-                    className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary"
-                    id="description"
-                    type="text"
-                    placeholder="Description"
+                    className='shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-primary'
+                    id='description'
+                    type='text'
+                    placeholder='Description'
                     defaultValue={user.description}
                   />
                 </div>
-                <div className="flex items-center justify-between gap-20">
+                <div className='flex items-center justify-between gap-20'>
                   <button
-                    className="primary max-w-sm hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
-                    type="submit"
+                    className='primary max-w-sm hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out'
+                    type='submit'
                   >
                     Update
                   </button>
                   <button
-                    className="primary max-w-sm hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
+                    className='primary max-w-sm hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out'
                     onClick={(e) => {
                       e.preventDefault(); // Prevent form submission
                       toggleForm(); // Hide the form
@@ -284,17 +284,18 @@ const ProfilePage = () => {
             )}
 
             <button
-              className="primary max-w-sm mt-4 hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out"
+              className='primary max-w-sm mt-4 hover:bg-secondary hover:scale-110 transition transform duration-200 ease-out'
               onClick={logout}
             >
-              <LoginOutlinedIcon className="mr-2" />
+              <LoginOutlinedIcon className='mr-2' />
               Logout
             </button>
           </div>
-          <div className="items-center justify-center grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto">
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+          <div
+            className='items-center justify-center grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8 mx-40 my-10 grid-rows-auto'>
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -306,7 +307,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -327,9 +328,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -341,7 +342,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -362,9 +363,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -376,7 +377,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -397,9 +398,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -411,7 +412,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -432,9 +433,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -446,7 +447,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -467,9 +468,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -481,7 +482,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -502,9 +503,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -516,7 +517,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -537,9 +538,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -551,7 +552,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -571,9 +572,9 @@ const ProfilePage = () => {
               </p>
             </div>
 
-            <div className="shadow-3xl p-4 rounded-xl h-40">
+            <div className='shadow-3xl p-4 rounded-xl h-40'>
               <div
-                className="profile-icon"
+                className='profile-icon'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
@@ -585,7 +586,7 @@ const ProfilePage = () => {
                 />
               </div>
               <p
-                className="font-bold text-lg"
+                className='font-bold text-lg'
                 style={{
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',

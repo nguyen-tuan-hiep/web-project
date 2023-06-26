@@ -43,14 +43,14 @@ exports.getPlaces = async (req, res) => {
         if (reviews.length > 0) {
           const sum = reviews.reduce(
             (total, review) => total + review.rating,
-            0
+            0,
           );
           const averageRating = sum / reviews.length;
           return { ...place.toObject(), averageRating };
         } else {
           return { ...place.toObject(), averageRating: 0 };
         }
-      })
+      }),
     );
     res.status(200).json({
       places: placesWithAvgRating,
@@ -108,7 +108,7 @@ exports.singlePlace = async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({
-      message: 'Internal serever error',
+      message: 'Internal server error',
     });
   }
 };
