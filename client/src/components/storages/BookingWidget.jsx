@@ -51,6 +51,10 @@ const BookingWidget = ({ place }) => {
       toast.error(`Max guests allowed is ${place.maxGuests}`);
       return;
     }
+    if (numOfGuests < 1){
+      toast.error(`Min guests allowed is 1`);
+      return;
+    }
     const infoData = {
       user: user['_id'],
       checkIn,
