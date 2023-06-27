@@ -63,15 +63,7 @@ const BookingWidget = ({ place }) => {
       title: place.title,
       photo: place.photos[0],
     };
-    // await axios.post(
-    //   '/bookings',
-    //   { infoData },
-    //   {
-    //     headers: {
-    //       Authorization: `Bearer ${getItemFromLocalStorage('token')}`,
-    //     },
-    //   }
-    // );
+
     // connect to stripe payment gateway
     const stripePromise = loadStripe(
       'pk_test_51NBG0gENhiICCjN8E3Ttjx0g0r3EQ3svxeDApLg7oP1gvL7khadkBKJt9fZvW3tj1cr57DVPLiPD5OCUFTUdswci00smaNmMSp',
@@ -129,7 +121,7 @@ const BookingWidget = ({ place }) => {
             style={{ width: '100%', padding: '0px' }}
             InputProps={{
               inputProps: {
-                min: 0, // Set min value to 0 to prevent negative numbers
+                min: 1,
                 max: place.maxGuests,
               },
             }}
