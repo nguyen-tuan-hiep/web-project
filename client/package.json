@@ -24,7 +24,6 @@
     "dotenv": "^16.0.3",
     "framer-motion": "^10.12.16",
     "google-map-react": "^2.2.1",
-    "mapbox-gl": "^2.15.0",
     "opencage-api-client": "^1.0.1",
     "postcss": "^8.4.24",
     "react": "^18.2.0",
