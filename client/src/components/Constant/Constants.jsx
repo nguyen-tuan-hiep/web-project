@@ -10,10 +10,10 @@ export const thingsToKnow = [
   {
     title: 'House rules',
     content: [
-      { name: 'No smoking', icon: <SmokeFreeIcon className='thingstoknow' /> },
+      { name: 'No smoking', icon: <SmokeFreeIcon className="thingstoknow" /> },
       {
         name: 'No parties or events',
-        icon: <CelebrationIcon className='thingstoknow' />,
+        icon: <CelebrationIcon className="thingstoknow" />,
       },
     ],
   },
@@ -21,16 +21,16 @@ export const thingsToKnow = [
     title: 'Health & safety',
     content: [
       {
-        name: 'Airbnb\'s COVID-19 safety practices apply',
-        icon: <CoronavirusIcon className='thingstoknow' />,
+        name: "Airbnb's COVID-19 safety practices apply",
+        icon: <CoronavirusIcon className="thingstoknow" />,
       },
       {
         name: 'Carbon monoxide alarm not reported',
-        icon: <Co2Icon className='thingstoknow' />,
+        icon: <Co2Icon className="thingstoknow" />,
       },
       {
         name: 'Smoke alarm not reported',
-        icon: <NotificationsActiveIcon className='thingstoknow' />,
+        icon: <NotificationsActiveIcon className="thingstoknow" />,
       },
     ],
   },
@@ -39,11 +39,11 @@ export const thingsToKnow = [
     content: [
       {
         name: 'Free cancellation before check-in 2 days.',
-        icon: <CancelIcon className='thingstoknow' />,
+        icon: <CancelIcon className="thingstoknow" />,
       },
       {
         name: 'Review the hosts full cancellation policy which applies even if you cancel for illness or disruptions caused by COVID-19.',
-        icon: <HelpIcon className='thingstoknow' />,
+        icon: <HelpIcon className="thingstoknow" />,
       },
     ],
   },

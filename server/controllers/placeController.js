@@ -43,14 +43,14 @@ exports.getPlaces = async (req, res) => {
         if (reviews.length > 0) {
           const sum = reviews.reduce(
             (total, review) => total + review.rating,
-            0,
+            0
           );
           const averageRating = sum / reviews.length;
           return { ...place.toObject(), averageRating };
         } else {
           return { ...place.toObject(), averageRating: 0 };
         }
-      }),
+      })
     );
     res.status(200).json({
       places: placesWithAvgRating,
@@ -75,6 +75,8 @@ exports.updatePlace = async (req, res) => {
         photos: infoData.addedPhotos,
         description: infoData.desc,
         perks: infoData.perks,
+        latitude: infoData.latitude,
+        longitude: infoData.longitude,
         extraInfo: infoData.extraInfo,
         checkIn: infoData.checkIn,
         checkOut: infoData.checkOut,
@@ -146,7 +148,10 @@ exports.searchPlaces = async (req, res) => {
       searchMatches.map(async (place) => {
         const reviews = await Review.find({ place: place._id });
         if (reviews.length > 0) {
-          const sum = reviews.reduce((total, review) => total + review.rating, 0);
+          const sum = reviews.reduce(
+            (total, review) => total + review.rating,
+            0
+          );
           const averageRating = sum / reviews.length;
           return { ...place.toObject(), averageRating };
         } else {

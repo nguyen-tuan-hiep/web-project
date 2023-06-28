@@ -10,14 +10,14 @@ const BookingDates = ({ booking, className }) => {
       <NightlightRoundIcon />
       {`${differenceInCalendarDays(
         new Date(booking.checkOut),
-        new Date(booking.checkIn),
+        new Date(booking.checkIn)
       )} nights`}
-      <div className='flex gap-1 items-center ml-2'>
+      <div className="flex gap-1 items-center ml-2">
         <CalendarMonthIcon />
         {format(new Date(booking.checkIn), 'dd-MM-yyyy')}
       </div>
       <EastIcon />
-      <div className='flex gap-1 items-'>
+      <div className="flex gap-1 items-">
         <CalendarMonthIcon />
         {format(new Date(booking.checkOut), 'dd-MM-yyyy')}
       </div>

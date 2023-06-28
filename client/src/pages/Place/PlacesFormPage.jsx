@@ -1,6 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { AccountNav, MapWidget, Perks, PhotosUploader, Spinner } from '../../components/AllComponents.jsx';
+import {
+  AccountNav,
+  MapWidget,
+  Perks,
+  PhotosUploader,
+  Spinner,
+} from '../../components/AllComponents.jsx';
 import { Navigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { MapContext } from '../../providers/AllProviders.jsx';
@@ -61,8 +67,8 @@ const PlacesFormPage = () => {
   const preInput = (header, description) => {
     return (
       <>
-        <h2 className='text-2xl mt-4'>{header}</h2>
-        <p className='text-gray-500 text-sm'>{description}</p>
+        <h2 className="text-2xl mt-4">{header}</h2>
+        <p className="text-gray-500 text-sm">{description}</p>
       </>
     );
   };
@@ -107,7 +113,7 @@ const PlacesFormPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       );
       toast.success(data.message);
     } else {
@@ -119,7 +125,7 @@ const PlacesFormPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        },
+        }
       );
       toast.success(data.message);
     }
@@ -137,34 +143,34 @@ const PlacesFormPage = () => {
   return (
     <motion.div
       variants={containerVariants}
-      initial='hidden'
-      animate='visible'
-      exit='exit'
+      initial="hidden"
+      animate="visible"
+      exit="exit"
     >
       <AccountNav />
-      <form onSubmit={savePlace} className='mx-8'>
+      <form onSubmit={savePlace} className="mx-8">
         {preInput(
           'Title',
-          'Title for your place. Should be short and catchy as in advertisement',
+          'Title for your place. Should be short and catchy as in advertisement'
         )}
         <input
-          id='title'
-          type='text'
+          id="title"
+          type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder='title, for example: My lovely apt'
+          placeholder="title, for example: My lovely apt"
         />
-        <h2 className='text-2xl mt-4'>Forecasted Weather</h2>
+        <h2 className="text-2xl mt-4">Forecasted Weather</h2>
         <Weather latitude={latitude} longitude={longitude} />
-        <div className='grid gap-10 sm:grid-cols-2 md:grid-cols-2'>
-          <div className='grid gap-2 sm:grid-cols-3 md:grid-cols-1'>
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-2">
+          <div className="grid gap-2 sm:grid-cols-3 md:grid-cols-1">
             {preInput('Address', 'Address to this place')}
             <input
-              id='address'
+              id="address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              type='text'
-              placeholder='address'
+              type="text"
+              placeholder="address"
             />
             {preInput('Photos', 'more = better')}
 
@@ -179,7 +185,7 @@ const PlacesFormPage = () => {
         {preInput('Description', 'description of the place')}
         <textarea
           placeholder='For example: "This is a lovely apartment in the heart of the city. It has a great view and is close to all the shops and restaurants."'
-          id='desc'
+          id="desc"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
@@ -196,14 +202,14 @@ const PlacesFormPage = () => {
 
         {preInput(
           'Check in & Check out times',
-          'add check in and out times, remember to have some time window for cleaning the room between guests. ',
+          'add check in and out times, remember to have some time window for cleaning the room between guests. '
         )}
-        <div className='grid gap-2 sm:grid-cols-2 md:grid-cols-4'>
+        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-4">
           <div>
-            <h3 className='mt-2 -mb-1'>Check in time</h3>
+            <h3 className="mt-2 -mb-1">Check in time</h3>
             <input
-              id='checkIn'
-              type='number'
+              id="checkIn"
+              type="number"
               value={checkIn}
               onChange={(e) => {
                 const value = Number(e.target.value);
@@ -211,18 +217,18 @@ const PlacesFormPage = () => {
                   setCheckIn(value);
                 } else {
                   toast.error(
-                    'Invalid check-in time. Please enter a value between 0 and 23.',
+                    'Invalid check-in time. Please enter a value between 0 and 23.'
                   );
                 }
               }}
-              placeholder='14'
+              placeholder="14"
             />
           </div>
           <div>
-            <h3 className='mt-2 -mb-1'>Check out time</h3>
+            <h3 className="mt-2 -mb-1">Check out time</h3>
             <input
-              id='checkOut'
-              type='number'
+              id="checkOut"
+              type="number"
               value={checkOut}
               onChange={(e) => {
                 const value = Number(e.target.value);
@@ -230,35 +236,35 @@ const PlacesFormPage = () => {
                   setCheckOut(value);
                 } else {
                   toast.error(
-                    'Invalid check-out time. Please enter a value between 0 and 23.',
+                    'Invalid check-out time. Please enter a value between 0 and 23.'
                   );
                 }
               }}
-              placeholder='11'
+              placeholder="11"
             />
           </div>
           <div>
-            <h3 className='mt-2 -mb-1'>Max number of guests</h3>
+            <h3 className="mt-2 -mb-1">Max number of guests</h3>
             <input
-              id='maxGuests'
-              type='number'
+              id="maxGuests"
+              type="number"
               value={maxGuests}
               onChange={(e) => setMaxGuests(Number(e.target.value))}
-              placeholder='1'
+              placeholder="1"
             />
           </div>
           <div>
-            <h3 className='mt-2 -mb-1'>Price per night</h3>
+            <h3 className="mt-2 -mb-1">Price per night</h3>
             <input
-              id='price'
-              type='number'
+              id="price"
+              type="number"
               value={price}
               onChange={(e) => setPrice(Number(e.target.value))}
-              placeholder='1'
+              placeholder="1"
             />
           </div>
         </div>
-        <button className='primary hover:bg-secondary transition my-4'>
+        <button className="primary hover:bg-secondary transition my-4">
           Save
         </button>
       </form>

@@ -42,30 +42,30 @@ const LoginPage = () => {
   }
 
   return (
-    <div className='mt-4 grow flex justify-around items-center'>
-      <div className='mb-40'>
-        <h1 className='text-4xl text-center mb-4'>Login</h1>
-        <form className='max-w-md mx-auto' onSubmit={handleFormSubmit}>
+    <div className="mt-4 grow flex justify-around items-center">
+      <div className="mb-40">
+        <h1 className="text-4xl text-center mb-4">Login</h1>
+        <form className="max-w-md mx-auto" onSubmit={handleFormSubmit}>
           <input
-            id='email'
-            type='email'
-            placeholder='your@email.com'
+            id="email"
+            type="email"
+            placeholder="your@email.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            id='password'
-            type='password'
-            placeholder='password'
+            id="password"
+            type="password"
+            placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className='primary hover:bg-secondary transition mt-2'>
+          <button className="primary hover:bg-secondary transition mt-2">
             Login
           </button>
-          <div className='text-center py-2 text-gray-500'>
-            <span className='register'>Don't have an account yet? </span>
-            <Link className='text-black underline' to={'/register'}>
+          <div className="text-center py-2 text-gray-500">
+            <span className="register">Don't have an account yet? </span>
+            <Link className="text-black underline" to={'/register'}>
               Register now
             </Link>
           </div>

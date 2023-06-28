@@ -15,3 +15,5 @@ export { default as PlaceImg } from './storages/PlaceImg.jsx';
 export { default as SearchBar } from './storages/SearchBar.jsx';
 export { default as Spinner } from './storages/Spinner.jsx';
 export { default as ThingsToKnow } from './storages/ThingsToKnow.jsx';
+export { default as Weather } from './weather/Weather.jsx';
+export { default as MapWithDirections } from './storages/MapWithDirections.jsx';

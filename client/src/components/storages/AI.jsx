@@ -19,7 +19,7 @@ const AI = () => {
       price,
       description,
       perks,
-    }),
+    })
   );
   let loadingInterval;
 
@@ -82,19 +82,22 @@ const AI = () => {
     const messageDiv = document.getElementById(uniqueId);
     loader(messageDiv);
 
-    const response = await fetch('https://air-bnb-clone-8w6n.onrender.com/chatbot', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        prompt:
-          `Suppose you are an accomodation provider with some places:` +
-          JSON.stringify(places) +
-          `and I am a customer. I will ask and you will answer. My question: \n` +
-          data.get('prompt'),
-      }),
-    });
+    const response = await fetch(
+      'https://air-bnb-clone-8w6n.onrender.com/chatbot',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt:
+            `Suppose you are an accomodation provider with some places:` +
+            JSON.stringify(places) +
+            `and I am a customer. I will ask and you will answer. My question: \n` +
+            data.get('prompt'),
+        }),
+      }
+    );
 
     clearInterval(loadingInterval);
     messageDiv.innerHTML = ' ';
@@ -121,14 +124,14 @@ const AI = () => {
   };
 
   return (
-    <div id='app' className='mx-8'>
-      <div id='chat_container'></div>
-      <form id='form'>
+    <div id="app" className="mx-8">
+      <div id="chat_container"></div>
+      <form id="form">
         <textarea
-          name='prompt'
-          placeholder='Ask Something...'
-          cols='1'
-          rows='1'
+          name="prompt"
+          placeholder="Ask Something..."
+          cols="1"
+          rows="1"
           onKeyDown={handleKeyDown}
         ></textarea>
         {/* <button

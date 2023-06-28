@@ -30,11 +30,11 @@ function PaymentSuccessful() {
           });
           // Create an array of all unique user IDs from the bookings
           const userIds = Array.from(
-            new Set(data.map((booking) => booking.user)),
+            new Set(data.map((booking) => booking.user))
           );
           // Fetch the user data for each unique user ID
           const { data: users } = await axios.get(
-            `/user?id=${userIds.join(',')}`,
+            `/user?id=${userIds.join(',')}`
           );
           // Replace the 'user' field with the corresponding user object
           const populatedData = data.map((booking) => ({
@@ -66,11 +66,11 @@ function PaymentSuccessful() {
                 booking_id: bookings[bookings.length - 1]._id,
                 total_nights: differenceInCalendarDays(
                   new Date(bookings[bookings.length - 1].checkOut),
-                  new Date(bookings[bookings.length - 1].checkIn),
+                  new Date(bookings[bookings.length - 1].checkIn)
                 ),
                 address: bookings[bookings.length - 1].place.address,
               },
-              'A1Me166m6TwcmksZP',
+              'A1Me166m6TwcmksZP'
             )
             .then((response) => {
               console.log('SUCCESS!', response.status, response.text);
@@ -87,48 +87,48 @@ function PaymentSuccessful() {
   return (
     <>
       <motion.div
-        className='flex justify-center items-center h-full my-12'
+        className="flex justify-center items-center h-full my-12"
         variants={containerVariants}
-        initial='hidden'
-        animate='visible'
-        exit='exit'
+        initial="hidden"
+        animate="visible"
+        exit="exit"
       >
         <div
-          className='w-1/2 text-center shadow-3xl rounded-2xl p-8'
+          className="w-1/2 text-center shadow-3xl rounded-2xl p-8"
           style={{ minWidth: '700px' }}
         >
-          <div className=''>
+          <div className="">
             <CheckCircleRoundedIcon
               style={{ color: '#FF5A5F', fontSize: '64' }}
             />
-            <p className='font-semibold text-4xl pt-4'>Payment Successful</p>
-            <p className='font-semibold text-2xl mt-4'>
+            <p className="font-semibold text-4xl pt-4">Payment Successful</p>
+            <p className="font-semibold text-2xl mt-4">
               Your transaction has been successfully processed.
             </p>
             {bookings && bookings[bookings.length - 1] && (
-              <div className='text-xl pt-3'>
-                <p className='font-semibold text-3xl'>Total payment</p>
-                <p className='text-5xl font-semibold mt-3'>
+              <div className="text-xl pt-3">
+                <p className="font-semibold text-3xl">Total payment</p>
+                <p className="text-5xl font-semibold mt-3">
                   ${bookings[bookings.length - 1].price}
                 </p>
-                <p className='font-semibold pt-4'>
+                <p className="font-semibold pt-4">
                   Booking ID: {bookings[bookings.length - 1]._id}
                 </p>
-                <p className='pt-6 text-justify'>
+                <p className="pt-6 text-justify">
                   Remember, your booking ID is unique to your reservation, and
                   it acts as proof of your payment and booking confirmation.
                   Having it readily available will save you time and ensure a
                   seamless experience in case you need to make any changes or
                   inquiries in the future.
                 </p>
-                <p className='py-3 text-justify'>
+                <p className="py-3 text-justify">
                   In the event that you misplace or forget your booking ID,
                   don't worry! Our customer support team is here to assist you.
                 </p>
               </div>
             )}
             <button
-              className='primary hover:bg-secondary transition my-4 hover:scale-105 transform'
+              className="primary hover:bg-secondary transition my-4 hover:scale-105 transform"
               onClick={handleClick}
               style={{ width: '200px' }}
             >

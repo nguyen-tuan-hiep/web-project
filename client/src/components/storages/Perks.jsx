@@ -22,15 +22,15 @@ const Perks = ({ selected, onChange }) => {
   };
 
   return (
-    <div className='grid mt-3 gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 perk'>
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+    <div className="grid mt-3 gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 perk">
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Free Wifi')}
-                name='Free Wifi'
+                name="Free Wifi"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -39,22 +39,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <WifiIcon className='mr-2' />
+              <WifiIcon className="mr-2" />
             </div>
           }
-          label='Free Wifi'
-          labelPlacement='end'
+          label="Free Wifi"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Free parking')}
-                name='Free parking'
+                name="Free parking"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -63,22 +63,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <LocalShippingOutlined className='mr-2' />
+              <LocalShippingOutlined className="mr-2" />
             </div>
           }
-          label='Free parking'
-          labelPlacement='end'
+          label="Free parking"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Free breakfast')}
-                name='Free breakfast'
+                name="Free breakfast"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -87,22 +87,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <BreakfastDiningOutlined className='mr-2' />
+              <BreakfastDiningOutlined className="mr-2" />
             </div>
           }
-          label='Free breakfast'
-          labelPlacement='end'
+          label="Free breakfast"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Private pool')}
-                name='Private pool'
+                name="Private pool"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -111,22 +111,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <PoolOutlined className='mr-2' />
+              <PoolOutlined className="mr-2" />
             </div>
           }
-          label='Private pool'
-          labelPlacement='end'
+          label="Private pool"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Smart TV')}
-                name='Smart TV'
+                name="Smart TV"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -135,22 +135,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <TvOutlined className='mr-3' />
+              <TvOutlined className="mr-3" />
             </div>
           }
-          label='Smart TV'
-          labelPlacement='end'
+          label="Smart TV"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Radio')}
-                name='Radio'
+                name="Radio"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -159,22 +159,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <RadioOutlined className='mr-3' />
+              <RadioOutlined className="mr-3" />
             </div>
           }
-          label='Radio'
-          labelPlacement='end'
+          label="Radio"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Pets')}
-                name='Pets'
+                name="Pets"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -183,22 +183,22 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <PetsOutlined className='mr-3' />
+              <PetsOutlined className="mr-3" />
             </div>
           }
-          label='Pets'
-          labelPlacement='end'
+          label="Pets"
+          labelPlacement="end"
         />
       </div>
 
-      <div className='border flex rounded-2xl gap-4 items-center cursor-pointer pl-6'>
+      <div className="border flex rounded-2xl gap-4 items-center cursor-pointer pl-6">
         <FormControlLabel
           control={
             <div>
               <Checkbox
-                className='checkbox'
+                className="checkbox"
                 checked={selected.includes('Private Entrance')}
-                name='Private Entrance'
+                name="Private Entrance"
                 onChange={handleCbClick}
                 sx={{
                   color: 'black',
@@ -207,11 +207,11 @@ const Perks = ({ selected, onChange }) => {
                   },
                 }}
               />
-              <LoginOutlined className='mr-3' />
+              <LoginOutlined className="mr-3" />
             </div>
           }
-          label='Private Entrance'
-          labelPlacement='end'
+          label="Private Entrance"
+          labelPlacement="end"
         />
       </div>
     </div>

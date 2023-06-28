@@ -52,7 +52,7 @@ exports.login = async (req, res) => {
           process.env.JWT_SECRET,
           {
             expiresIn: process.env.JWT_EXPIRY,
-          },
+          }
         );
 
         user.password = undefined;
@@ -132,7 +132,7 @@ exports.updateProfile = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       { description, name, email },
-      { new: true },
+      { new: true }
     );
 
     if (!updatedUser) {
