@@ -94,11 +94,18 @@ exports.createReview = async (req, res) => {
         .status(404)
         .json({ success: false, error: 'Booking not found' });
     }
-    const checkOutDate = booking.checkOut;
+
+    // Check if review or rating is missing
+    if (!req.body.review || !req.body.rating) {
+      return res.status(400).json({
+        success: false,
+        error: 'Review and rating are required',
+      });
+    }
 
     // Check if the review date is after the check-out date
     const reviewDate = new Date();
-    if (reviewDate <= checkOutDate) {
+    if (reviewDate <= booking.checkOut) {
       return res
         .status(400)
         .json({ success: false, error: 'Cannot review before check-out' });
@@ -109,7 +116,7 @@ exports.createReview = async (req, res) => {
     if (existingReview) {
       return res.status(409).json({
         success: false,
-        error: 'Review already exists for this booking',
+        error: 'You have already reviewed this booking',
       });
     }
 

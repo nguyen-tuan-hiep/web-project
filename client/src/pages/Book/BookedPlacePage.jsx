@@ -149,18 +149,7 @@ function Review({ booking, rating, token }) {
         navigate(`/place/${booking.place._id}`);
       })
       .catch((error) => {
-        if (error.response) {
-          const { status } = error.response;
-          if (status === 409) {
-            toast.error('You have already reviewed  this booking.');
-          } else if (status === 400) {
-            toast.error('Cannot review before check-out.');
-          } else {
-            toast.error('Error submitting review. Please try again later.');
-          }
-        } else {
-          toast.error('Error submitting review. Please try again later.');
-        }
+        toast.error(error.response.data.error);
       });
   };
 
