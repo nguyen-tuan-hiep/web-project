@@ -14,7 +14,6 @@ To install and run the application, please follow these steps:
 - You can either work with MongoDB atlas or use your locally installed MongoDB
 - Create a .env file in your server folder and add your variables.
 
----
 
 ## Features
 
@@ -24,6 +23,7 @@ The application has the following features:
 - Search for places by location/title using text/voice
 - Dark mode
 - Intelligent Chatbot
+- Route navigation
 - View places details, amenities, and pricing description
 - Reserve a place for a specific date
 - Add a place as a host accommodation
@@ -50,3 +50,18 @@ This project uses the following dependencies:
 - OpenAI API - API used to get chatbot response.
 - EmailJS - API used to send emails.
 - Stripe - API used to process payments.
+
+## Deployment
+This app is deployed on: <https://air-bnb-clone-site.netlify.app/>
+
+## Contributors
+
+**[Nguyen Tuan Hiep](https://github.com/nguyen-tuan-hiep)**
+
+**[Ha Huy Hoang](https://github.com/3hJalter)**
+
+**[Phi Viet Hoang](https://github.com/PhiVietHoang)**
+
+## Show your support
+
+Give a ⭐️ if this project helped you!

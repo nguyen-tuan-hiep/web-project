@@ -39,7 +39,7 @@ const IndexPage = () => {
               <div className="flex items-center">
                 <p className="font-bold inline-block">{place.title}</p>
                 <p className="ml-auto">
-                  {place.averageRating}
+                  {place.averageRating.toFixed(1)}
                   <StarRateIcon style={{ paddingBottom: '5px' }} />
                 </p>
               </div>
