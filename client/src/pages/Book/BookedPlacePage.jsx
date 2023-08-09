@@ -51,7 +51,6 @@ export default function BookedPlacePage() {
           },
         })
         .then(() => {
-          console.log('Reservation canceled');
           navigate('/account/bookings');
         })
         .catch((error) => {
@@ -145,7 +144,6 @@ function Review({ booking, rating, token }) {
         },
       })
       .then(() => {
-        console.log('Review submitted');
         navigate(`/place/${booking.place._id}`);
       })
       .catch((error) => {

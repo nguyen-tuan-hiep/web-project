@@ -12,6 +12,7 @@ import AnimationRoutes from './components/AnimationRoutes';
 const token = getItemFromLocalStorage('token');
 
 // axios.defaults.baseURL = 'https://airbnb-clone-production.up.railway.app';
+// axios.defaults.baseURL = 'http://localhost:8001';
 axios.defaults.baseURL = 'https://air-bnb-clone-8w6n.onrender.com';
 axios.defaults.withCredentials = true;
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
